@@ -1,41 +1,19 @@
 {
-  "name": "soft-ui-dashboard",
+  "name": "HK",
   "version": "1.0.6",
   "description": "Freebie Dashboard for Bootstrap 5",
-  "main": "pages/dashboard.html",
+  "main": "pages/index.html",
   "directories": {
     "example": "root"
   },
   "scripts": {
     "open-app": "gulp open-app",
+    "server": "live-server --port=8081 --entry-file=./pages/index.html",
     "start": "npm run open-app",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp-watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/creativetimofficial/soft-ui-dashboard.git"
-  },
-  "keywords": [
-    "soft ui dashboard",
-    "bootstrap 5",
-    "dashboard",
-    "creative tim",
-    "html dashboard",
-    "html css dashboard",
-    "web dashboard",
-    "freebie",
-    "free bootstrap dashboard",
-    "css3 dashboard",
-    "bootstrap dashboard",
-    "frontend",
-    "responsive bootstrap dashboard"
-  ],
   "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/creativetimofficial/soft-ui-dashboard/issues"
-  },
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
