@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
+
+
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+
+
+    <!-- jquery -->
+    <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="..\jquery\jquery-ui.js"></script>
+
+
+    <script>
+    </script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* font-size */
+        #dropdownMenuButton {
+            font-size: 10px;
+            background-color: #f6faff;
+        }
+        #inputGroup-sizing-sm {
+            font-size: 11px;
+        }
+        .form-control-label{
+            font-size: 11px;
+        }
+        .form-control{
+            font-size: 11px;
+        }
+
+        /* svg */
+        svg{
+            width: 60%;
+        }
+
+
+        /* Number spinner */
+        .wrapper{
+            height: 26px;
+            min-width:74px;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            background: #FFF;
+            border-radius:5px;
+            box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .wrapper span{
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            font-weight:600;
+        }
+        .wrapper span.num{
+            font-size: 11px;
+            border-right:1px solid rgba(0, 0, 0, 0.2);
+            border-left:1px solid rgba(0, 0, 0, 0.2) ;
+        }
+        .wrapper span.plus{
+            font-weight:bold;
+        }
+        .wrapper span.minus{
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3">
+
+                <div>
+
+                    <form action="#" class=" mt-5 border p-4 shadow"
+                        style="border-radius:15px; background-color:#f6faff;">
+                        <h4 class="mb-3">Search Flight</h4>
+
+
+                        <div class="row">
+
+                            <div class="dropdown col-md-5 me-4">
+                                <button class="btn dropdown-toggle bg-white" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    One-Way
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="javascript:;">One-Way</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Round Trip</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Multi-City</a></li>
+                                </ul>
+                            </div>
+
+
+                            
+                            <!--  -->
+                            <div class="row">
+
+                                <div class=" col-md-4">
+
+                                    <div class="form-group">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">From</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-1">
+
+                                    <div id="round-icon" class="col-md1">
+
+                                        <!-- svg icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            enable-background="new 0 0 15.405 14.707" viewBox="0 0 15.405 14.707">
+                                            <path
+                                                d="M5.061 8 1.914 4.854h9.793c1.378 0 2.5 1.122 2.5 2.5h1c0-1.93-1.57-3.5-3.5-3.5H1.914L5.06.708 4.354 0 0 4.354l4.354 4.354L5.061 8z" />
+                                            <path
+                                                d="m11.061 6-.708.706 3.14 3.147H3.707a2.503 2.503 0 0 1-2.5-2.5h-1c0 1.93 1.57 3.5 3.5 3.5h9.786L10.353 14l.708.706 4.344-4.353L11.061 6z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">To</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--  -->
+
+
+                            
+                            <!-- Depart, Return  & Adults & kids -->
+                            <div class="row">
+
+                                <!--  Depart -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Depart</label>
+                                        <input class="form-control form-control-sm"  type="text" value="date" id="example-text-input">
+                                    </div>
+                                </div>
+
+                                <!--  Return -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Return</label>
+                                        <input class="form-control form-control-sm" type="text" value="date" id="example-text-input">
+                                    </div>
+                                </div>
+
+
+                                
+                                <!--  Adults -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Adults</label>
+
+                                        <div class="wrapper">
+                                            <span class="minus">-</span>
+                                            <span class="num">01</span>
+                                            <span class="plus">+</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--  Kids -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Kids</label>
+
+                                        <div class="wrapper">
+                                            <span class="minus">-</span>
+                                            <span class="num">01</span>
+                                            <span class="plus">+</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!--  -->
+
+
+
+
+
+                            <!-- <div class="dropdown col-md-1 ms-3">
+                                <button class="btn dropdown-toggle bg-white"  type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Economy
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="javascript:;">Action</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
+                                </ul>
+                            </div> -->
+
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+<!--     
+    <div class="container d-flex align-items-center justify-content-center"> -->
+
+<!-- <div class="card card-body blur shadow-blur px-auto">
+                <div class="d-flex flex-row">
+                    <div class="p-2 ">
+                        <div class="btn-group">
+                            <button class="btn shadow-none btn-sm dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                One Way
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li><a class="dropdown-item" href="#">One-Way</a></li>
+                                <li><a class="dropdown-item" href="#">Multi-City</a></li>
+                                <li><a class="dropdown-item" href="#">Return</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="btn-group">
+                            <button class="btn shadow-none btn-sm dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Economy
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li><a class="dropdown-item" href="#">Economy</a></li>
+                                <li><a class="dropdown-item" href="#">Business</a></li>
+                                <li><a class="dropdown-item" href="#">First Class</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="p-2">
+
+
+                        <div class="btn-group">
+                            <button class="btn  shadow-none btn-sm dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Adult
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li><a class="dropdown-item" href="#">Adult</a></li>
+                                <li><a class="dropdown-item" href="#">Children</a></li>
+                                <li><a class="dropdown-item" href="#">Infants</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>       -->
