@@ -32,13 +32,13 @@
         crossorigin="anonymous"></script>
 
 
+    <!-- Soft ui date picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
     <!-- jquery -->
     <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="..\jquery\jquery-ui.js"></script>
-
-
-    <script>
-    </script>
 
 
     <style>
@@ -48,54 +48,192 @@
         }
 
         /* font-size */
-        #dropdownMenuButton {
+        /* #dropdownMenuButton {
             font-size: 10px;
             background-color: #f6faff;
+        } */
+
+        /* #inputGroup-sizing-sm {
+            font-size: 3 rem;
+        } */
+
+        .form-control-label {
+            font-size: 1.4 rem;
         }
-        #inputGroup-sizing-sm {
-            font-size: 11px;
+
+        .form-control {
+            font-size: 15px;
         }
-        .form-control-label{
-            font-size: 11px;
+
+        #round-icon {
+            padding-top: 2em;
         }
-        .form-control{
-            font-size: 11px;
+
+        #explore-bt {
+            width: 290px;
+            color: #f6faff;
         }
 
         /* svg */
-        svg{
-            width: 60%;
+        svg {
+            width: 50%;
+        }
+        svg:hover{
+            width: 68%;
         }
 
 
         /* Number spinner */
-        .wrapper{
-            height: 26px;
-            min-width:74px;
+        .wrapper {
+            height: 30px;
+            min-width: 74px;
             display: flex;
-            align-items:center;
+            align-items: center;
             justify-content: center;
             background: #FFF;
-            border-radius:5px;
-            box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
-        .wrapper span{
+
+        .wrapper span {
             width: 100%;
             text-align: center;
             font-size: 12px;
-            font-weight:600;
+            font-weight: 600;
+            cursor: pointer;
         }
-        .wrapper span.num{
+
+        .wrapper span.num {
+            font-size: 14px;
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+
+        .wrapper span.plus:hover {
+            background-color: rgba(105, 102, 102, 0.2);
+            font-size: large;
+        }
+
+        .wrapper span.minus:hover {
+            background-color: rgba(105, 102, 102, 0.2);
+            font-size: large;
+        }
+
+        .wrapper span.plus {
+            font-weight: bold;
+        }
+
+        .wrapper span.minus {
+            font-weight: bold;
+        }
+        /* Number spinner */
+
+
+        /* dropdown menu*/
+        /* Google Fonts - Poppins */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        .select-btn {
+            display: flex;
+            width: 80%;
+            height: 30px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-btn .btn-text {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #333;
+        }
+
+        .select-btn .arrow-dwn {
+            display: flex;
+            height: 21px;
+            width: 21px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 50%;
+            background: #6e93f7;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .select-btn.open .arrow-dwn {
+            transform: rotate(-180deg);
+        }
+
+        .list-items {
+            position: relative;
+            margin-top: 15px;
+            border-radius: 8px;
+            padding: 16px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .select-btn.open~.list-items {
+            display: block;
+        }
+
+        .list-items .item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            height: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 0 15px;
+            border-radius: 8px;
+        }
+
+        .list-items .item:hover {
+            background-color: #e7edfe;
+        }
+
+        .item .item-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+        }
+
+        .item .checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 16px;
+            width: 16px;
+            border-radius: 4px;
+            margin-right: 12px;
+            border: 1.5px solid #c0c0c0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .item.checked .checkbox {
+            background-color: #4070f4;
+            border-color: #4070f4;
+        }
+
+        .checkbox .check-icon {
+            color: #fff;
             font-size: 11px;
-            border-right:1px solid rgba(0, 0, 0, 0.2);
-            border-left:1px solid rgba(0, 0, 0, 0.2) ;
+            transform: scale(0);
+            transition: all 0.2s ease-in-out;
         }
-        .wrapper span.plus{
-            font-weight:bold;
+
+        .item.checked .check-icon {
+            transform: scale(1);
         }
-        .wrapper span.minus{
-            font-weight:bold;
-        }
+        /* dropdown menu*/
+
 
     </style>
 
@@ -105,45 +243,101 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row mt-5 mr-2">
 
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-8 offset-md-2">
 
                 <div>
-
                     <form action="#" class=" mt-5 border p-4 shadow"
                         style="border-radius:15px; background-color:#f6faff;">
-                        <h4 class="mb-3">Search Flight</h4>
-
 
                         <div class="row">
 
-                            <div class="dropdown col-md-5 me-4">
-                                <button class="btn dropdown-toggle bg-white" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    One-Way
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="javascript:;">One-Way</a></li>
-                                    <li><a class="dropdown-item" href="javascript:;">Round Trip</a></li>
-                                    <li><a class="dropdown-item" href="javascript:;">Multi-City</a></li>
-                                </ul>
+                            <div class="row m-3 ">
+                                <div class="col-md-4 mt-4">
+                                    <p class="h2">Search Flight</p>
+                                </div>
                             </div>
 
+                            <div class="row m-3">
 
-                            
+                                <!-- <div class="dropdown col-md-3">
+                                    <button class="btn dropdown-toggle bg-white" type="button" id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        One-Way
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="javascript:;">One-Way</a></li>
+                                        <li><a class="dropdown-item" href="javascript:;">Round Trip</a></li>
+                                        <li><a class="dropdown-item" href="javascript:;">Multi-City</a></li>
+                                    </ul>
+                                </div> -->
+
+                                <!-- <div class="dropdown">
+                                    <button class="btn btn-outline-danger dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                        <span>Countries</span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="#">Australia</a></li>
+                                        <li><a class="dropdown-item" href="#">India</a></li>
+                                        <li><a class="dropdown-item" href="#">United States</a></li>
+                                    </ul>
+                                </div> -->
+
+                                <div class="col-md-3">
+
+                                    <div class="select-btn">
+                                        <span class="btn-text">Return</span>
+                                        <span class="arrow-dwn">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </span>
+                                    </div>
+    
+                                    <ul class="list-items">
+                                        <li class="item">
+                                            <span class="checkbox">
+                                                <i class="fa-solid fa-check check-icon"></i>
+                                            </span>
+                                            <span class="item-text">One-Way</span>
+                                        </li>
+                                        <li class="item">
+                                            <span class="checkbox">
+                                                <i class="fa-solid fa-check check-icon"></i>
+                                            </span>
+                                            <span class="item-text">Multi-City</span>
+                                        </li>
+                                        <li class="item">
+                                            <span class="checkbox">
+                                                <i class="fa-solid fa-check check-icon"></i>
+                                            </span>
+                                            <span class="item-text">Return</span>
+                                        </li>
+    
+                                    </ul>
+
+                                </div>
+
+                                
+                            </div>
+
                             <!--  -->
-                            <div class="row">
+                            <div class="row m-3">
 
                                 <div class=" col-md-4">
 
-                                    <div class="form-group">
-                                        <div class="input-group input-group-sm">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">From</span>
-                                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                                aria-describedby="inputGroup-sizing-sm">
-                                        </div>
-                                    </div>
+                                    <label for="example-text-input" class="form-control-label">From</label>
+                                    <select class="form-control" name="choices-button" id="choices-button"
+                                        placeholder="Departure">
+
+                                        <option value="Choice 1" selected="">Brazil</option>
+                                        <option value="Choice 2">Bucharest</option>
+                                        <option value="Choice 3">London</option>
+                                        <option value="Choice 4">USA</option>
+                                    </select>
+
+
                                 </div>
 
                                 <div class="col-md-1">
@@ -163,41 +357,42 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="input-group input-group-sm">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">To</span>
-                                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                                aria-describedby="inputGroup-sizing-sm">
-                                        </div>
-                                    </div>
+                                    <label for="example-text-input" class="form-control-label">To</label>
+                                    <select class="form-control" name="choices-button" id="choices-button"
+                                        placeholder="Departure">
+                                        <option value="Choice 1" selected="">Brazil</option>
+                                        <option value="Choice 2">Bucharest</option>
+                                        <option value="Choice 3">London</option>
+                                        <option value="Choice 4">USA</option>
+                                    </select>
                                 </div>
 
                             </div>
                             <!--  -->
 
 
-                            
+
                             <!-- Depart, Return  & Adults & kids -->
-                            <div class="row">
+                            <div class="row m-3">
 
                                 <!--  Depart -->
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Depart</label>
-                                        <input class="form-control form-control-sm"  type="text" value="date" id="example-text-input">
+                                        <label for="example-text-input" class="form-control-label">Departure</label>
+                                        <input class="form-control datepicker form-control-sm" type="text" value="date"
+                                            name="dp" id="example-text-input">
                                     </div>
                                 </div>
 
                                 <!--  Return -->
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Return</label>
-                                        <input class="form-control form-control-sm" type="text" value="date" id="example-text-input">
+                                        <input class="form-control datepicker form-control-sm" type="text" value="date"
+                                            name="dp" id="example-text-input">
                                     </div>
                                 </div>
 
-
-                                
                                 <!--  Adults -->
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -205,7 +400,7 @@
 
                                         <div class="wrapper">
                                             <span class="minus">-</span>
-                                            <span class="num">01</span>
+                                            <span class="num">00</span>
                                             <span class="plus">+</span>
                                         </div>
 
@@ -219,37 +414,33 @@
 
                                         <div class="wrapper">
                                             <span class="minus">-</span>
-                                            <span class="num">01</span>
+                                            <span class="num">00</span>
                                             <span class="plus">+</span>
                                         </div>
 
                                     </div>
                                 </div>
 
-
                             </div>
                             <!--  -->
 
+                            <div class="row mx-3">
+                                <div class="col-5 ">
+                                    <label for="example-text-input" class="form-control-label">Class</label>
+                                    <div class="btn-group-sm" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-secondary px-2">Business</button>
+                                        <button type="button" class="btn btn-secondary px-2">Economy</button>
+                                        <button type="button" class="btn btn-secondary px-2">First</button>
+                                    </div>
+                                </div>
 
-
-
-
-                            <!-- <div class="dropdown col-md-1 ms-3">
-                                <button class="btn dropdown-toggle bg-white"  type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Economy
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                                    <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                                    <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-                                </ul>
-                            </div> -->
+                                <div class="col-1 mt-3">
+                                    <a href="#" class="btn btn-info btn-lg active" role="button" id="explore-bt"
+                                        aria-pressed="true">Explore</a>
+                                </div>
+                            </div>
 
                         </div>
-
-
-
                     </form>
 
                 </div>
@@ -259,70 +450,76 @@
 
 
 
+    <!-- flatpickr from jsdelivr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
+    <!-- initialize datepicker -->
+    <script>
+        flatpickr('[name="dp"]', {});
+
+        const plus = document.querySelector(".plus"),
+            minus = document.querySelector(".minus"),
+            num = document.querySelector(".num");
+
+        let a = 0;
+        plus.addEventListener("click", () => {
+            a++;
+            a = (a < 10) ? "0" + a : a;
+            num.innerText = a;
+        });
+
+        minus.addEventListener("click", () => {
+            a--;
+            a = (a > 0) ? "0" + a : a;
+            num.innerText = a;
+        });
+
+
+
+        const plus2 = document.querySelectorAll('.plus')[1],
+            minus2 = document.querySelectorAll('.minus')[1],
+            num2 = document.querySelectorAll('.num')[1];
+
+        let b = 0;
+        plus2.addEventListener("click", () => {
+            b++;
+            b = (b < 10) ? "0" + b : b;
+            num2.innerText = b;
+        });
+
+        minus2.addEventListener("click", () => {
+            b--;
+            b = (b > 0) ? "0" + b : b;
+            num2.innerText = b;
+        });
+
+        const selectBtn = document.querySelector(".select-btn"),
+            items = document.querySelectorAll(".item");
+
+        selectBtn.addEventListener("click", () => {
+            selectBtn.classList.toggle("open");
+        });
+
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("checked");
+
+                let checked = document.querySelectorAll(".checked"),
+                    btnText = document.querySelector(".btn-text");
+
+                if (checked && checked.length > 0) {
+                    btnText.innerText = `${checked.length} Selected`;
+                } else {
+                    btnText.innerText = "XXXX";
+                }
+            });
+        })
+
+
+
+    </script>
 
 </body>
 
 </html>
-
-
-<!--     
-    <div class="container d-flex align-items-center justify-content-center"> -->
-
-<!-- <div class="card card-body blur shadow-blur px-auto">
-                <div class="d-flex flex-row">
-                    <div class="p-2 ">
-                        <div class="btn-group">
-                            <button class="btn shadow-none btn-sm dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                One Way
-                            </button>
-                            <ul class="dropdown-menu">
-
-                                <li><a class="dropdown-item" href="#">One-Way</a></li>
-                                <li><a class="dropdown-item" href="#">Multi-City</a></li>
-                                <li><a class="dropdown-item" href="#">Return</a></li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="p-2">
-
-                        <div class="btn-group">
-                            <button class="btn shadow-none btn-sm dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Economy
-                            </button>
-                            <ul class="dropdown-menu">
-
-                                <li><a class="dropdown-item" href="#">Economy</a></li>
-                                <li><a class="dropdown-item" href="#">Business</a></li>
-                                <li><a class="dropdown-item" href="#">First Class</a></li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="p-2">
-
-
-                        <div class="btn-group">
-                            <button class="btn  shadow-none btn-sm dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Adult
-                            </button>
-                            <ul class="dropdown-menu">
-
-                                <li><a class="dropdown-item" href="#">Adult</a></li>
-                                <li><a class="dropdown-item" href="#">Children</a></li>
-                                <li><a class="dropdown-item" href="#">Infants</a></li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>       -->
