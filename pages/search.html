@@ -40,11 +40,14 @@
     <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="..\jquery\jquery-ui.js"></script>
 
-
     <style>
         * {
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            height: 100vh;
         }
 
         /* font-size */
@@ -70,7 +73,7 @@
         }
 
         #explore-bt {
-            width: 290px;
+            width: 238px;
             color: #f6faff;
         }
 
@@ -78,7 +81,8 @@
         svg {
             width: 50%;
         }
-        svg:hover{
+
+        svg:hover {
             width: 68%;
         }
 
@@ -127,6 +131,7 @@
         .wrapper span.minus {
             font-weight: bold;
         }
+
         /* Number spinner */
 
 
@@ -232,36 +237,62 @@
         .item.checked .check-icon {
             transform: scale(1);
         }
+
         /* dropdown menu*/
 
 
+        form {
+            position: relative;
+        }
+
+        #icon {
+
+            color: white;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            /* right: -5px; */
+            left: 650px;
+            top: -15px;
+        }
     </style>
 
 </head>
 
 <body>
 
-    <div class="container">
+    <section id="searchbar-section">
 
-        <div class="row mt-5 mr-2">
+        <div class="container">
+            <div class="row mt-5 mr-2">
 
-            <div class="col-md-8 offset-md-2">
+                <div class="col-md-8 offset-md-2">
 
-                <div>
-                    <form action="#" class=" mt-5 border p-4 shadow"
-                        style="border-radius:15px; background-color:#f6faff;">
+                    <div>
+                        <form action="#" class=" mt-5 border p-4 shadow"
+                            style="border-radius:15px; background-color:#f6faff;">
 
-                        <div class="row">
 
-                            <div class="row m-3 ">
-                                <div class="col-md-4 mt-4">
-                                    <p class="h2">Search Flight</p>
-                                </div>
+                            <!-- lottie file location -->
+                            <div id="icon">
+
+                                <img src="..\images\airplane.png" alt="" width="200px" height="200px">
+
                             </div>
+                            <!-- lottie file location -->
 
-                            <div class="row m-3">
+                            <div class="row">
 
-                                <!-- <div class="dropdown col-md-3">
+                                <div class="row m-3 ">
+                                    <div class="col-md-4 mt-4">
+                                        <p class="h2">Search Flight</p>
+                                    </div>
+                                </div>
+
+                                <div class="row m-3">
+
+                                    <!-- <div class="dropdown col-md-3">
                                     <button class="btn dropdown-toggle bg-white" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         One-Way
@@ -273,7 +304,7 @@
                                     </ul>
                                 </div> -->
 
-                                <!-- <div class="dropdown">
+                                    <!-- <div class="dropdown">
                                     <button class="btn btn-outline-danger dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                                         <span>Countries</span>
@@ -286,173 +317,209 @@
                                     </ul>
                                 </div> -->
 
-                                <div class="col-md-3">
+                                    <div class="col-md-3">
 
-                                    <div class="select-btn">
-                                        <span class="btn-text">Return</span>
-                                        <span class="arrow-dwn">
-                                            <i class="fa-solid fa-chevron-down"></i>
-                                        </span>
-                                    </div>
-    
-                                    <ul class="list-items">
-                                        <li class="item">
-                                            <span class="checkbox">
-                                                <i class="fa-solid fa-check check-icon"></i>
+                                        <div class="select-btn">
+                                            <span class="btn-text">Return</span>
+                                            <span class="arrow-dwn">
+                                                <i class="fa-solid fa-chevron-down"></i>
+                                                <!-- <i class="fa-solid fa-circle-info"></i> -->
+                                                <!-- <i class="fa-light fa-circle-half-stroke"></i> -->
                                             </span>
-                                            <span class="item-text">One-Way</span>
-                                        </li>
-                                        <li class="item">
-                                            <span class="checkbox">
-                                                <i class="fa-solid fa-check check-icon"></i>
-                                            </span>
-                                            <span class="item-text">Multi-City</span>
-                                        </li>
-                                        <li class="item">
-                                            <span class="checkbox">
-                                                <i class="fa-solid fa-check check-icon"></i>
-                                            </span>
-                                            <span class="item-text">Return</span>
-                                        </li>
-    
-                                    </ul>
-
-                                </div>
-
-                                
-                            </div>
-
-                            <!--  -->
-                            <div class="row m-3">
-
-                                <div class=" col-md-4">
-
-                                    <label for="example-text-input" class="form-control-label">From</label>
-                                    <select class="form-control" name="choices-button" id="choices-button"
-                                        placeholder="Departure">
-
-                                        <option value="Choice 1" selected="">Brazil</option>
-                                        <option value="Choice 2">Bucharest</option>
-                                        <option value="Choice 3">London</option>
-                                        <option value="Choice 4">USA</option>
-                                    </select>
-
-
-                                </div>
-
-                                <div class="col-md-1">
-
-                                    <div id="round-icon" class="col-md1">
-
-                                        <!-- svg icon -->
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            enable-background="new 0 0 15.405 14.707" viewBox="0 0 15.405 14.707">
-                                            <path
-                                                d="M5.061 8 1.914 4.854h9.793c1.378 0 2.5 1.122 2.5 2.5h1c0-1.93-1.57-3.5-3.5-3.5H1.914L5.06.708 4.354 0 0 4.354l4.354 4.354L5.061 8z" />
-                                            <path
-                                                d="m11.061 6-.708.706 3.14 3.147H3.707a2.503 2.503 0 0 1-2.5-2.5h-1c0 1.93 1.57 3.5 3.5 3.5h9.786L10.353 14l.708.706 4.344-4.353L11.061 6z" />
-                                        </svg>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="example-text-input" class="form-control-label">To</label>
-                                    <select class="form-control" name="choices-button" id="choices-button"
-                                        placeholder="Departure">
-                                        <option value="Choice 1" selected="">Brazil</option>
-                                        <option value="Choice 2">Bucharest</option>
-                                        <option value="Choice 3">London</option>
-                                        <option value="Choice 4">USA</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                            <!--  -->
-
-
-
-                            <!-- Depart, Return  & Adults & kids -->
-                            <div class="row m-3">
-
-                                <!--  Depart -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Departure</label>
-                                        <input class="form-control datepicker form-control-sm" type="text" value="date"
-                                            name="dp" id="example-text-input">
-                                    </div>
-                                </div>
-
-                                <!--  Return -->
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Return</label>
-                                        <input class="form-control datepicker form-control-sm" type="text" value="date"
-                                            name="dp" id="example-text-input">
-                                    </div>
-                                </div>
-
-                                <!--  Adults -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Adults</label>
-
-                                        <div class="wrapper">
-                                            <span class="minus">-</span>
-                                            <span class="num">00</span>
-                                            <span class="plus">+</span>
                                         </div>
 
+                                        <ul class="list-items">
+                                            <li class="item">
+                                                <span class="checkbox">
+                                                    <i class="fa-solid fa-check check-icon"></i>
+                                                </span>
+                                                <span class="item-text">One-Way</span>
+                                            </li>
+                                            <li class="item">
+                                                <span class="checkbox">
+                                                    <i class="fa-solid fa-check check-icon"></i>
+                                                </span>
+                                                <span class="item-text">Multi-City</span>
+                                            </li>
+                                            <li class="item">
+                                                <span class="checkbox">
+                                                    <i class="fa-solid fa-check check-icon"></i>
+                                                </span>
+                                                <span class="item-text">Return</span>
+                                            </li>
+
+                                        </ul>
+
                                     </div>
+
+
                                 </div>
 
-                                <!--  Kids -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Kids</label>
+                                <!--  -->
+                                <div class="row m-3">
 
-                                        <div class="wrapper">
-                                            <span class="minus">-</span>
-                                            <span class="num">00</span>
-                                            <span class="plus">+</span>
+                                    <div class=" col-md-4">
+
+                                        <label for="example-text-input" class="form-control-label">From</label>
+                                        <select class="form-control" name="choices-button" id="choices-button"
+                                            placeholder="Departure">
+
+
+                                            <optgroup label="United State">
+                                                <option value="Choice 1" selected="">Brazil</option>
+                                                <option value="Choice 2">Bucharest</option>
+                                                <option value="Choice 3">London</option>
+                                                <option value="Choice 4">USA</option>
+                                            </optgroup>
+
+
+                                            <optgroup label="China">
+                                                <option value="Choice 5" selected="">Shenzhen</option>
+                                                <option value="Choice 6">Macau</option>
+                                                <option value="Choice 7">GuangZhou</option>
+                                                <option value="Choice 8">Zhuhai</option>
+                                            </optgroup>
+
+
+                                        </select>
+
+
+                                    </div>
+
+                                    <div class="col-md-1">
+
+                                        <div id="round-icon" class="col-md1">
+
+                                            <!-- svg icon -->
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                enable-background="new 0 0 15.405 14.707" viewBox="0 0 15.405 14.707">
+                                                <path
+                                                    d="M5.061 8 1.914 4.854h9.793c1.378 0 2.5 1.122 2.5 2.5h1c0-1.93-1.57-3.5-3.5-3.5H1.914L5.06.708 4.354 0 0 4.354l4.354 4.354L5.061 8z" />
+                                                <path
+                                                    d="m11.061 6-.708.706 3.14 3.147H3.707a2.503 2.503 0 0 1-2.5-2.5h-1c0 1.93 1.57 3.5 3.5 3.5h9.786L10.353 14l.708.706 4.344-4.353L11.061 6z" />
+                                            </svg>
+
                                         </div>
+                                    </div>
 
+                                    <div class="col-md-4">
+                                        <label for="example-text-input" class="form-control-label">To</label>
+                                        <select class="form-control" name="choices-button" id="choices-button"
+                                            placeholder="Departure">
+
+                                            <optgroup label="United State">
+                                                <option value="Choice 1" selected="">Brazil</option>
+                                                <option value="Choice 2">Bucharest</option>
+                                                <option value="Choice 3">London</option>
+                                                <option value="Choice 4">USA</option>
+                                            </optgroup>
+
+
+                                            <optgroup label="China">
+                                                <option value="Choice 5" selected="">Shenzhen</option>
+                                                <option value="Choice 6">Macau</option>
+                                                <option value="Choice 7">GuangZhou</option>
+                                                <option value="Choice 8">Zhuhai</option>
+                                            </optgroup>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--  -->
+
+
+
+                                <!-- Depart, Return  & Adults & kids -->
+                                <div class="row m-3">
+
+                                    <!--  Depart -->
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Departure</label>
+                                            <input class="form-control datepicker form-control-sm" type="text"
+                                                value="date" name="dp" id="example-text-input">
+                                        </div>
+                                    </div>
+
+                                    <!--  Return -->
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Return</label>
+                                            <input class="form-control datepicker form-control-sm" type="text"
+                                                value="date" name="dp" id="example-text-input">
+                                        </div>
+                                    </div>
+
+                                    <!--  Adults -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Adults</label>
+
+                                            <div class="wrapper">
+                                                <span class="minus">-</span>
+                                                <span class="num">00</span>
+                                                <span class="plus">+</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!--  Kids -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Kids</label>
+
+                                            <div class="wrapper">
+                                                <span class="minus">-</span>
+                                                <span class="num">00</span>
+                                                <span class="plus">+</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--  -->
+
+                                <!-- Explore Button  -->
+                                <div class="row mx-3">
+                                    <div class="col-6 ">
+                                        <label for="example-text-input" class="form-control-label">Class</label>
+                                        <div class="btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button"
+                                                class="btn btn-outline-secondary px-2 col-3">Business</button>
+                                            <button type="button"
+                                                class="btn btn-outline-secondary px-2 col-3">Economy</button>
+                                            <button type="button"
+                                                class="btn btn-outline-secondary px-2 col-3">First</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-1 mt-3">
+                                        <a href="#" class="btn btn-info btn-lg active" role="button" id="explore-bt"
+                                            aria-pressed="true">Explore</a>
                                     </div>
                                 </div>
 
                             </div>
-                            <!--  -->
-
-                            <div class="row mx-3">
-                                <div class="col-5 ">
-                                    <label for="example-text-input" class="form-control-label">Class</label>
-                                    <div class="btn-group-sm" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary px-2">Business</button>
-                                        <button type="button" class="btn btn-secondary px-2">Economy</button>
-                                        <button type="button" class="btn btn-secondary px-2">First</button>
-                                    </div>
-                                </div>
-
-                                <div class="col-1 mt-3">
-                                    <a href="#" class="btn btn-info btn-lg active" role="button" id="explore-bt"
-                                        aria-pressed="true">Explore</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
-
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <section id="membership-service">
+
+        <div class="container">
+
+        </div>
+        
+    </section>
 
 
     <!-- flatpickr from jsdelivr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
 
     <!-- initialize datepicker -->
     <script>
