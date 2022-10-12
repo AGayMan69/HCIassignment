@@ -8,29 +8,9 @@
     <title>Search</title>
 
 
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <!-- Nucleo Icons -->
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
-
-
-
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-
-    <!-- JavaScript Bundle with Popper -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-        crossorigin="anonymous"></script>
-
+   
+    <!-- Option 1: CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
 
     <!-- Soft ui date picker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -48,6 +28,7 @@
 
         body {
             height: 100vh;
+            background-color: transparent;
         }
 
         /* font-size */
@@ -59,6 +40,15 @@
         /* #inputGroup-sizing-sm {
             font-size: 3 rem;
         } */
+
+        html {
+            /* background: url(../images/pexels.jpg) no-repeat center center fixed; */
+            background-color: rgba(196,231,225,255);
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
 
         .form-control-label {
             font-size: 1.4 rem;
@@ -85,7 +75,6 @@
         svg:hover {
             width: 68%;
         }
-
 
         /* Number spinner */
         .wrapper {
@@ -136,126 +125,47 @@
 
 
         /* dropdown menu*/
-        /* Google Fonts - Poppins */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
-        .select-btn {
-            display: flex;
-            width: 80%;
-            height: 30px;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            border-radius: 15px;
-            cursor: pointer;
-            background-color: #fff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .select-btn .btn-text {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #333;
-        }
-
-        .select-btn .arrow-dwn {
-            display: flex;
-            height: 21px;
-            width: 21px;
-            color: #fff;
-            font-size: 14px;
-            border-radius: 50%;
-            background: #6e93f7;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-        }
-
-        .select-btn.open .arrow-dwn {
-            transform: rotate(-180deg);
-        }
-
-        .list-items {
-            position: relative;
-            margin-top: 15px;
-            border-radius: 8px;
-            padding: 16px;
-            background-color: #fff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .select-btn.open~.list-items {
-            display: block;
-        }
-
-        .list-items .item {
-            display: flex;
-            align-items: center;
-            list-style: none;
-            height: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            padding: 0 15px;
-            border-radius: 8px;
-        }
-
-        .list-items .item:hover {
-            background-color: #e7edfe;
-        }
-
-        .item .item-text {
-            font-size: 16px;
-            font-weight: 400;
-            color: #333;
-        }
-
-        .item .checkbox {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 16px;
-            width: 16px;
-            border-radius: 4px;
-            margin-right: 12px;
-            border: 1.5px solid #c0c0c0;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .item.checked .checkbox {
-            background-color: #4070f4;
-            border-color: #4070f4;
-        }
-
-        .checkbox .check-icon {
-            color: #fff;
-            font-size: 11px;
-            transform: scale(0);
-            transition: all 0.2s ease-in-out;
-        }
-
-        .item.checked .check-icon {
-            transform: scale(1);
+        .dropdown {
+            padding-top: 15px;
         }
 
         /* dropdown menu*/
 
+        /*button group*/
+        .btn-light {
+            width: 85px;
+            font-weight: 500;
+        }
+        
+        
+        /*button group*/
 
         form {
             position: relative;
         }
 
         #icon {
-
+            
             color: white;
             padding: 10px;
             width: 100px;
             height: 100px;
             position: absolute;
             /* right: -5px; */
-            left: 650px;
-            top: -15px;
+            left: 480px;
+            top: -85px;
         }
+
+        #airplaneicon {
+            /* -webkit-filter: drop-shadow(5px 5px 5px rgb(87, 87, 87)); */
+            filter: drop-shadow(5px 5px 5px rgb(146, 144, 144));
+        }
+
+        /* #airplaneicon:hover {
+            width: 210px;
+            height: 210px;
+        } */
+
     </style>
 
 </head>
@@ -270,94 +180,44 @@
                 <div class="col-md-8 offset-md-2">
 
                     <div>
-                        <form action="#" class=" mt-5 border p-4 shadow"
+                        <form action="#" class=" mt-5 border p-4 shadow-lg"
                             style="border-radius:15px; background-color:#f6faff;">
-
 
                             <!-- lottie file location -->
                             <div id="icon">
-
-                                <img src="..\images\airplane.png" alt="" width="200px" height="200px">
-
+                                <img src="..\images\gif\output-onlinegiftools2.gif" id="airplaneicon" alt="" width="480px" height="360px">
                             </div>
                             <!-- lottie file location -->
 
                             <div class="row">
-
                                 <div class="row m-3 ">
                                     <div class="col-md-4 mt-4">
                                         <p class="h2">Search Flight</p>
                                     </div>
                                 </div>
 
-                                <div class="row m-3">
+                                <div class="row mx-3">
+                                    <div class="col-md-2">
 
-                                    <!-- <div class="dropdown col-md-3">
-                                    <button class="btn dropdown-toggle bg-white" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        One-Way
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item" href="javascript:;">One-Way</a></li>
-                                        <li><a class="dropdown-item" href="javascript:;">Round Trip</a></li>
-                                        <li><a class="dropdown-item" href="javascript:;">Multi-City</a></li>
-                                    </ul>
-                                </div> -->
-
-                                    <!-- <div class="dropdown">
-                                    <button class="btn btn-outline-danger dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                        <span>Countries</span>
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item" href="#">Australia</a></li>
-                                        <li><a class="dropdown-item" href="#">India</a></li>
-                                        <li><a class="dropdown-item" href="#">United States</a></li>
-                                    </ul>
-                                </div> -->
-
-                                    <div class="col-md-3">
-
-                                        <div class="select-btn">
-                                            <span class="btn-text">Return</span>
-                                            <span class="arrow-dwn">
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                                <!-- <i class="fa-solid fa-circle-info"></i> -->
-                                                <!-- <i class="fa-light fa-circle-half-stroke"></i> -->
-                                            </span>
+                                        <div class="dropdown">
+                                            <button type="button"
+                                                class="btn btn-outline-secondary text-gray dropdown-toggle"
+                                                data-bs-toggle="dropdown" id="menutitle">Return</button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item"
+                                                        onclick="changeMenuTitle('One-Way')">One-Way</a></li>
+                                                <li><a class="dropdown-item"
+                                                        onclick="changeMenuTitle('Multi-City')">Multi-City</a></li>
+                                                <li><a class="dropdown-item"
+                                                        onclick="changeMenuTitle('Return')">Return</a></li>
+                                            </ul>
                                         </div>
-
-                                        <ul class="list-items">
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <span class="item-text">One-Way</span>
-                                            </li>
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <span class="item-text">Multi-City</span>
-                                            </li>
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <span class="item-text">Return</span>
-                                            </li>
-
-                                        </ul>
-
                                     </div>
-
-
                                 </div>
+
 
                                 <!--  -->
                                 <div class="row m-3">
-
                                     <div class=" col-md-4">
 
                                         <label for="example-text-input" class="form-control-label">From</label>
@@ -436,8 +296,14 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Departure</label>
+
                                             <input class="form-control datepicker form-control-sm" type="text"
                                                 value="date" name="dp" id="example-text-input">
+
+                                            <!-- <div class="col-lg-4">
+                                                <div data-coreui-locale="en-US" data-coreui-timepicker="true" data-coreui-toggle="date-picker"></div>
+                                            </div> -->
+                                            
                                         </div>
                                     </div>
 
@@ -485,19 +351,28 @@
                                 <div class="row mx-3">
                                     <div class="col-6 ">
                                         <label for="example-text-input" class="form-control-label">Class</label>
-                                        <div class="btn-group-sm" role="group" aria-label="Basic example">
-                                            <button type="button"
-                                                class="btn btn-outline-secondary px-2 col-3">Business</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary px-2 col-3">Economy</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary px-2 col-3">First</button>
+
+
+                                        <div class="btn-group-sm" role="group"
+                                            aria-label="Basic radio toggle button group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                                autocomplete="off" checked>
+                                            <label class="btn btn-light rounded-pill " for="btnradio1">Business</label>
+
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                                autocomplete="off">
+                                            <label class="btn btn-light rounded-pill " for="btnradio2">Economy</label>
+
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-light rounded-pill" for="btnradio3">First</label>
                                         </div>
+
                                     </div>
 
                                     <div class="col-1 mt-3">
-                                        <a href="#" class="btn btn-info btn-lg active" role="button" id="explore-bt"
-                                            aria-pressed="true">Explore</a>
+                                        <a href="#" class="btn btn-info btn-lg active shadow" role="button"
+                                            id="explore-bt" aria-pressed="true">Explore</a>
                                     </div>
                                 </div>
 
@@ -509,20 +384,13 @@
         </div>
     </section>
 
-    <section id="membership-service">
-
-        <div class="container">
-
-        </div>
-        
-    </section>
-
 
     <!-- flatpickr from jsdelivr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-    <!-- initialize datepicker -->
+
     <script>
+        //initialize datepicker 
         flatpickr('[name="dp"]', {});
 
         const plus = document.querySelector(".plus"),
@@ -542,8 +410,6 @@
             num.innerText = a;
         });
 
-
-
         const plus2 = document.querySelectorAll('.plus')[1],
             minus2 = document.querySelectorAll('.minus')[1],
             num2 = document.querySelectorAll('.num')[1];
@@ -560,30 +426,14 @@
             b = (b > 0) ? "0" + b : b;
             num2.innerText = b;
         });
+        //initialize datepicker 
 
-        const selectBtn = document.querySelector(".select-btn"),
-            items = document.querySelectorAll(".item");
+        var menutitle = document.getElementById('menutitle');
 
-        selectBtn.addEventListener("click", () => {
-            selectBtn.classList.toggle("open");
-        });
-
-        items.forEach(item => {
-            item.addEventListener("click", () => {
-                item.classList.toggle("checked");
-
-                let checked = document.querySelectorAll(".checked"),
-                    btnText = document.querySelector(".btn-text");
-
-                if (checked && checked.length > 0) {
-                    btnText.innerText = `${checked.length} Selected`;
-                } else {
-                    btnText.innerText = "XXXX";
-                }
-            });
-        })
-
-
+        //Dropdown menu
+        function changeMenuTitle(str) {
+            menutitle.innerText = str;
+        }
 
     </script>
 
