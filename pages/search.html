@@ -8,13 +8,23 @@
     <title>Search</title>
 
 
-   
-    <!-- Option 1: CoreUI for Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-    <!-- Soft ui date picker -->
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+
+    <!-- jsdelivr date picker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 
     <!-- jquery -->
     <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
@@ -71,7 +81,6 @@
         svg {
             width: 50%;
         }
-
         svg:hover {
             width: 68%;
         }
@@ -116,30 +125,24 @@
         .wrapper span.plus {
             font-weight: bold;
         }
-
         .wrapper span.minus {
             font-weight: bold;
         }
-
         /* Number spinner */
-
 
         /* dropdown menu*/
         .dropdown {
             padding-top: 15px;
         }
-
         /* dropdown menu*/
 
         /*button group*/
-        .btn-light {
+        .btn-outline-secondary {
             width: 85px;
             font-weight: 500;
         }
-        
-        
+         
         /*button group*/
-
         form {
             position: relative;
         }
@@ -160,11 +163,6 @@
             /* -webkit-filter: drop-shadow(5px 5px 5px rgb(87, 87, 87)); */
             filter: drop-shadow(5px 5px 5px rgb(146, 144, 144));
         }
-
-        /* #airplaneicon:hover {
-            width: 210px;
-            height: 210px;
-        } */
 
     </style>
 
@@ -190,6 +188,7 @@
                             <!-- lottie file location -->
 
                             <div class="row">
+
                                 <div class="row m-3 ">
                                     <div class="col-md-4 mt-4">
                                         <p class="h2">Search Flight</p>
@@ -197,6 +196,7 @@
                                 </div>
 
                                 <div class="row mx-3">
+
                                     <div class="col-md-2">
 
                                         <div class="dropdown">
@@ -218,6 +218,7 @@
 
                                 <!--  -->
                                 <div class="row m-3">
+
                                     <div class=" col-md-4">
 
                                         <label for="example-text-input" class="form-control-label">From</label>
@@ -296,14 +297,8 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Departure</label>
-
                                             <input class="form-control datepicker form-control-sm" type="text"
                                                 value="date" name="dp" id="example-text-input">
-
-                                            <!-- <div class="col-lg-4">
-                                                <div data-coreui-locale="en-US" data-coreui-timepicker="true" data-coreui-toggle="date-picker"></div>
-                                            </div> -->
-                                            
                                         </div>
                                     </div>
 
@@ -350,22 +345,22 @@
                                 <!-- Explore Button  -->
                                 <div class="row mx-3">
                                     <div class="col-6 ">
-                                        <label for="example-text-input" class="form-control-label">Class</label>
 
+                                        <label for="example-text-input" class="form-control-label">Class</label>
 
                                         <div class="btn-group-sm" role="group"
                                             aria-label="Basic radio toggle button group">
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
                                                 autocomplete="off" checked>
-                                            <label class="btn btn-light rounded-pill " for="btnradio1">Business</label>
+                                            <label class="btn btn-outline-secondary " for="btnradio1">Business</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
                                                 autocomplete="off">
-                                            <label class="btn btn-light rounded-pill " for="btnradio2">Economy</label>
+                                            <label class="btn btn-outline-secondary " for="btnradio2">Economy</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
                                                 autocomplete="off">
-                                            <label class="btn btn-light rounded-pill" for="btnradio3">First</label>
+                                            <label class="btn btn-outline-secondary " for="btnradio3">First</label>
                                         </div>
 
                                     </div>
@@ -387,6 +382,9 @@
 
     <!-- flatpickr from jsdelivr -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
     <script>
