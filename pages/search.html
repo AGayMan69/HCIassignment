@@ -99,6 +99,9 @@
             background-color: rgb(87, 137, 255);
         }
 
+        #language-select {
+            width: fit-content;
+        }
 
         /* #svg-round {
             width: 50%;
@@ -215,6 +218,29 @@
             background-color: transparent;
             margin-left: 25px;
 
+        }
+
+        #tourists {
+            width: 50%;
+            aspect-ratio: 3/4;
+            object-fit: scale-down;
+        }
+
+        #login_separator::before {
+            z-index: 0;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            content: '';
+            height: 2px;
+            display: block;
+            background-color: #b1b7c1;
+        }
+
+        #login_text {
+            position: relative;
+            padding-inline: 1ch;
+            background-color: white;
         }
     </style>
 
@@ -697,6 +723,7 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -706,9 +733,26 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <button type="button" class="ms-auto mt-2 me-2 btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-                    <div class="vstack gap-3">
-                        <h1>Sign in to your account</h1>
+                <div class="modal-body px-5">
+                    <div class="hstack">
+                        <img id="tourists" src="../images/tourists.png" alt="">
+                        <div class="grid mx-5" style="--cui-rows: 4;">
+                            <h1 class="fw-bolder" style="grid-row: 1;">Sign in to your account</h1>
+                            <form action="" class="mt-3 vstack gap-2" style="grid-row: 3;">
+                                <div class="form-floating mb-3">
+                                    <input type="email" name="" id="floatingEmail" class="form-control" placeholder="name@example.com">
+                                    <label for="floatingEmail">Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                            </form>
+                            <button></button>
+                            <div id="login_separator" class="text-center mt-2 position-relative">
+                                <span id="login_text" class="fw-bolder">OR</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
