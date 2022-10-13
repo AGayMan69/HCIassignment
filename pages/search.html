@@ -24,16 +24,31 @@
         crossorigin="anonymous"></script>
 
     <!-- jsdelivr date picker -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <!-- jquery -->
     <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="..\jquery\jquery-ui.js"></script>
 
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+        integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+
     <style>
         * {
             margin: 0;
             padding: 0;
+            font-family: 'Mukta', sans-serif;
         }
 
         body {
@@ -41,27 +56,18 @@
             background-color: transparent;
         }
 
-        /* font-size */
-        /* #dropdownMenuButton {
-            font-size: 10px;
-            background-color: #f6faff;
-        } */
-
-        /* #inputGroup-sizing-sm {
-            font-size: 3 rem;
-        } */
-
         html {
             /* background: url(../images/pexels.jpg) no-repeat center center fixed; */
-            background-color: rgba(196,231,225,255);
+            background-color: rgba(196, 231, 225, 255);
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
         }
 
-        .form-control-label {
-            font-size: 1.4 rem;
+        .form-label {
+            padding-left: 4px;
+            font-size: 14px;
         }
 
         .form-control {
@@ -69,7 +75,9 @@
         }
 
         #round-icon {
-            padding-top: 2em;
+            padding-top: 40px;
+            padding-right: 8px;
+            margin-left: 3px;
         }
 
         #explore-bt {
@@ -77,12 +85,23 @@
             color: #f6faff;
         }
 
-        /* svg */
-        svg {
+        #explore-bt:hover {
+            background-color: rgb(87, 137, 255);
+        }
+
+
+        /* #svg-round {
             width: 50%;
         }
-        svg:hover {
+
+        #svg-round:hover {
             width: 68%;
+        } */
+
+        /* svg */
+        .svg-location {
+            padding-bottom: 2px;
+
         }
 
         /* Number spinner */
@@ -94,7 +113,7 @@
             justify-content: center;
             background: #FFF;
             border-radius: 5px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 2px rgba(113, 114, 116, 0.2);
         }
 
         .wrapper span {
@@ -125,37 +144,40 @@
         .wrapper span.plus {
             font-weight: bold;
         }
+
         .wrapper span.minus {
             font-weight: bold;
         }
-        /* Number spinner */
 
         /* dropdown menu*/
         .dropdown {
             padding-top: 15px;
         }
-        /* dropdown menu*/
+
+        #menutitle {
+            width: 110px;
+        }
 
         /*button group*/
-        .btn-outline-secondary {
+        .btn-light {
             width: 85px;
             font-weight: 500;
         }
-         
+
         /*button group*/
         form {
             position: relative;
         }
 
+        /* left side gif*/
         #icon {
-            
             color: white;
             padding: 10px;
             width: 100px;
             height: 100px;
             position: absolute;
             /* right: -5px; */
-            left: 480px;
+            left: 400px;
             top: -85px;
         }
 
@@ -163,6 +185,17 @@
             /* -webkit-filter: drop-shadow(5px 5px 5px rgb(87, 87, 87)); */
             filter: drop-shadow(5px 5px 5px rgb(146, 144, 144));
         }
+
+        /* datetime picker */
+        #dp{
+            height: 30px;
+            word-spacing: 5px;
+        }
+        #dp2{
+            height: 30px;
+            word-spacing: 5px;
+        }
+
 
     </style>
 
@@ -173,37 +206,38 @@
     <section id="searchbar-section">
 
         <div class="container">
-            <div class="row mt-5 mr-2">
-
-                <div class="col-md-8 offset-md-2">
-
+            <div class="row mt-5 d-flex justify-content-center">
+                <div class="col-md-7">
                     <div>
                         <form action="#" class=" mt-5 border p-4 shadow-lg"
                             style="border-radius:15px; background-color:#f6faff;">
 
-                            <!-- lottie file location -->
+                            <!-- gif -->
                             <div id="icon">
-                                <img src="..\images\gif\output-onlinegiftools2.gif" id="airplaneicon" alt="" width="480px" height="360px">
+                                <img src="..\images\gif\earth.gif" id="airplaneicon" alt="" width="480px"
+                                    height="360px">
                             </div>
-                            <!-- lottie file location -->
+                            <!-- gif -->
 
                             <div class="row">
-
-                                <div class="row m-3 ">
-                                    <div class="col-md-4 mt-4">
-                                        <p class="h2">Search Flight</p>
+                                <div class="row mx-3 mt-1 mb-3">
+                                    <div class="col-md-4 ">
+                                        <p class="h2 fw-semibold mt-4">Search Flight</p>
                                     </div>
                                 </div>
 
+
+                                <!-- drop down menu -->
                                 <div class="row mx-3">
-
-                                    <div class="col-md-2">
-
+                                    <div class="col-md-4">
                                         <div class="dropdown">
-                                            <button type="button"
-                                                class="btn btn-outline-secondary text-gray dropdown-toggle"
-                                                data-bs-toggle="dropdown" id="menutitle">Return</button>
-                                            <ul class="dropdown-menu">
+                                            <button
+                                                class="btn btn-light rounded-pill dropdown-toggle fw-semibold shadow-sm"
+                                                type="button" data-coreui-toggle="dropdown" aria-expanded="false"
+                                                id="menutitle">
+                                                Return
+                                            </button>
+                                            <ul class="dropdown-menu"  >
                                                 <li><a class="dropdown-item"
                                                         onclick="changeMenuTitle('One-Way')">One-Way</a></li>
                                                 <li><a class="dropdown-item"
@@ -214,163 +248,162 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- drop down menu -->
 
 
-                                <!--  -->
-                                <div class="row m-3">
+                                <div id="group-return">
 
-                                    <div class=" col-md-4">
+                                    <!-- From   -->
+                                    <div class="row m-3">
 
-                                        <label for="example-text-input" class="form-control-label">From</label>
-                                        <select class="form-control" name="choices-button" id="choices-button"
-                                            placeholder="Departure">
+                                        <div class=" col-md-4 mt-1">
 
+                                            <label for="example-text-input" class="form-label">
+                                                <i class="cil-location-pin"></i>
+                                                From</label>
+                                            <select class="form-control border-light shadow-sm" name="choices-button"
+                                                id="choices-button" placeholder="Departure">
 
-                                            <optgroup label="United State">
-                                                <option value="Choice 1" selected="">Brazil</option>
-                                                <option value="Choice 2">Bucharest</option>
-                                                <option value="Choice 3">London</option>
-                                                <option value="Choice 4">USA</option>
-                                            </optgroup>
-
-
-                                            <optgroup label="China">
-                                                <option value="Choice 5" selected="">Shenzhen</option>
-                                                <option value="Choice 6">Macau</option>
-                                                <option value="Choice 7">GuangZhou</option>
-                                                <option value="Choice 8">Zhuhai</option>
-                                            </optgroup>
+                                                <optgroup label="United State">
+                                                    <option value="Choice 1" selected="">Boston, BOS</option>
+                                                    <option value="Choice 2">Chicago, ORD</option>
+                                                    <option value="Choice 3">Dallas, DFW</option>
+                                                    <option value="Choice 4">New York, JFK</option>
+                                                </optgroup>
 
 
-                                        </select>
+                                                <optgroup label="China">
+                                                    <option value="Choice 5">Shenzhen</option>
+                                                    <option value="Choice 6">Macau</option>
+                                                    <option value="Choice 7">GuangZhou</option>
+                                                    <option value="Choice 8">Zhuhai</option>
+                                                </optgroup>
 
-
-                                    </div>
-
-                                    <div class="col-md-1">
-
-                                        <div id="round-icon" class="col-md1">
-
-                                            <!-- svg icon -->
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                enable-background="new 0 0 15.405 14.707" viewBox="0 0 15.405 14.707">
-                                                <path
-                                                    d="M5.061 8 1.914 4.854h9.793c1.378 0 2.5 1.122 2.5 2.5h1c0-1.93-1.57-3.5-3.5-3.5H1.914L5.06.708 4.354 0 0 4.354l4.354 4.354L5.061 8z" />
-                                                <path
-                                                    d="m11.061 6-.708.706 3.14 3.147H3.707a2.503 2.503 0 0 1-2.5-2.5h-1c0 1.93 1.57 3.5 3.5 3.5h9.786L10.353 14l.708.706 4.344-4.353L11.061 6z" />
-                                            </svg>
+                                            </select>
 
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-4">
-                                        <label for="example-text-input" class="form-control-label">To</label>
-                                        <select class="form-control" name="choices-button" id="choices-button"
-                                            placeholder="Departure">
+                                        <div class="col-md-1" id="round-icon">
+                                            <i class="cil-loop" style="font-size:25px;"></i>
+                                        </div>
 
-                                            <optgroup label="United State">
-                                                <option value="Choice 1" selected="">Brazil</option>
-                                                <option value="Choice 2">Bucharest</option>
-                                                <option value="Choice 3">London</option>
-                                                <option value="Choice 4">USA</option>
-                                            </optgroup>
+                                        <!-- To  -->
+                                        <div class="col-md-4 mt-1">
+                                            <label for="example-text-input" class="form-label">
+                                                To</label>
+                                            <select class="form-control border-light shadow-sm" name="choices-button"
+                                                id="choices-button" placeholder="Departure">
 
+                                                <optgroup label="United State">
+                                                    <option value="Choice 1">Boston, BOS</option>
+                                                    <option value="Choice 2">Chicago, ORD</option>
+                                                    <option value="Choice 3">Dallas, DFW</option>
+                                                    <option value="Choice 4">New York, JFK</option>
+                                                </optgroup>
 
-                                            <optgroup label="China">
-                                                <option value="Choice 5" selected="">Shenzhen</option>
-                                                <option value="Choice 6">Macau</option>
-                                                <option value="Choice 7">GuangZhou</option>
-                                                <option value="Choice 8">Zhuhai</option>
-                                            </optgroup>
+                                                <optgroup label="China">
+                                                    <option value="Choice 5">Shenzhen</option>
+                                                    <option value="Choice 6" selected="">Macau</option>
+                                                    <option value="Choice 7">GuangZhou</option>
+                                                    <option value="Choice 8">Zhuhai</option>
+                                                </optgroup>
 
-                                        </select>
-                                    </div>
-                                </div>
-                                <!--  -->
-
-
-
-                                <!-- Depart, Return  & Adults & kids -->
-                                <div class="row m-3">
-
-                                    <!--  Depart -->
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Departure</label>
-                                            <input class="form-control datepicker form-control-sm" type="text"
-                                                value="date" name="dp" id="example-text-input">
+                                            </select>
                                         </div>
                                     </div>
+                                    <!-- To -->
 
-                                    <!--  Return -->
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Return</label>
-                                            <input class="form-control datepicker form-control-sm" type="text"
-                                                value="date" name="dp" id="example-text-input">
-                                        </div>
-                                    </div>
 
-                                    <!--  Adults -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Adults</label>
+                                    <!-- Depart, Return  & Adults & kids -->
+                                    <div class="row m-3">
+                                        <!--  Depart & Return -->
+                                        <div class="col-md-4">
 
-                                            <div class="wrapper">
-                                                <span class="minus">-</span>
-                                                <span class="num">00</span>
-                                                <span class="plus">+</span>
+                                            <div class="form-group" id="return">
+                                                <label for="example-text-input" class="form-label">Departure
+                                                    &nbsp & &nbsp Return</label>
+                                                <input type="text" class="form-control border-light shadow-sm"
+                                                    name="daterange" value="" id="dp">
+
+                                            </div>
+
+                                            <!--  Depart & Return for One-way selection -->
+                                            <div class="form-group" style="display:none;" id="oneway">
+                                                <label for="example-text-input" class="form-label">Departure
+                                                </label>
+                                                <input type="text" class="form-control border-light shadow-sm"
+                                                name="depart" value="" id="dp2">
                                             </div>
 
                                         </div>
-                                    </div>
 
-                                    <!--  Kids -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Kids</label>
+                                        <!--  Adults -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-label"><i
+                                                        class="cis-person"></i>Adults</label>
 
-                                            <div class="wrapper">
-                                                <span class="minus">-</span>
-                                                <span class="num">00</span>
-                                                <span class="plus">+</span>
+                                                <div class="wrapper">
+                                                    <span class="minus">-</span>
+                                                    <span class="num">00</span>
+                                                    <span class="plus">+</span>
+                                                </div>
+
                                             </div>
+                                        </div>
 
+                                        <!--  Kids -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-label"><i
+                                                        class="cil-baby-carriage"></i>&nbspKids</label>
+
+                                                <div class="wrapper border-light">
+                                                    <span class="minus">-</span>
+                                                    <span class="num">00</span>
+                                                    <span class="plus">+</span>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- Depart, Return  & Adults & kids -->
 
                                 </div>
-                                <!--  -->
 
-                                <!-- Explore Button  -->
-                                <div class="row mx-3">
+
+                                <!--  Class -->
+                                <div class="row mx-3 mb-5">
                                     <div class="col-6 ">
-
-                                        <label for="example-text-input" class="form-control-label">Class</label>
-
+                                        <label class="form-label"><i class="cil-credit-card"></i> Class </label>
                                         <div class="btn-group-sm" role="group"
                                             aria-label="Basic radio toggle button group">
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
                                                 autocomplete="off" checked>
-                                            <label class="btn btn-outline-secondary " for="btnradio1">Business</label>
+                                            <label class="btn btn-light rounded-pill shadow-sm "
+                                                for="btnradio1">Business</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
                                                 autocomplete="off">
-                                            <label class="btn btn-outline-secondary " for="btnradio2">Economy</label>
+                                            <label class="btn btn-light rounded-pill shadow-sm"
+                                                for="btnradio2">Economy</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
                                                 autocomplete="off">
-                                            <label class="btn btn-outline-secondary " for="btnradio3">First</label>
+                                            <label class="btn btn-light rounded-pill shadow-sm"
+                                                for="btnradio3">First</label>
                                         </div>
-
                                     </div>
+                                    <!--  Class -->
 
+                                    <!-- Explore Button  -->
                                     <div class="col-1 mt-3">
                                         <a href="#" class="btn btn-info btn-lg active shadow" role="button"
                                             id="explore-bt" aria-pressed="true">Explore</a>
                                     </div>
-                                </div>
+                                    <!-- Explore Button  -->
 
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -380,17 +413,75 @@
     </section>
 
 
-    <!-- flatpickr from jsdelivr -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <!-- jsdelivr date picker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- CoreUI for Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous"></script>
 
 
     <script>
-        //initialize datepicker 
-        flatpickr('[name="dp"]', {});
 
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [month, day, year].join('/');
+        }
+
+
+        //initialize datepicker 
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+
+        $(function () {
+            $('input[name="depart"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+            }, function (start, end, label) {
+                var years = moment().diff(start, 'years');
+                alert("You are " + years + " years old!");
+            });
+        });
+
+
+        let today = new Date();
+        let nextday = new Date();
+        today = formatDate(today);
+        nextday = formatDate(nextday);
+        var dp = document.getElementById('dp');
+        var dp2 = document.getElementById('dp2');
+
+        dp.value = today + ' - ' + nextday;
+        dp2.value = today;
+
+    
+        //Number spinner
         const plus = document.querySelector(".plus"),
             minus = document.querySelector(".minus"),
             num = document.querySelector(".num");
@@ -424,13 +515,22 @@
             b = (b > 0) ? "0" + b : b;
             num2.innerText = b;
         });
-        //initialize datepicker 
-
-        var menutitle = document.getElementById('menutitle');
 
         //Dropdown menu
+        var menutitle = document.getElementById('menutitle');
+        const returnDp = document.getElementById('return');
+        const onewayDp = document.getElementById('oneway');
+
         function changeMenuTitle(str) {
             menutitle.innerText = str;
+            if (str == 'One-Way'){
+                onewayDp.style.display = "initial";
+                returnDp.style.display = "none";
+
+            }else if(str == 'Return'){
+                returnDp.style.display = "initial";
+                onewayDp.style.display = "none";
+            }
         }
 
     </script>
