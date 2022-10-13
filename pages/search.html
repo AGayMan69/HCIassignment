@@ -203,9 +203,11 @@
             width: 105px;
             border: none;
             background-color: transparent;
-            margin-left: 25px;
-
         }
+
+
+
+
     </style>
 
 </head>
@@ -258,95 +260,240 @@
                                 </div>
                                 <!-- drop down menu -->
 
+                                <div id="group-multicity" style="display:none;">
+                                    
+                                    <div class="row mx-3 mt-4" id="multicity-itemlist">
 
+                                        <div class="row" id="multicity-item">
+                                            <div class=" col-md-3 mt-1">
+                                                <label for="example-text-input" class="form-label">
+                                                    <i class="cil-location-pin"></i>
+                                                    From</label>
+                                                <select class="form-control border-light shadow-sm"
+                                                    name="choices-button" id="choices-button" placeholder="Departure">
+                                                    <optgroup label="United State">
+                                                        <option value="Choice 1" selected="">Boston, BOS</option>
+                                                        <option value="Choice 2">Chicago, ORD</option>
+                                                        <option value="Choice 3">Dallas, DFW</option>
+                                                        <option value="Choice 4">New York, JFK</option>
+                                                    </optgroup>
 
-                                <div id="group-multicity">
+                                                    <optgroup label="China">
+                                                        <option value="Choice 5">Shenzhen</option>
+                                                        <option value="Choice 6">Macau</option>
+                                                        <option value="Choice 7">GuangZhou</option>
+                                                        <option value="Choice 8">Zhuhai</option>
+                                                    </optgroup>
 
-                                    <!-- From   -->
-                                    <div class="row mx-3 mt-4" id="destinationgroup">
+                                                </select>
+                                            </div>
+                                            <!-- To  -->
+                                            <div class="col-md-3 mt-1">
+                                                <label for="example-text-input" class="form-label">
+                                                    To</label>
+                                                <select class="form-control border-light shadow-sm"
+                                                    name="choices-button" id="choices-button" placeholder="Departure">
 
-                                        <div class=" col-md-3 mt-1">
-                                            <label for="example-text-input" class="form-label">
-                                                <i class="cil-location-pin"></i>
-                                                From</label>
-                                            <select class="form-control border-light shadow-sm" name="choices-button"
-                                                id="choices-button" placeholder="Departure">
+                                                    <optgroup label="United State">
+                                                        <option value="Choice 1">Boston, BOS</option>
+                                                        <option value="Choice 2">Chicago, ORD</option>
+                                                        <option value="Choice 3">Dallas, DFW</option>
+                                                        <option value="Choice 4">New York, JFK</option>
+                                                    </optgroup>
+                                                    <optgroup label="China">
+                                                        <option value="Choice 5">Shenzhen</option>
+                                                        <option value="Choice 6" selected="">Macau</option>
+                                                        <option value="Choice 7">GuangZhou</option>
+                                                        <option value="Choice 8">Zhuhai</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
 
-                                                <optgroup label="United State">
-                                                    <option value="Choice 1" selected="">Boston, BOS</option>
-                                                    <option value="Choice 2">Chicago, ORD</option>
-                                                    <option value="Choice 3">Dallas, DFW</option>
-                                                    <option value="Choice 4">New York, JFK</option>
-                                                </optgroup>
+                                            <div class="col-md-4 mt-1">
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="form-label ">Departure
+                                                        &nbsp & &nbsp Return</label>
+                                                    <input type="text" class="form-control border-light shadow-sm"
+                                                        name="daterange" style="height:36.5px;" value="" id="dp">
+                                                </div>
+                                            </div>
 
-
-                                                <optgroup label="China">
-                                                    <option value="Choice 5">Shenzhen</option>
-                                                    <option value="Choice 6">Macau</option>
-                                                    <option value="Choice 7">GuangZhou</option>
-                                                    <option value="Choice 8">Zhuhai</option>
-                                                </optgroup>
-
-                                            </select>
+                                            <!-- Del item button -->
+                                            <div class="col-md-1 mt-4 align-self-center">
+                                                <button type="button" class="btn-close" aria-label="Close"
+                                                    style="font-size: 18px; margin-top:11px;margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"></button>
+                                            </div>
+                                            <!-- Del item button -->
                                         </div>
-                                        <!-- To  -->
-                                        <div class="col-md-3 mt-1">
-                                            <label for="example-text-input" class="form-label">
-                                                To</label>
-                                            <select class="form-control border-light shadow-sm" name="choices-button"
-                                                id="choices-button" placeholder="Departure">
 
-                                                <optgroup label="United State">
-                                                    <option value="Choice 1">Boston, BOS</option>
-                                                    <option value="Choice 2">Chicago, ORD</option>
-                                                    <option value="Choice 3">Dallas, DFW</option>
-                                                    <option value="Choice 4">New York, JFK</option>
-                                                </optgroup>
-                                                <optgroup label="China">
-                                                    <option value="Choice 5">Shenzhen</option>
-                                                    <option value="Choice 6" selected="">Macau</option>
-                                                    <option value="Choice 7">GuangZhou</option>
-                                                    <option value="Choice 8">Zhuhai</option>
-                                                </optgroup>
-                                            </select>
-                                        </div>
+                                        <div>
+                                            <div class="row mt-3" id="multicity-item1" >
+                                                <div class=" col-md-3 ">
+                                                    <select class="form-control border-light shadow-sm"
+                                                        name="choices-button" id="choices-button"
+                                                        placeholder="Departure">
+                                                        <optgroup label="United State">
+                                                            <option value="Choice 1">Boston, BOS</option>
+                                                            <option value="Choice 2">Chicago, ORD</option>
+                                                            <option value="Choice 3">Dallas, DFW</option>
+                                                            <option value="Choice 4" selected>New York, JFK</option>
+                                                        </optgroup>
 
-                                        <div class="col-md-4 mt-1">
-                                            <div class="form-group" id="return">
-                                                <label for="example-text-input" class="form-label ">Departure
-                                                    &nbsp & &nbsp Return</label>
-                                                <input type="text" class="form-control border-light shadow-sm"
-                                                    name="daterange" style="height:36.5px;" value="" id="dp">
+                                                        <optgroup label="China">
+                                                            <option value="Choice 5">Shenzhen</option>
+                                                            <option value="Choice 6">Macau</option>
+                                                            <option value="Choice 7">GuangZhou</option>
+                                                            <option value="Choice 8">Zhuhai</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+
+                                                <!-- To  -->
+                                                <div class="col-md-3">
+                                                    <select class="form-control border-light shadow-sm"
+                                                        name="choices-button" id="choices-button"
+                                                        placeholder="Departure">
+
+                                                        <optgroup label="United State">
+                                                            <option value="Choice 1">Boston, BOS</option>
+                                                            <option value="Choice 2">Chicago, ORD</option>
+                                                            <option value="Choice 3" selected>Dallas, DFW</option>
+                                                            <option value="Choice 4">New York, JFK</option>
+                                                        </optgroup>
+                                                        <optgroup label="China">
+                                                            <option value="Choice 5">Shenzhen</option>
+                                                            <option value="Choice 6">Macau</option>
+                                                            <option value="Choice 7">GuangZhou</option>
+                                                            <option value="Choice 8">Zhuhai</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control border-light shadow-sm"
+                                                            name="daterange" style="height:36.5px;" value="" id="dp">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Del item button -->
+                                                <div class="col-md-1  align-self-center">
+                                                    <button type="button" class="btn-close" aria-label="Close"
+                                                        style="font-size: 18px; margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"
+                                                        onclick=""></button>
+                                                </div>
+                                                <!-- Del item button -->
                                             </div>
                                         </div>
 
 
-                                        <!-- Del item button -->
-                                        <div class="col-md-1 mt-4 align-self-center">
-                                            <button type="button" class="btn-close" aria-label="Close"
-                                                style="font-size: 18px; margin-top:11px;margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"></button>
+                                        <div style="display:none;">
+
+                                            <div class="row mt-3" id="multicity-item2" style="width:100%;" >
+                                                <div class=" col-md-3 ">
+                                                    <select class="form-control border-light shadow-sm"
+                                                        name="choices-button" id="choices-button"
+                                                        placeholder="Departure">
+                                                        <optgroup label="United State">
+                                                            <option value="Choice 1">Boston, BOS</option>
+                                                            <option value="Choice 2">Chicago, ORD</option>
+                                                            <option value="Choice 3">Dallas, DFW</option>
+                                                            <option value="Choice 4" selected>New York, JFK</option>
+                                                        </optgroup>
+
+                                                        <optgroup label="China">
+                                                            <option value="Choice 5">Shenzhen</option>
+                                                            <option value="Choice 6">Macau</option>
+                                                            <option value="Choice 7">GuangZhou</option>
+                                                            <option value="Choice 8">Zhuhai</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+
+                                                <!-- To  -->
+                                                <div class="col-md-3">
+                                                    <select class="form-control border-light shadow-sm"
+                                                        name="choices-button" id="choices-button"
+                                                        placeholder="Departure">
+
+                                                        <optgroup label="United State">
+                                                            <option value="Choice 1">Boston, BOS</option>
+                                                            <option value="Choice 2">Chicago, ORD</option>
+                                                            <option value="Choice 3" selected>Dallas, DFW</option>
+                                                            <option value="Choice 4">New York, JFK</option>
+                                                        </optgroup>
+                                                        <optgroup label="China">
+                                                            <option value="Choice 5">Shenzhen</option>
+                                                            <option value="Choice 6">Macau</option>
+                                                            <option value="Choice 7">GuangZhou</option>
+                                                            <option value="Choice 8">Zhuhai</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control border-light shadow-sm"
+                                                            name="daterange" style="height:36.5px;" value="" id="dp">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Del item button -->
+                                                <div class="col-md-1  align-self-center">
+                                                    <button type="button" class="btn-close" aria-label="Close"
+                                                        style="font-size: 18px; margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"
+                                                        onclick=""></button>
+                                                </div>
+                                                <!-- Del item button -->
+                                            </div>
                                         </div>
-                                        <!-- Del item button -->
+
+
                                         
                                     </div>
 
-
                                     <!-- Add destination button -->
-                                    <div class="row justify-content-end">
-                                        <div class="col-5 mt-2">
-                                            <button type="button" class="btn btn-light rounded-pill add-bt"
-                                                style="margin-left:27px;">Add destination</button>
+                                    <div class="row mx-3 mt-2">
+                                        <!--  Adults -->
+                                        <div class="col-md-3 mt-1 ">
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="form-label"><i
+                                                        class="cis-person"></i>Adults</label>
+                                                <div class="wrapper border-light" style="width: 95%;">
+                                                    <span class="minus">-</span>
+                                                    <span class="num">00</span>
+                                                    <span class="plus">+</span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!--  Kids -->
+                                        <div class="col-md-3 mt-1">
+                                            <div class="form-group ">
+                                                <label for="example-text-input" class="form-label">
+                                                    <i class="cil-baby-carriage"></i>&nbspKids</label>
+                                                <div class="wrapper border-light"
+                                                    style="padding-left:-15px; width: 90%;">
+                                                    <span class="minus">-</span>
+                                                    <span class="num">00</span>
+                                                    <span class="plus">+</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Depart, Return  & Adults & kids -->
+                                        <button type="button" class="btn btn-light-sm rounded-pill col-1"
+                                            style="width:60px;"></button>
+
+                                        <button type="button" class="btn btn-light rounded-pill col-3 add-bt ms-4 mb-5"
+                                            onclick="addDestItem()">Add destination</button>
                                     </div>
                                     <!-- Add destination button -->
                                 </div>
-                                
+
 
                                 <div id="group-return">
                                     <!-- From   -->
                                     <div class="row m-3">
                                         <div class=" col-md-4 mt-1">
-
                                             <label for="example-text-input" class="form-label">
                                                 <i class="cil-location-pin"></i>
                                                 From</label>
@@ -367,7 +514,6 @@
                                                 </optgroup>
                                             </select>
                                         </div>
-
                                         <div class="col-md-1" id="round-icon">
                                             <i class="cil-loop" style="font-size:25px;"></i>
                                         </div>
@@ -385,7 +531,6 @@
                                                     <option value="Choice 3">Dallas, DFW</option>
                                                     <option value="Choice 4">New York, JFK</option>
                                                 </optgroup>
-
                                                 <optgroup label="China">
                                                     <option value="Choice 5">Shenzhen</option>
                                                     <option value="Choice 6" selected="">Macau</option>
@@ -402,8 +547,7 @@
                                     <div class="row m-3">
                                         <!--  Depart & Return -->
                                         <div class="col-md-4">
-
-                                            <div class="form-group" id="return">
+                                            <div class="form-group" id="return-dp">
                                                 <label for="example-text-input" class="form-label">Departure
                                                     &nbsp & &nbsp Return</label>
                                                 <input type="text" class="form-control border-light shadow-sm"
@@ -411,7 +555,7 @@
                                             </div>
 
                                             <!--  Depart & Return for One-way selection -->
-                                            <div class="form-group" style="display:none;" id="oneway">
+                                            <div class="form-group" style="display:none;" id="oneway-dp">
                                                 <label for="example-text-input" class="form-label">Departure
                                                 </label>
                                                 <input type="text" class="form-control border-light shadow-sm"
@@ -430,7 +574,6 @@
                                                     <span class="num">00</span>
                                                     <span class="plus">+</span>
                                                 </div>
-
                                             </div>
                                         </div>
 
@@ -445,27 +588,28 @@
                                                     <span class="num">00</span>
                                                     <span class="plus">+</span>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Depart, Return  & Adults & kids -->
                                 </div>
 
+
                                 <!--  Class -->
-                                <div class="row mx-3 mb-5">
-                                    <div class="col-6 ">
+                                <div class="row mx-3 mb-5 mt-1">
+                                    <div class="col-7 px-3">
                                         <label class="form-label"><i class="cil-credit-card"></i> Class </label>
                                         <div class="btn-group-sm" role="group"
                                             aria-label="Basic radio toggle button group">
+
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
                                                 autocomplete="off" checked>
-                                            <label class="btn btn-light rounded-pill shadow-sm "
+                                            <label class="btn btn-light rounded-pill shadow-sm me-1"
                                                 for="btnradio1">Business</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
                                                 autocomplete="off">
-                                            <label class="btn btn-light rounded-pill shadow-sm"
+                                            <label class="btn btn-light rounded-pill shadow-sm me-1"
                                                 for="btnradio2">Economy</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
@@ -491,8 +635,6 @@
             </div>
         </div>
     </section>
-
-
 
 
     <!-- jsdelivr date picker -->
@@ -527,7 +669,6 @@
             return [month, day, year].join('/');
         }
 
-
         //initialize datepicker 
         $(function () {
             $('input[name="daterange"]').daterangepicker({
@@ -549,14 +690,12 @@
             });
         });
 
-
         let today = new Date();
         let nextday = new Date();
         today = formatDate(today);
         nextday = formatDate(nextday);
         var dp = document.getElementById('dp');
         var dp2 = document.getElementById('dp2');
-
         dp.value = today + ' - ' + nextday;
         dp2.value = today;
 
@@ -598,20 +737,40 @@
 
         //Dropdown menu
         var menutitle = document.getElementById('menutitle');
-        const returnDp = document.getElementById('return');
-        const onewayDp = document.getElementById('oneway');
+        const returnDp = document.getElementById('return-dp');
+        const onewayDp = document.getElementById('oneway-dp');
+        const multicity_itemlist = document.getElementById('multicity-itemlist');
+        const group_multicity = document.getElementById('group-multicity');
+        const group_return = document.getElementById('group-return');
+
 
         function changeMenuTitle(str) {
             menutitle.innerText = str;
             if (str == 'One-Way') {
+                group_return.style.display = "initial";
                 onewayDp.style.display = "initial";
                 returnDp.style.display = "none";
-
+                group_multicity.display = "none";
             } else if (str == 'Return') {
-                returnDp.style.display = "initial";
+                group_return.style.display = "initial";
                 onewayDp.style.display = "none";
+                returnDp.style.display = "initial";
+                group_multicity.display = "none";
+
+            } else if (str == 'Multi-City') {
+                group_return.style.display = "none";
+                onewayDp.style.display = "none";
+                returnDp.style.display = "none";
+                group_multicity.style.display = "initial";
             }
         }
+
+        // var itemhtml = $('#multicity-item2').html;
+        // const itemlist = $('')
+
+
+        // function addDestItem(){
+        // }
 
     </script>
 
