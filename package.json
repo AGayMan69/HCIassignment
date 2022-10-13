@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AGayMan69/HCIassignment#readme",
   "dependencies": {
     "@coreui/coreui": "^4.2.2",
-    "hover.css": "^2.3.2"
+    "hover.css": "^2.3.2",
+    "remixicon": "^2.5.0"
   }
 }

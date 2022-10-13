@@ -1,11 +1,18 @@
 .nav-link {
     color: #101010;
+    font-weight: lighter !important;
 }
 
 .nav-link.link-active {
     color: #0465B3;
+    font-weight: bold !important;
 }
 
 .nav-link {
     font-weight: bolder;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
