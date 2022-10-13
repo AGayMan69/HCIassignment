@@ -9,22 +9,22 @@
 
 
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-        crossorigin="anonymous"></script>
+            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+            crossorigin="anonymous"></script>
 
     <!-- jsdelivr date picker -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 
     <!-- jquery -->
     <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
@@ -32,7 +32,7 @@
 
     <!-- CoreUI for Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
-        integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
 
     <!-- Mukta Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+
+    <link rel="stylesheet" href="../style/nav.css">
 
     <style>
         * {
@@ -56,9 +58,20 @@
             background-color: transparent;
         }
 
-        html {
+        #searchbar-section>.container::after{
+            content: "";
+            position: absolute;
+            z-index: -3;
+            background-image: url("../images/pattern.svg");
+            filter: blur(0.5px) brightness(0.8);
+            inset: 0;
+            /*background-color: red;*/
+        }
+        #searchbar-section {
             /* background: url(../images/pexels.jpg) no-repeat center center fixed; */
-            background-color: rgba(196, 231, 225, 255);
+            /*background-image: url("../images/pattern.svg");*/
+            /*filter: blur(8px);*/
+            position: relative;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -211,15 +224,42 @@
 </head>
 
 <body>
-
+<!--                                        nav bar-->
+    <nav class="navbar navbar-expand-lg bg-body shadow">
+        <div class="container-fluid mx-5 my-3">
+            <a class="navbar-brand " href="#">
+                <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+            </a>
+            <button class="navbar-toggler" type="button" data-coreui-toggle="collapse" data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link fs-6 link-active" aria-current="page" href="#">Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" href="#">Popular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" href="#">Featured</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" href="#">Previous Flight</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--                                        nav bar-->
     <section id="searchbar-section">
 
         <div class="container">
-            <div class="row mt-5 d-flex justify-content-center">
+            <div class="row d-flex justify-content-center">
                 <div class="col-md-7">
                     <div>
-                        <form action="#" class=" mt-5 border p-4 shadow-lg"
-                            style="border-radius:15px; background-color:#f6faff;">
+                        <form action="#" class=" my-5 border p-4 shadow-lg"
+                              style="border-radius:15px; background-color:#f6faff;">
 
                             <!-- gif -->
                             <!-- <div id="icon">
@@ -247,11 +287,11 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item"
-                                                        onclick="changeMenuTitle('One-Way')">One-Way</a></li>
+                                                       onclick="changeMenuTitle('One-Way')">One-Way</a></li>
                                                 <li><a class="dropdown-item"
-                                                        onclick="changeMenuTitle('Multi-City')">Multi-City</a></li>
+                                                       onclick="changeMenuTitle('Multi-City')">Multi-City</a></li>
                                                 <li><a class="dropdown-item"
-                                                        onclick="changeMenuTitle('Return')">Return</a></li>
+                                                       onclick="changeMenuTitle('Return')">Return</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -327,7 +367,7 @@
                                                 style="font-size: 18px; margin-top:11px;margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"></button>
                                         </div>
                                         <!-- Del item button -->
-                                        
+
                                     </div>
 
 
@@ -340,7 +380,7 @@
                                     </div>
                                     <!-- Add destination button -->
                                 </div>
-                                
+
 
                                 <div id="group-return">
                                     <!-- From   -->
@@ -351,7 +391,7 @@
                                                 <i class="cil-location-pin"></i>
                                                 From</label>
                                             <select class="form-control border-light shadow-sm" name="choices-button"
-                                                id="choices-button" placeholder="Departure">
+                                                    id="choices-button" placeholder="Departure">
 
                                                 <optgroup label="United State">
                                                     <option value="Choice 1" selected="">Boston, BOS</option>
@@ -374,10 +414,10 @@
 
                                         <!-- To  -->
                                         <div class="col-md-4 mt-1">
-                                            <label for="example-text-input" class="form-label">
+                                            <label class="form-label">
                                                 To</label>
                                             <select class="form-control border-light shadow-sm" name="choices-button"
-                                                id="choices-button" placeholder="Departure">
+                                                    id="choices-button" placeholder="Departure">
 
                                                 <optgroup label="United State">
                                                     <option value="Choice 1">Boston, BOS</option>
@@ -392,6 +432,7 @@
                                                     <option value="Choice 7">GuangZhou</option>
                                                     <option value="Choice 8">Zhuhai</option>
                                                 </optgroup>
+
                                             </select>
                                         </div>
                                     </div>
@@ -404,25 +445,28 @@
                                         <div class="col-md-4">
 
                                             <div class="form-group" id="return">
-                                                <label for="example-text-input" class="form-label">Departure
+                                                <label class="form-label">Departure
                                                     &nbsp & &nbsp Return</label>
                                                 <input type="text" class="form-control border-light shadow-sm"
                                                     name="daterange" value="" id="dp">
+
+
                                             </div>
 
                                             <!--  Depart & Return for One-way selection -->
                                             <div class="form-group" style="display:none;" id="oneway">
-                                                <label for="example-text-input" class="form-label">Departure
+                                                <label class="form-label">Departure
                                                 </label>
                                                 <input type="text" class="form-control border-light shadow-sm"
                                                     name="depart" value="" id="dp2">
                                             </div>
+
                                         </div>
 
                                         <!--  Adults -->
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="example-text-input" class="form-label"><i
+                                                <label class="form-label"><i
                                                         class="cis-person"></i>Adults</label>
 
                                                 <div class="wrapper">
@@ -437,7 +481,7 @@
                                         <!--  Kids -->
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="example-text-input" class="form-label"><i
+                                                <label class="form-label"><i
                                                         class="cil-baby-carriage"></i>&nbspKids</label>
 
                                                 <div class="wrapper border-light">
@@ -457,21 +501,21 @@
                                     <div class="col-6 ">
                                         <label class="form-label"><i class="cil-credit-card"></i> Class </label>
                                         <div class="btn-group-sm" role="group"
-                                            aria-label="Basic radio toggle button group">
+                                             aria-label="Basic radio toggle button group">
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                autocomplete="off" checked>
+                                                   autocomplete="off" checked>
                                             <label class="btn btn-light rounded-pill shadow-sm "
-                                                for="btnradio1">Business</label>
+                                                   for="btnradio1">Business</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                autocomplete="off">
+                                                   autocomplete="off">
                                             <label class="btn btn-light rounded-pill shadow-sm"
-                                                for="btnradio2">Economy</label>
+                                                   for="btnradio2">Economy</label>
 
                                             <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
+                                                   autocomplete="off">
                                             <label class="btn btn-light rounded-pill shadow-sm"
-                                                for="btnradio3">First</label>
+                                                   for="btnradio3">First</label>
                                         </div>
                                     </div>
                                     <!--  Class -->
@@ -479,7 +523,7 @@
                                     <!-- Explore Button  -->
                                     <div class="col-1 mt-3">
                                         <a href="#" class="btn btn-info btn-lg active shadow" role="button"
-                                            id="explore-bt" aria-pressed="true">Explore</a>
+                                           id="explore-bt" aria-pressed="true">Explore</a>
                                     </div>
                                     <!-- Explore Button  -->
 
@@ -493,8 +537,6 @@
     </section>
 
 
-
-
     <!-- jsdelivr date picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -502,13 +544,13 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
     <!-- CoreUI for Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
-        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
-        crossorigin="anonymous"></script>
+            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+            crossorigin="anonymous"></script>
 
 
     <script>
