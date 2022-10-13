@@ -1,0 +1,24 @@
+{
+  "name": "ca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "live-server --port=8081"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AGayMan69/HCIassignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AGayMan69/HCIassignment/issues"
+  },
+  "homepage": "https://github.com/AGayMan69/HCIassignment#readme",
+  "dependencies": {
+    "@coreui/coreui": "^4.2.2",
+    "hover.css": "^2.3.2"
+  }
+}

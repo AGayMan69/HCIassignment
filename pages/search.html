@@ -9,22 +9,22 @@
 
 
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-        crossorigin="anonymous"></script>
+            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+            crossorigin="anonymous"></script>
 
     <!-- jsdelivr date picker -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 
     <!-- jquery -->
     <script type="text/javascript" src="..\jquery\jquery-3.6.1.min.js"></script>
@@ -32,7 +32,7 @@
 
     <!-- CoreUI for Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
-        integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
 
     <!-- Mukta Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+
+    <link rel="stylesheet" href="../style/nav.css">
 
     <style>
         * {
@@ -56,9 +58,20 @@
             background-color: transparent;
         }
 
-        html {
+        #searchbar-section>.container::after{
+            content: "";
+            position: absolute;
+            z-index: -3;
+            background-image: url("../images/pattern.svg");
+            filter: blur(0.5px) brightness(0.8);
+            inset: 0;
+            /*background-color: red;*/
+        }
+        #searchbar-section {
             /* background: url(../images/pexels.jpg) no-repeat center center fixed; */
-            background-color: rgba(196, 231, 225, 255);
+            /*background-image: url("../images/pattern.svg");*/
+            /*filter: blur(8px);*/
+            position: relative;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -203,25 +216,50 @@
             width: 105px;
             border: none;
             background-color: transparent;
+            margin-left: 25px;
+
         }
-
-
-
-
     </style>
 
 </head>
 
 <body>
-
+<!--                                        nav bar-->
+    <nav class="navbar navbar-expand-lg bg-body shadow">
+        <div class="container-fluid mx-5 my-3">
+            <a class="navbar-brand " href="#">
+                <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+            </a>
+            <button class="navbar-toggler" type="button" data-coreui-toggle="collapse" data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link fs-6 link-active" aria-current="page" href="#">Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" href="#">Popular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" href="#">Featured</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6" href="#">Previous Flight</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--                                        nav bar-->
     <section id="searchbar-section">
 
         <div class="container">
-            <div class="row mt-5 d-flex justify-content-center">
+            <div class="row d-flex justify-content-center">
                 <div class="col-md-7">
                     <div>
-                        <form action="#" class=" mt-5 border p-4 shadow-lg"
-                            style="border-radius:15px; background-color:#f6faff;">
+                        <form action="#" class=" my-5 border p-4 shadow-lg"
+                              style="border-radius:15px; background-color:#f6faff;">
 
                             <!-- gif -->
                             <!-- <div id="icon">
@@ -261,7 +299,7 @@
                                 <!-- drop down menu -->
 
                                 <div id="group-multicity" style="display:none;">
-                                    
+
                                     <div class="row mx-3 mt-4" id="multicity-itemlist">
 
                                         <div class="row" id="multicity-item">
@@ -449,7 +487,7 @@
                                         </div>
 
 
-                                        
+
                                     </div>
 
                                     <!-- Add destination button -->
@@ -494,6 +532,7 @@
                                     <!-- From   -->
                                     <div class="row m-3">
                                         <div class=" col-md-4 mt-1">
+
                                             <label for="example-text-input" class="form-label">
                                                 <i class="cil-location-pin"></i>
                                                 From</label>
@@ -514,6 +553,7 @@
                                                 </optgroup>
                                             </select>
                                         </div>
+
                                         <div class="col-md-1" id="round-icon">
                                             <i class="cil-loop" style="font-size:25px;"></i>
                                         </div>
@@ -531,6 +571,7 @@
                                                     <option value="Choice 3">Dallas, DFW</option>
                                                     <option value="Choice 4">New York, JFK</option>
                                                 </optgroup>
+
                                                 <optgroup label="China">
                                                     <option value="Choice 5">Shenzhen</option>
                                                     <option value="Choice 6" selected="">Macau</option>
@@ -574,6 +615,7 @@
                                                     <span class="num">00</span>
                                                     <span class="plus">+</span>
                                                 </div>
+
                                             </div>
                                         </div>
 
@@ -588,6 +630,7 @@
                                                     <span class="num">00</span>
                                                     <span class="plus">+</span>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -669,6 +712,7 @@
             return [month, day, year].join('/');
         }
 
+
         //initialize datepicker 
         $(function () {
             $('input[name="daterange"]').daterangepicker({
@@ -690,12 +734,14 @@
             });
         });
 
+
         let today = new Date();
         let nextday = new Date();
         today = formatDate(today);
         nextday = formatDate(nextday);
         var dp = document.getElementById('dp');
         var dp2 = document.getElementById('dp2');
+
         dp.value = today + ' - ' + nextday;
         dp2.value = today;
 

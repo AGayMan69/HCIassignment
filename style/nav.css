@@ -1,0 +1,11 @@
+.nav-link {
+    color: #101010;
+}
+
+.nav-link.link-active {
+    color: #0465B3;
+}
+
+.nav-link {
+    font-weight: bolder;
+}
