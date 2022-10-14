@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Airline DashBoard</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        .sidebar {
+            min-height: 92vh;
+        }
+
+        .nav-link > *, .nav-title {
+            color: black !important;
+        }
+
+        .navbar {
+            background-color: #070152;
+            min-height: 8vh;
+            max-height: 8vh;
+        }
+
+        .nav-bar-company-icon {
+            max-width: 18rem;
+            object-fit: cover;
+            object-position: -30px;
+            aspect-ratio: 5/1;
+        }
+
+        .navbar-nav>li>span {
+            font-size: 0.8rem !important;
+        }
+
+        #logout-button>a>* {
+            color: red !important;
+        }
+
+        .container {
+            min-width: 100% !important;
+        }
+
+        .container>.row {
+            margin: 0;
+        }
+
+        .admin-content {
+            background-color: #f4f5f9;
+        }
+
+        #staff-link>*>* {
+            color: #0045b0 !important;
+            font-weight: bold;
+        }
+
+        #employee-sort {
+            max-width: 10rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg pe-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../icon/png/logo-white-removebg.png" class="nav-bar-company-icon" alt="" srcset="">
+            </a>
+            <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                    data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="position-relative ri-message-2-line fs-4 me-4 text-white">
+                        <a href=""></a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            99+
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </li>
+
+                    <li class="position-relative ri-notification-4-line fs-4 ms-2 me-4 text-white">
+                        <a href=""></a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            99+
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </li>
+                    <li class="text-white fw-bold mt-1 ms-4 me-3">
+                        Song Yong Nian
+                    </li>
+                    <li class="avatar">
+                        <img src="../images/avatar/2.jpg" alt="" class="avatar-img">
+                        <span class="avatar-status bg-success"></span>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex">
+        <!--    sidebar-->
+        <div class="col sidebar sidebar-show bg-white">
+            <ul class="sidebar-nav text-dark">
+                <li class="nav-item" id="overview-link">
+                    <a href="./dashboard.html" class="nav-link">
+                        <i class="nav-icon ri-dashboard-3-fill"></i>
+                        <span class="mt-2">Overview</span>
+                    </a>
+                </li>
+                <li class="nav-title"><strong>General</strong></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-task-fill"></i>
+                        <span class="mt-2">Tasks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-alert-fill"></i>
+                        <span class="mt-2">Alerts</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-plane-line"></i>
+                        <span class="mt-2">Fleet</span>
+                    </a>
+                </li>
+
+                <li class="nav-title">
+                    <strong>Management</strong>
+                </li>
+
+                <li class="nav-item" id="staff-link">
+                    <a class="nav-link" href="./dashboard_staff.html">
+                        <i class="nav-icon ri-user-2-fill"></i>
+                        <span class="mt-2">Staff</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-user-5-fill"></i>
+                        <span class="mt-2">Customer</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-file-list-3-fill"></i>
+                        <span class="mt-2">Reports</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mt-auto">
+                    <a class="nav-link nav-link-success" href="#">
+                        <i class="nav-icon ri-settings-5-fill"></i>
+                        <span class="mt-2">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item mb-3" id="logout-button">
+                    <a class="nav-link nav-link-success" href="./admin_login.html">
+                        <i class="nav-icon ri-logout-box-line"></i>
+                        <span class="mt-2 text-uppercase">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--    sidebar-->
+        <!--    body-->
+        <div class="wrapper flex-grow-1 admin-content p-5" >
+            <div class="fs-1 fw-bolder">
+                Staff
+            </div>
+            <hr>
+            <div class="hstack">
+                <form action="" class="me-4">
+                    <input type="text" class="form-control" placeholder="Search">
+                </form>
+
+                <select name="" id="employee-sort" class="form-select">
+                    <option selected value="1">Employee ID</option>
+                    <option value="2">Gender</option>
+                    <option value="3">Occupation</option>
+                    <option value="4">Email</option>
+                </select>
+
+                <button class="btn btn-success ms-auto text-white fs-5 fw-bold">
+                    Create User
+                </button>
+            </div>
+
+        </div>
+        <!--    body-->
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <!-- CoreUI for Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+            crossorigin="anonymous"></script>
+</body>
+</html>

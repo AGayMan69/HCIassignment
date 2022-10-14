@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Airline Admin</title>
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            /*background-color: #4158D0;*/
+            /*background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);*/
+            background-image: url("../images/monterey.png");
+            background-size: cover;
+            background-position: bottom left;
+        }
+
+        .login-box {
+            width: 1400px;
+            aspect-ratio: 4/2;
+            background-color: white;
+        }
+
+        .company-icon {
+            max-width: 80%;
+            aspect-ratio: 4/1;
+            object-fit: scale-down;
+            margin-inline: auto;
+        }
+
+        .signin-text {
+            color: #070152 !important;
+        }
+
+        .signin-button {
+            background-color: #070152 !important;
+        }
+
+        #login-pic {
+            max-width: 65%;
+            min-width: 65%;
+            object-fit: cover;
+            object-position: right top;
+        }
+    </style>
+</head>
+<body>
+    <section class="login-container d-flex justify-content-center align-items-center">
+        <div class="login-box d-flex rounded shadow overflow-hidden">
+                <img  src="../images/sergey-zigle-QTMWBbuEqv4-unsplash.jpg" id="login-pic" alt="" srcset="">
+                <div class="vstack me-auto ms-auto pt-5 px-5" >
+                    <img src="../icon/png/logo-no-background.png" class="company-icon my-4" alt="">
+                    <div class="fw-semibold text-center fs-4 mt-2 signin-text">
+                        Sign In
+                    </div>
+
+                    <form action="" class="vstack gap-4 mt-3">
+                        <div class="form-floating">
+                            <input class="form-control" type="email" id="floating-email" placeholder="test@example.com">
+                            <label for="floating-email">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" type="password" id="floating-password"
+                                   placeholder="test@example.com">
+                            <label for="floating-email">Password</label>
+                        </div>
+                        <div class="fs-6 text-muted fw-semibold text-end">Forgot password?</div>
+                        <button class="signin-button btn btn-lg btn-info mt-3 p-3 text-white fw-bold">Sign In</button>
+                    </form>
+                </div>
+        </div>
+
+    </section>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <!-- CoreUI for Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function (e) {
+                e.preventDefault()
+                console.log('login')
+                window.location.href = './dashboard.html'
+            })
+        })
+    </script>
+</body>
+</html>
