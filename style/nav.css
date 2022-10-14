@@ -12,7 +12,16 @@
     font-weight: bolder;
 }
 
-a {
+a.nav-link {
     text-decoration: none;
     color: black;
 }
+
+#language-select {
+    width: fit-content;
+}
+
+#signin_toggle {
+    text-decoration: none;
+}
+
