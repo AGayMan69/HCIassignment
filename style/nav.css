@@ -12,7 +12,7 @@
     font-weight: bolder;
 }
 
-a {
+a.nav-link {
     text-decoration: none;
     color: black;
 }
