@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
+    <title>Dream Airline - search</title>
 
 
     <!--     Fonts and icons     -->
@@ -112,10 +112,9 @@
         } */
 
         /* svg */
-        .svg-location {
-            padding-bottom: 2px;
-
-        }
+        /*.svg-location {*/
+        /*    padding-bottom: 2px;*/
+        /*}*/
 
         /* Number spinner */
         .wrapper {
@@ -167,7 +166,7 @@
             padding-top: 15px;
         }
 
-        #menutitle {
+        #dropDownTitle {
             width: 110px;
         }
 
@@ -178,6 +177,7 @@
         }
 
         /*button group*/
+
         form {
             position: relative;
         }
@@ -200,16 +200,10 @@
         }
 
         /* datetime picker */
-        #dp {
+        #dp, #dp2, #dp3 {
             height: 30px;
             word-spacing: 5px;
         }
-
-        #dp2 {
-            height: 30px;
-            word-spacing: 5px;
-        }
-
 
         .add-bt {
             font-size: 12px;
@@ -247,344 +241,113 @@
 </head>
 
 <body>
-    <!--                                        nav bar-->
-    <nav class="navbar navbar-expand-lg bg-body shadow">
-        <div class="container-fluid mx-5 my-2">
-            <a class="navbar-brand " href="#">
-                <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+<!--                                        nav bar-->
+<nav class="navbar navbar-expand-lg bg-body shadow">
+    <div class="container-fluid mx-5 my-2">
+        <a class="navbar-brand " href="#">
+            <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+        </a>
+        <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link fs-6 link-active" aria-current="page" href="#">Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-6" href="#">Popular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-6" href="#">Featured</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-6" href="#">View Flight</a>
+                </li>
+            </ul>
+
+            <i class="ri-global-line me-3"></i>
+            <select name="" id="language-select"
+                    class="form-select form-select-sm">
+                <option selected>🇬🇧 English</option>
+                <option selected>🇨🇳 简体中文</option>
+                <option selected>🇭🇰 繁體中文</option>
+                <option selected>🇯🇵 日本語</option>
+            </select>
+            <div class="mx-4 fw-bold">Help & support</div>
+            <a class="ms-2" id="signin_toggle"
+               data-coreui-toggle="modal"
+               data-coreui-target="#login_modal"
+            >
+                <div class="avatar bg-black text-white me-2">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="d-inline fw-bold">Sign In</div>
             </a>
-            <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
-                    data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
-                    <li class="nav-item ">
-                        <a class="nav-link fs-6 link-active" aria-current="page" href="#">Book</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6" href="#">Popular</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6" href="#">Featured</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6" href="#">View Flight</a>
-                    </li>
-                </ul>
 
-                <i class="ri-global-line me-3"></i>
-                <select name="" id="language-select"
-                        class="form-select form-select-sm">
-                    <option selected>🇬🇧 English</option>
-                    <option selected>🇨🇳 简体中文</option>
-                    <option selected>🇭🇰 繁體中文</option>
-                    <option selected>🇯🇵 日本語</option>
-                </select>
-                <div class="mx-4 fw-bold">Help & support</div>
-                <a class="ms-2" id="signin_toggle"
-                   data-coreui-toggle="modal"
-                   data-coreui-target="#login_modal"
-                >
-                    <div class="avatar bg-black text-white me-2">
-                        <i class="ri-user-fill"></i>
-                    </div>
-                    <div class="d-inline fw-bold">Sign In</div>
-                </a>
-
-            </div>
         </div>
-    </nav>
-    <!--                                        nav bar-->
+    </div>
+</nav>
+<!--                                        nav bar-->
 
-    <section id="searchbar-section">
+<section id="searchbar-section">
 
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-7">
-                    <div>
-                        <form action="#" class=" my-5 border p-4 shadow-lg"
-                              style="border-radius:15px; background-color:#f6faff;">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <div>
+                    <form action="#" class="my-5 border p-4 shadow-lg"
+                          style="border-radius:15px; background-color:#f6faff;">
 
-                            <!-- gif -->
-                            <!-- <div id="icon">
-                                <img src="..\images\gif\earth.gif" id="airplaneicon" alt="" width="480px"
-                                    height="360px">
-                            </div> -->
-                            <!-- gif -->
+                        <!-- gif -->
+                        <div id="icon">
+                            <img src="..\images\gif\earth.gif" id="airplaneicon" width="480px" alt=""
+                                height="360px">
+                        </div>
+                        <!-- gif -->
 
-                            <div class="row">
-                                <div class="row mx-3 mt-1 mb-3">
-                                    <div class="col-md-4 ">
-                                        <p class="h2 fw-semibold mt-4">Search Flight</p>
+                        <div class="row">
+                            <div class="row mx-3 mt-1 mb-3">
+                                <div class="col-md-4 ">
+                                    <p class="h2 fw-semibold mt-4">Search Flight</p>
+                                </div>
+                            </div>
+
+                            <!-- drop down menu -->
+                            <div class="row mx-3">
+                                <div class="col-md-4">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light rounded-pill dropdown-toggle fw-semibold shadow-sm"
+                                                type="button" data-coreui-toggle="dropdown" aria-expanded="false"
+                                                id="dropDownTitle">
+                                            Return
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item"
+                                                   onclick="changeDPMenuTitle('One-Way')">One-Way</a></li>
+                                            <li><a class="dropdown-item"
+                                                   onclick="changeDPMenuTitle('Multi-City')">Multi-City</a></li>
+                                            <li><a class="dropdown-item"
+                                                   onclick="changeDPMenuTitle('Return')">Return</a></li>
+                                        </ul>
                                     </div>
                                 </div>
+                            </div>
+                            <!-- drop down menu -->
 
-                                <!-- drop down menu -->
-                                <div class="row mx-3">
-                                    <div class="col-md-4">
-                                        <div class="dropdown">
-                                            <button
-                                                    class="btn btn-light rounded-pill dropdown-toggle fw-semibold shadow-sm"
-                                                    type="button" data-coreui-toggle="dropdown" aria-expanded="false"
-                                                    id="menutitle">
-                                                Return
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item"
-                                                        onclick="changeMenuTitle('One-Way')">One-Way</a></li>
-                                                <li><a class="dropdown-item"
-                                                        onclick="changeMenuTitle('Multi-City')">Multi-City</a></li>
-                                                <li><a class="dropdown-item"
-                                                        onclick="changeMenuTitle('Return')">Return</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- drop down menu -->
+                            <div id="group-multicity">
 
-                                <div id="group-multicity" style="display:none;">
+                                <div class="row mx-3 mt-4" id="multicity-itemlist">
 
-                                    <div class="row mx-3 mt-4" id="multicity-itemlist">
-
-                                        <div class="row" id="multicity-item">
-                                            <div class=" col-md-3 mt-1">
-                                                <label for="example-text-input" class="form-label">
-                                                    <i class="cil-location-pin"></i>
-                                                    From</label>
-                                                <select class="form-control border-light shadow-sm"
-                                                    name="choices-button" id="choices-button" placeholder="Departure">
-                                                    <optgroup label="United State">
-                                                        <option value="Choice 1" selected="">Boston, BOS</option>
-                                                        <option value="Choice 2">Chicago, ORD</option>
-                                                        <option value="Choice 3">Dallas, DFW</option>
-                                                        <option value="Choice 4">New York, JFK</option>
-                                                    </optgroup>
-
-                                                    <optgroup label="China">
-                                                        <option value="Choice 5">Shenzhen</option>
-                                                        <option value="Choice 6">Macau</option>
-                                                        <option value="Choice 7">GuangZhou</option>
-                                                        <option value="Choice 8">Zhuhai</option>
-                                                    </optgroup>
-
-                                                </select>
-                                            </div>
-                                            <!-- To  -->
-                                            <div class="col-md-3 mt-1">
-                                                <label for="example-text-input" class="form-label">
-                                                    To</label>
-                                                <select class="form-control border-light shadow-sm"
-                                                    name="choices-button" id="choices-button" placeholder="Departure">
-
-                                                    <optgroup label="United State">
-                                                        <option value="Choice 1">Boston, BOS</option>
-                                                        <option value="Choice 2">Chicago, ORD</option>
-                                                        <option value="Choice 3">Dallas, DFW</option>
-                                                        <option value="Choice 4">New York, JFK</option>
-                                                    </optgroup>
-                                                    <optgroup label="China">
-                                                        <option value="Choice 5">Shenzhen</option>
-                                                        <option value="Choice 6" selected="">Macau</option>
-                                                        <option value="Choice 7">GuangZhou</option>
-                                                        <option value="Choice 8">Zhuhai</option>
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-4 mt-1">
-                                                <div class="form-group">
-                                                    <label for="example-text-input" class="form-label ">Departure
-                                                        &nbsp & &nbsp Return</label>
-                                                    <input type="text" class="form-control border-light shadow-sm"
-                                                        name="daterange" style="height:36.5px;" value="" id="dp">
-                                                </div>
-                                            </div>
-
-                                            <!-- Del item button -->
-                                            <div class="col-md-1 mt-4 align-self-center">
-                                                <button type="button" class="btn-close" aria-label="Close"
-                                                    style="font-size: 18px; margin-top:11px;margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"></button>
-                                            </div>
-                                            <!-- Del item button -->
-                                        </div>
-
-                                        <div>
-                                            <div class="row mt-3" id="multicity-item1" >
-                                                <div class=" col-md-3 ">
-                                                    <select class="form-control border-light shadow-sm"
-                                                        name="choices-button" id="choices-button"
-                                                        placeholder="Departure">
-                                                        <optgroup label="United State">
-                                                            <option value="Choice 1">Boston, BOS</option>
-                                                            <option value="Choice 2">Chicago, ORD</option>
-                                                            <option value="Choice 3">Dallas, DFW</option>
-                                                            <option value="Choice 4" selected>New York, JFK</option>
-                                                        </optgroup>
-
-                                                        <optgroup label="China">
-                                                            <option value="Choice 5">Shenzhen</option>
-                                                            <option value="Choice 6">Macau</option>
-                                                            <option value="Choice 7">GuangZhou</option>
-                                                            <option value="Choice 8">Zhuhai</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-
-                                                <!-- To  -->
-                                                <div class="col-md-3">
-                                                    <select class="form-control border-light shadow-sm"
-                                                        name="choices-button" id="choices-button"
-                                                        placeholder="Departure">
-
-                                                        <optgroup label="United State">
-                                                            <option value="Choice 1">Boston, BOS</option>
-                                                            <option value="Choice 2">Chicago, ORD</option>
-                                                            <option value="Choice 3" selected>Dallas, DFW</option>
-                                                            <option value="Choice 4">New York, JFK</option>
-                                                        </optgroup>
-                                                        <optgroup label="China">
-                                                            <option value="Choice 5">Shenzhen</option>
-                                                            <option value="Choice 6">Macau</option>
-                                                            <option value="Choice 7">GuangZhou</option>
-                                                            <option value="Choice 8">Zhuhai</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control border-light shadow-sm"
-                                                            name="daterange" style="height:36.5px;" value="" id="dp">
-                                                    </div>
-                                                </div>
-
-                                                <!-- Del item button -->
-                                                <div class="col-md-1  align-self-center">
-                                                    <button type="button" class="btn-close" aria-label="Close"
-                                                        style="font-size: 18px; margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"
-                                                        onclick=""></button>
-                                                </div>
-                                                <!-- Del item button -->
-                                            </div>
-                                        </div>
-
-
-                                        <div style="display:none;">
-
-                                            <div class="row mt-3" id="multicity-item2" style="width:100%;" >
-                                                <div class=" col-md-3 ">
-                                                    <select class="form-control border-light shadow-sm"
-                                                        name="choices-button" id="choices-button"
-                                                        placeholder="Departure">
-                                                        <optgroup label="United State">
-                                                            <option value="Choice 1">Boston, BOS</option>
-                                                            <option value="Choice 2">Chicago, ORD</option>
-                                                            <option value="Choice 3">Dallas, DFW</option>
-                                                            <option value="Choice 4" selected>New York, JFK</option>
-                                                        </optgroup>
-
-                                                        <optgroup label="China">
-                                                            <option value="Choice 5">Shenzhen</option>
-                                                            <option value="Choice 6">Macau</option>
-                                                            <option value="Choice 7">GuangZhou</option>
-                                                            <option value="Choice 8">Zhuhai</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-
-                                                <!-- To  -->
-                                                <div class="col-md-3">
-                                                    <select class="form-control border-light shadow-sm"
-                                                        name="choices-button" id="choices-button"
-                                                        placeholder="Departure">
-
-                                                        <optgroup label="United State">
-                                                            <option value="Choice 1">Boston, BOS</option>
-                                                            <option value="Choice 2">Chicago, ORD</option>
-                                                            <option value="Choice 3" selected>Dallas, DFW</option>
-                                                            <option value="Choice 4">New York, JFK</option>
-                                                        </optgroup>
-                                                        <optgroup label="China">
-                                                            <option value="Choice 5">Shenzhen</option>
-                                                            <option value="Choice 6">Macau</option>
-                                                            <option value="Choice 7">GuangZhou</option>
-                                                            <option value="Choice 8">Zhuhai</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control border-light shadow-sm"
-                                                            name="daterange" style="height:36.5px;" value="" id="dp">
-                                                    </div>
-                                                </div>
-
-                                                <!-- Del item button -->
-                                                <div class="col-md-1  align-self-center">
-                                                    <button type="button" class="btn-close" aria-label="Close"
-                                                        style="font-size: 18px; margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"
-                                                        onclick=""></button>
-                                                </div>
-                                                <!-- Del item button -->
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-
-                                    <!-- Add destination button -->
-                                    <div class="row mx-3 mt-2">
-                                        <!--  Adults -->
-                                        <div class="col-md-3 mt-1 ">
-                                            <div class="form-group">
-                                                <label for="example-text-input" class="form-label"><i
-                                                        class="cis-person"></i>Adults</label>
-                                                <div class="wrapper border-light" style="width: 95%;">
-                                                    <span class="minus">-</span>
-                                                    <span class="num">00</span>
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  Kids -->
-                                        <div class="col-md-3 mt-1">
-                                            <div class="form-group ">
-                                                <label for="example-text-input" class="form-label">
-                                                    <i class="cil-baby-carriage"></i>&nbspKids</label>
-                                                <div class="wrapper border-light"
-                                                    style="padding-left:-15px; width: 90%;">
-                                                    <span class="minus">-</span>
-                                                    <span class="num">00</span>
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Depart, Return  & Adults & kids -->
-                                        <button type="button" class="btn btn-light-sm rounded-pill col-1"
-                                            style="width:60px;"></button>
-
-                                        <button type="button" class="btn btn-light rounded-pill col-3 add-bt ms-4 mb-5"
-                                            onclick="addDestItem()">Add destination</button>
-                                    </div>
-                                    <!-- Add destination button -->
-                                </div>
-
-
-                                <div id="group-return">
-                                    <!-- From   -->
-                                    <div class="row m-3">
-                                        <div class=" col-md-4 mt-1">
-
-                                            <label for="example-text-input" class="form-label">
+                                    <div class="row">
+                                        <div class=" col-md-3 mt-1">
+                                            <label class="form-label">
                                                 <i class="cil-location-pin"></i>
                                                 From</label>
-                                            <select class="form-control border-light shadow-sm" name="choices-button"
-                                                    id="choices-button" placeholder="Departure">
-
+                                            <select class="form-control border-light shadow-sm"
+                                                     placeholder="Departure">
                                                 <optgroup label="United State">
                                                     <option value="Choice 1" selected="">Boston, BOS</option>
                                                     <option value="Choice 2">Chicago, ORD</option>
@@ -599,304 +362,456 @@
                                                 </optgroup>
                                             </select>
                                         </div>
-
-                                        <div class="col-md-1" id="round-icon">
-                                            <i class="cil-loop" style="font-size:25px;"></i>
-                                        </div>
-
                                         <!-- To  -->
-                                        <div class="col-md-4 mt-1">
+                                        <div class="col-md-3 mt-1">
                                             <label class="form-label">
                                                 To</label>
-                                            <select class="form-control border-light shadow-sm" name="choices-button"
-                                                    id="choices-button" placeholder="Departure">
-
+                                            <select class="form-control border-light shadow-sm"
+                                                    >
                                                 <optgroup label="United State">
                                                     <option value="Choice 1">Boston, BOS</option>
                                                     <option value="Choice 2">Chicago, ORD</option>
                                                     <option value="Choice 3">Dallas, DFW</option>
                                                     <option value="Choice 4">New York, JFK</option>
                                                 </optgroup>
-
                                                 <optgroup label="China">
                                                     <option value="Choice 5">Shenzhen</option>
                                                     <option value="Choice 6" selected="">Macau</option>
                                                     <option value="Choice 7">GuangZhou</option>
                                                     <option value="Choice 8">Zhuhai</option>
                                                 </optgroup>
-
                                             </select>
                                         </div>
-                                    </div>
-                                    <!-- To -->
 
-
-                                    <!-- Depart, Return  & Adults & kids -->
-                                    <div class="row m-3">
-                                        <!--  Depart & Return -->
-                                        <div class="col-md-4">
-
-                                            <div class="form-group" id="return">
-                                                <label class="form-label">Departure
+                                        <div class="col-md-4 mt-1">
+                                            <div class="form-group">
+                                                <label class="form-label ">Departure
                                                     &nbsp & &nbsp Return</label>
                                                 <input type="text" class="form-control border-light shadow-sm"
-                                                    name="daterange" value="" id="dp">
-                                            </div>
-
-                                            <!--  Depart & Return for One-way selection -->
-                                            <div class="form-group" style="display:none;" id="oneway-dp">
-                                                <label for="example-text-input" class="form-label">Departure
-                                                </label>
-                                                <input type="text" class="form-control border-light shadow-sm"
-                                                       name="depart" value="" id="dp2">
-                                            </div>
-
-                                        </div>
-
-                                        <!--  Adults -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="example-text-input" class="form-label"><i
-                                                        class="cis-person"></i>Adults</label>
-
-                                                <div class="wrapper">
-                                                    <span class="minus">-</span>
-                                                    <span class="num">00</span>
-                                                    <span class="plus">+</span>
-                                                </div>
-
+                                                       name="daterange" value="10/14/2022 - 10/15/2022" style="height:36.5px;" id="dp3">
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <!--  Kids -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="example-text-input" class="form-label"><i
-                                                        class="cil-baby-carriage"></i>&nbspKids</label>
 
-                                                <div class="wrapper border-light">
-                                                    <span class="minus">-</span>
-                                                    <span class="num">00</span>
-                                                    <span class="plus">+</span>
-                                                </div>
-
+                                <!-- Add destination button -->
+                                <div class="row mx-3 mt-2">
+                                    <!--  Adults -->
+                                    <div class="col-md-3 mt-1 ">
+                                        <div class="form-group">
+                                            <label class="form-label"><i
+                                                    class="cis-person"></i>Adults</label>
+                                            <div class="wrapper border-light" style="width: 95%;">
+                                                <span class="minus">-</span>
+                                                <span class="num">00</span>
+                                                <span class="plus">+</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  Kids -->
+                                    <div class="col-md-3 mt-1">
+                                        <div class="form-group ">
+                                            <label class="form-label">
+                                                <i class="cil-baby-carriage"></i>&nbspKids</label>
+                                            <div class="wrapper border-light"
+                                                 style="padding-left:-15px; width: 90%;">
+                                                <span class="minus">-</span>
+                                                <span class="num">00</span>
+                                                <span class="plus">+</span>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Depart, Return  & Adults & kids -->
+                                    <button type="button" class="btn btn-light-sm rounded-pill col-1 border-0 disabled"
+                                            style="width:60px;"></button>
+
+                                    <button type="button" class="btn btn-light rounded-pill col-3 add-bt ms-4 mb-5"
+                                            onclick="addMultiCityItem()" >Add destination
+                                    </button>
                                 </div>
+                                <!-- Add destination button -->
+                            </div>
 
 
-                                <!--  Class -->
-                                <div class="row mx-3 mb-5 mt-1">
-                                    <div class="col-7 px-3">
-                                        <label class="form-label"><i class="cil-credit-card"></i> Class </label>
-                                        <div class="btn-group-sm" role="group"
-                                            aria-label="Basic radio toggle button group">
+                            <div id="group-return">
+                                <!-- From   -->
+                                <div class="row m-3">
+                                    <div class=" col-md-4 mt-1">
 
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                autocomplete="off" checked>
-                                            <label class="btn btn-light rounded-pill shadow-sm me-1"
-                                                for="btnradio1">Business</label>
+                                        <label class="form-label">
+                                            <i class="cil-location-pin"></i>
+                                            From</label>
+                                        <select class="form-control border-light shadow-sm" >
 
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                autocomplete="off">
-                                            <label class="btn btn-light rounded-pill shadow-sm me-1"
-                                                for="btnradio2">Economy</label>
+                                            <optgroup label="United State">
+                                                <option value="Choice 1" selected="">Boston, BOS</option>
+                                                <option value="Choice 2">Chicago, ORD</option>
+                                                <option value="Choice 3">Dallas, DFW</option>
+                                                <option value="Choice 4">New York, JFK</option>
+                                            </optgroup>
+                                            <optgroup label="China">
+                                                <option value="Choice 5">Shenzhen</option>
+                                                <option value="Choice 6">Macau</option>
+                                                <option value="Choice 7">GuangZhou</option>
+                                                <option value="Choice 8">Zhuhai</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
 
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-light rounded-pill shadow-sm"
-                                                for="btnradio3">First</label>
+                                    <div class="col-md-1" id="round-icon">
+                                        <i class="cil-loop" style="font-size:25px;"></i>
+                                    </div>
+
+                                    <!-- To  -->
+                                    <div class="col-md-4 mt-1">
+                                        <label class="form-label">
+                                            To</label>
+                                        <select class="form-control border-light shadow-sm"
+                                                >
+
+                                            <optgroup label="United State">
+                                                <option value="Choice 1">Boston, BOS</option>
+                                                <option value="Choice 2">Chicago, ORD</option>
+                                                <option value="Choice 3">Dallas, DFW</option>
+                                                <option value="Choice 4">New York, JFK</option>
+                                            </optgroup>
+
+                                            <optgroup label="China">
+                                                <option value="Choice 5">Shenzhen</option>
+                                                <option value="Choice 6" selected="">Macau</option>
+                                                <option value="Choice 7">GuangZhou</option>
+                                                <option value="Choice 8">Zhuhai</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- To -->
+
+                                <!-- Depart, Return  & Adults & kids -->
+                                <div class="row m-3">
+                                    <!--  Depart & Return -->
+                                    <div class="col-md-4">
+                                        <div class="form-group" id="return-dtpicker">
+                                            <label class="form-label">Departure
+                                                &nbsp & &nbsp Return</label>
+                                            <input type="text" class="form-control border-light shadow-sm"
+                                                   name="daterange" value="" id="dp">
+                                        </div>
+                                        <!--  Depart & Return for One-way selection -->
+                                        <div class="form-group" style="display:none;" id="oneway-dtpicker">
+                                            <label class="form-label">Departure
+                                            </label>
+                                            <input type="text" class="form-control border-light shadow-sm"
+                                                   name="depart" value="" id="dp2">
+                                        </div>
+
+                                    </div>
+
+                                    <!--  Adults -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label"><i
+                                                    class="cis-person"></i>Adults</label>
+                                            <div class="wrapper">
+                                                <span class="minus">-</span>
+                                                <span class="num">00</span>
+                                                <span class="plus">+</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <!--  Class -->
 
-                                    <!-- Explore Button  -->
-                                    <div class="col-1 mt-3">
-                                        <a href="#" class="btn btn-info btn-lg active shadow" role="button"
-                                            id="explore-bt" aria-pressed="true">Explore</a>
+                                    <!--  Kids -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label"><i
+                                                    class="cil-baby-carriage"></i>&nbspKids</label>
+                                            <div class="wrapper border-light">
+                                                <span class="minus">-</span>
+                                                <span class="num">00</span>
+                                                <span class="plus">+</span>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <!-- Explore Button  -->
-
                                 </div>
+                                <!-- Depart, Return  & Adults & kids -->
                             </div>
-                        </form>
-                    </div>
 
+
+                            <!--  Class -->
+                            <div class="row mx-3 mb-5 mt-1">
+                                <div class="col-7 px-3">
+                                    <label class="form-label"><i class="cil-credit-card"></i> Class </label>
+                                    <div class="btn-group-sm" role="group"
+                                         aria-label="Basic radio toggle button group">
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                               autocomplete="off" checked>
+                                        <label class="btn btn-light rounded-pill shadow-sm me-1"
+                                               for="btnradio1">Business</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                               autocomplete="off">
+                                        <label class="btn btn-light rounded-pill shadow-sm me-1"
+                                               for="btnradio2">Economy</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                               autocomplete="off">
+                                        <label class="btn btn-light rounded-pill shadow-sm"
+                                               for="btnradio3">First</label>
+                                    </div>
+                                </div>
+                                <!--  Class -->
+
+                                <!-- Explore Button  -->
+                                <div class="col-1 mt-3">
+                                    <a href="#" class="btn btn-info btn-lg active shadow" role="button"
+                                       id="explore-bt" aria-pressed="true">Explore</a>
+                                </div>
+                                <!-- Explore Button  -->
+
+                            </div>
+                        </div>
+                    </form>
                 </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <div class="modal" id="login_modal" tabindex="-1">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="ms-auto mt-2 me-2 btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body px-5">
-                    <div class="hstack">
-                        <img id="tourists" src="../images/tourists.png" alt="">
-                        <div class="grid mx-5" style="--cui-rows: 4;">
-                            <h1 class="fw-bolder" style="grid-row: 1;">Sign in to your account</h1>
-                            <form action="" class="mt-3 vstack gap-2" style="grid-row: 3;">
-                                <div class="form-floating mb-3">
-                                    <input type="email" name="" id="floatingEmail" class="form-control" placeholder="name@example.com">
-                                    <label for="floatingEmail">Email address</label>
-                                </div>
-                                <div class="form-floating">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword">Password</label>
-                                </div>
-                            </form>
-                            <button></button>
-                            <div id="login_separator" class="text-center mt-2 position-relative">
-                                <span id="login_text" class="fw-bolder">OR</span>
+<div class="modal" id="login_modal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <button type="button" class="ms-auto mt-2 me-2 btn-close" data-coreui-dismiss="modal"
+                    aria-label="Close"></button>
+            <div class="modal-body px-5">
+                <div class="hstack">
+                    <img id="tourists" src="../images/tourists.png" alt="">
+                    <div class="grid mx-5" style="--cui-rows: 4;">
+                        <h1 class="fw-bolder" style="grid-row: 1;">Sign in to your account</h1>
+                        <form action="" class="mt-3 vstack gap-2" style="grid-row: 3;">
+                            <div class="form-floating mb-3">
+                                <input type="email" name="" id="floatingEmail" class="form-control"
+                                       placeholder="name@example.com">
+                                <label for="floatingEmail">Email address</label>
                             </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                       placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                        </form>
+                        <button></button>
+                        <div id="login_separator" class="text-center mt-2 position-relative">
+                            <span id="login_text" class="fw-bolder">OR</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--    login modal-->
+</div>
+<!--    login modal-->
 
 
-    <!-- jsdelivr date picker -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-            defer></script>
+<!-- jsdelivr date picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        defer></script>
 
-    <!-- CoreUI for Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
-            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
-            crossorigin="anonymous" defer></script>
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous" defer></script>
 
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
 
-    <script defer>
-        function formatDate(date) {
-            var d = new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
+<script defer>
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
 
-            if (month.length < 2)
-                month = '0' + month;
-            if (day.length < 2)
-                day = '0' + day;
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+        return [month, day, year].join('/');
+    }
 
-            return [month, day, year].join('/');
+    //initialize datepicker
+    $(function () {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function (start, end, label) {
+            // console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+    });
+
+    $(function () {
+        $('input[name="depart"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2022,
+            maxYear: parseInt(moment().format('YYYY'), 10)
+        }, function (start, end, label) {
+            var years = moment().diff(start, 'years');
+            // alert("You are " + years + " years old!");
+        });
+    });
+
+    let today = new Date();
+    let nextday = new Date();
+    today = formatDate(today);
+    nextday = formatDate(nextday);
+    const dpValue = today + ' - ' + nextday;
+    const dp = document.getElementById('dp');
+    const dp2 = document.getElementById('dp2');
+    var dp3 = document.getElementById('dp3');
+
+    dp.value = dpValue;
+    dp2.value = today;
+    // dp3.value = dpValue;
+    // dp4.value = dp.value;
+
+    //Number spinner
+    const plus = document.querySelectorAll('.plus'),
+        minus = document.querySelectorAll('.minus'),
+        num = document.querySelectorAll('.num');
+
+    var numSpinnerSum = []
+
+    for (let i = 0; i < plus.length; i++) {
+        numSpinnerSum[i] = 0;
+        plus[i].addEventListener("click", () => {
+            numSpinnerSum[i]++;
+            numSpinnerSum[i] = (numSpinnerSum[i] < 10) ? "0" + numSpinnerSum[i] : numSpinnerSum[i];
+            num[i].innerText = numSpinnerSum[i];
+        });
+
+        minus[i].addEventListener("click", () => {
+            numSpinnerSum[i]--;
+            numSpinnerSum[i] = (numSpinnerSum[i] > 0) ? "0" + numSpinnerSum[i] : numSpinnerSum[i];
+            num[i].innerText = numSpinnerSum[i];
+        });
+    }
+
+
+    //Dropdown menu
+    const dropDownTitle = document.getElementById('dropDownTitle');
+    const groupReturn = document.getElementById('group-return');
+
+    //datepicker DOM
+    const returnDatePicker = document.getElementById('return-dtpicker');
+    const oneWayDatePicker = document.getElementById('oneway-dtpicker');
+    oneWayDatePicker.style.display = "none";
+
+    //Mulit city element
+    const groupMultiCity = document.getElementById('group-multicity');
+    groupMultiCity.style.display = "none";
+
+
+    function changeDPMenuTitle(str) {
+        dropDownTitle.innerText = str;
+        if (str === 'One-Way') {
+            groupReturn.style.display = "";
+            oneWayDatePicker.style.display = "";
+            returnDatePicker.style.display = "none";
+            groupMultiCity.style.display = "none";
+
+        } else if (str === 'Return') {
+            groupReturn.style.display = "";
+            returnDatePicker.style.display = "";
+            oneWayDatePicker.style.display = "none";
+            groupMultiCity.style.display = "none";
+
+        } else if (str === 'Multi-City') {
+            groupMultiCity.style.display = "";
+            groupReturn.style.display = "none";
+            oneWayDatePicker.style.display = "none";
+            returnDatePicker.style.display = "none";
         }
+    }
+
+    var multiCityItemListHtml = document.getElementById('multicity-itemlist');
+    var numOfDatePicker = 3;
+    var itemCount = 0;
+
+    function addMultiCityItem(){
+        let availableIdx = itemCount;
+        let itemName = 'multiCityItem'+availableIdx;
+        let datePickerName = 'dp'+ (++numOfDatePicker);
+
+        var multiCityItem = `<div class="row mt-3" id="${itemName}">
+                                            <div class=" col-md-3 ">
+                                                <select class="form-control border-light shadow-sm"
+                                                        >
+                                                    <optgroup label="United State">
+                                                        <option value="Choice 1">Boston, BOS</option>
+                                                        <option value="Choice 2">Chicago, ORD</option>
+                                                        <option value="Choice 3">Dallas, DFW</option>
+                                                        <option value="Choice 4" selected>New York, JFK</option>
+                                                    </optgroup>
+                                                    <optgroup label="China">
+                                                        <option value="Choice 5">Shenzhen</option>
+                                                        <option value="Choice 6">Macau</option>
+                                                        <option value="Choice 7">GuangZhou</option>
+                                                        <option value="Choice 8">Zhuhai</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+
+                                            <!-- To  -->
+                                            <div class="col-md-3">
+                                                <select class="form-control border-light shadow-sm"
+                                                        >
+                                                    <optgroup label="United State">
+                                                        <option value="Choice 1">Boston, BOS</option>
+                                                        <option value="Choice 2">Chicago, ORD</option>
+                                                        <option value="Choice 3" selected>Dallas, DFW</option>
+                                                        <option value="Choice 4">New York, JFK</option>
+                                                    </optgroup>
+                                                    <optgroup label="China">
+                                                        <option value="Choice 5">Shenzhen</option>
+                                                        <option value="Choice 6">Macau</option>
+                                                        <option value="Choice 7">GuangZhou</option>
+                                                        <option value="Choice 8">Zhuhai</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control border-light shadow-sm"
+                                                           name="daterange" value="10/13/2022 - 10/6/2022" style="height:36.5px;"  id="${datePickerName}">
+                                                </div>
+                                            </div>
+
+                                            <!-- Del item button -->
+                                            <div class="col-md-1  align-self-center">
+                                                <button type="button" class="btn-close" aria-label="Close"
+                                                        style="font-size: 18px; margin-left:-10px;background-color:#d3d3d3;border-radius:8px;"
+                                                        onclick="delItem('${itemName}')"></button>
+                                            </div>
+                                            <!-- Del item button -->
+                                        </div>`;
+
+        multiCityItemListHtml.innerHTML += multiCityItem;
+        itemCount++;
+    }
+
+    function delItem(itemID){
+        curItem = document.getElementById(itemID);
+        multiCityItemListHtml.removeChild(curItem);
+    }
 
 
-        //initialize datepicker
-        $(function () {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function (start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
-        });
-
-        $(function () {
-            $('input[name="depart"]').daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true,
-                minYear: 1901,
-                maxYear: parseInt(moment().format('YYYY'), 10)
-            }, function (start, end, label) {
-                var years = moment().diff(start, 'years');
-                alert("You are " + years + " years old!");
-            });
-        });
-
-
-        let today = new Date();
-        let nextday = new Date();
-        today = formatDate(today);
-        nextday = formatDate(nextday);
-        var dp = document.getElementById('dp');
-        var dp2 = document.getElementById('dp2');
-
-        dp.value = today + ' - ' + nextday;
-        dp2.value = today;
-
-
-        //Number spinner
-        const plus = document.querySelector(".plus"),
-            minus = document.querySelector(".minus"),
-            num = document.querySelector(".num");
-
-        let a = 0;
-        plus.addEventListener("click", () => {
-            a++;
-            a = (a < 10) ? "0" + a : a;
-            num.innerText = a;
-        });
-
-        minus.addEventListener("click", () => {
-            a--;
-            a = (a > 0) ? "0" + a : a;
-            num.innerText = a;
-        });
-
-        const plus2 = document.querySelectorAll('.plus')[1],
-            minus2 = document.querySelectorAll('.minus')[1],
-            num2 = document.querySelectorAll('.num')[1];
-
-        let b = 0;
-        plus2.addEventListener("click", () => {
-            b++;
-            b = (b < 10) ? "0" + b : b;
-            num2.innerText = b;
-        });
-
-        minus2.addEventListener("click", () => {
-            b--;
-            b = (b > 0) ? "0" + b : b;
-            num2.innerText = b;
-        });
-
-        //Dropdown menu
-        var menutitle = document.getElementById('menutitle');
-        const returnDp = document.getElementById('return-dp');
-        const onewayDp = document.getElementById('oneway-dp');
-        const multicity_itemlist = document.getElementById('multicity-itemlist');
-        const group_multicity = document.getElementById('group-multicity');
-        const group_return = document.getElementById('group-return');
-
-
-        function changeMenuTitle(str) {
-            menutitle.innerText = str;
-            if (str == 'One-Way') {
-                group_return.style.display = "initial";
-                onewayDp.style.display = "initial";
-                returnDp.style.display = "none";
-                group_multicity.display = "none";
-            } else if (str == 'Return') {
-                group_return.style.display = "initial";
-                onewayDp.style.display = "none";
-                returnDp.style.display = "initial";
-                group_multicity.display = "none";
-
-            } else if (str == 'Multi-City') {
-                group_return.style.display = "none";
-                onewayDp.style.display = "none";
-                returnDp.style.display = "none";
-                group_multicity.style.display = "initial";
-            }
-        }
-
-        // var itemhtml = $('#multicity-item2').html;
-        // const itemlist = $('')
-
-
-        // function addDestItem(){
-        // }
-
-    </script>
+</script>
 
 
 </body>
