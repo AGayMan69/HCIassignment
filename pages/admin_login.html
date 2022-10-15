@@ -60,57 +60,110 @@
             object-fit: cover;
             object-position: right top;
         }
-        
+
         #forgot_password_link {
             cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <section class="login-container d-flex justify-content-center align-items-center">
-        <div class="login-box d-flex rounded shadow overflow-hidden">
-                <img  src="../images/sergey-zigle-QTMWBbuEqv4-unsplash.jpg" id="login-pic" alt="" srcset="">
-                <div class="vstack me-auto ms-auto pt-5 px-5" >
-                    <img src="../icon/png/logo-no-background.png" class="company-icon my-4" alt="">
-                    <div class="fw-semibold text-center fs-4 mt-2 signin-text">
-                        Sign In
-                    </div>
+<section class="login-container d-flex justify-content-center align-items-center">
+    <div class="login-box d-flex rounded shadow overflow-hidden">
+        <img src="../images/sergey-zigle-QTMWBbuEqv4-unsplash.jpg" id="login-pic" alt="" srcset="">
+        <div class="vstack me-auto ms-auto pt-5 px-5">
+            <img src="../icon/png/logo-no-background.png" class="company-icon my-4" alt="">
+            <div class="fw-semibold text-center fs-4 mt-2 signin-text">
+                Sign In
+            </div>
 
-                    <form action="" class="vstack gap-4 mt-3">
-                        <div class="form-floating">
-                            <input class="form-control" type="email" id="floating-email" placeholder="test@example.com">
-                            <label for="floating-email">Email address</label>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" type="password" id="floating-password"
-                                   placeholder="test@example.com">
-                            <label for="floating-email">Password</label>
-                        </div>
-                        <a id="forgot_password_link" class="fs-6 text-muted fw-semibold text-end" href="./admin_forget_password.html">Forgot password?</a>
-                        <button class="signin-button btn btn-lg btn-info mt-3 p-3 text-white fw-bold">Sign In</button>
-                    </form>
+            <form  class="vstack gap-4 mt-3 needs-validation novalidate" id="signInForm">
+                <div class="form-floating">
+                    <input class="form-control" type="email" id="floating-email" placeholder="test@example.com"
+                           required>
+                    <label for="floating-email">Email address</label>
                 </div>
+                <div class="form-floating">
+                    <input class="form-control" type="password" id="floating-password"
+                           placeholder="test@example.com" required>
+                    <label for="floating-email">Password</label>
+                </div>
+                <a id="forgot_password_link" class="fs-6 text-muted fw-semibold text-end"
+                   href="./admin_forget_password.html">Forgot password?</a>
+                <button class="signin-button btn btn-lg btn-info mt-3 p-3 text-white fw-bold" type="submit"
+                        id="submitBt"  disabled>Sign In
+                </button>
+            </form>
         </div>
+    </div>
 
-    </section>
+</section>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 
-    <!-- CoreUI for Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
-            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
-            crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function () {
-            $("form").submit(function (e) {
-                e.preventDefault()
-                if ($('#floating-email').val() == "thomas@airline.com.hk") {
-                    window.location.href = './admin_reset_password.html'
-                } else {
-                    window.location.href = './dashboard.html'
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous"></script>
+<script>
+
+    // $(document).ready(function () {
+    //     $("form").submit(function (e) {
+    //         e.preventDefault()
+    //         if ($('#floating-email').val() == "thomas@airline.com.hk") {
+    //             window.location.href = './admin_reset_password.html'
+    //         } else {
+    //             window.location.href = './dashboard.html'
+    //         }
+    //     })
+    // })
+
+    var forms = document.querySelectorAll(".needs-validation");
+    var chkResult = true
+
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
                 }
-            })
-        })
-    </script>
+                form.classList.add('was-validated')
+            }, false)
+        });
+
+
+    $(document).ready(function () {
+
+        // $("input#floating_dob").daterangepicker({
+        //     singleDatePicker: true,
+        //     showDropdowns: true,
+        //     maxYear: parseInt(moment().format('YYYY'), 10)
+        // });
+
+        function checkInputValid(inputElement) {
+            if (!inputElement.checkValidity()) {
+                result = false
+            }
+        }
+
+        $('form').change(function () {
+            result = true
+            forms.forEach(checkInputValid)
+            if (result) {
+                $('#submitBt').prop('disabled', false);
+
+
+                if ($('#floating-email').val() == "thomas@airline.com.hk") {
+                    $('#signInForm').attr('action', 'admin_reset_password.html');
+                } else {
+                    $('#signInForm').attr('action', 'dashboard.html');
+                }
+
+            } else {
+                $('#submitBt').prop('disabled', true);
+            }
+        });
+    })
+</script>
 </body>
 </html>
