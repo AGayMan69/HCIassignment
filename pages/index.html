@@ -209,6 +209,10 @@
 
         }
 
+        .form-control{
+            cursor: pointer;
+        }
+
         #tourists {
             width: 50%;
             aspect-ratio: 1/1;
@@ -377,19 +381,18 @@
                                                 <label class="form-label">
                                                     <i class="cil-location-pin"></i>
                                                     From</label>
-                                                <select class="form-control border-light shadow-sm"
-                                                >
-                                                    <optgroup label="United State">
-                                                        <option value="Choice 1" selected="">Boston, BOS</option>
-                                                        <option value="Choice 2">Chicago, ORD</option>
-                                                        <option value="Choice 3">Dallas, DFW</option>
-                                                        <option value="Choice 4">New York, JFK</option>
-                                                    </optgroup>
+                                                <select class="form-control border-light shadow-sm">
                                                     <optgroup label="China">
-                                                        <option value="Choice 5">Shenzhen</option>
-                                                        <option value="Choice 6">Macau</option>
-                                                        <option value="Choice 7">GuangZhou</option>
-                                                        <option value="Choice 8">Zhuhai</option>
+                                                        <option value="Choice 1" >Shanghai, PVG</option>
+                                                    </optgroup>
+                                                    <optgroup label="Hong Kong" selected="">
+                                                        <option value="Choice 2">Hong Kong, HKG</option>
+                                                    </optgroup>
+                                                    <optgroup label="Japan">
+                                                        <option value="Choice 3">Kansai, ITAMI</option>
+                                                    </optgroup>
+                                                    <optgroup label="Taiwan">
+                                                        <option value="Choice 4">Taipei, TPE</option>
                                                     </optgroup>
                                                 </select>
                                             </div>
@@ -397,19 +400,18 @@
                                             <div class="col-md-3 mt-1">
                                                 <label class="form-label">
                                                     To</label>
-                                                <select class="form-control border-light shadow-sm"
-                                                >
-                                                    <optgroup label="United State">
-                                                        <option value="Choice 1">Boston, BOS</option>
-                                                        <option value="Choice 2">Chicago, ORD</option>
-                                                        <option value="Choice 3">Dallas, DFW</option>
-                                                        <option value="Choice 4">New York, JFK</option>
-                                                    </optgroup>
+                                                <select class="form-control border-light shadow-sm">
                                                     <optgroup label="China">
-                                                        <option value="Choice 5">Shenzhen</option>
-                                                        <option value="Choice 6" selected="">Macau</option>
-                                                        <option value="Choice 7">GuangZhou</option>
-                                                        <option value="Choice 8">Zhuhai</option>
+                                                        <option value="Choice 1" >Shanghai, PVG</option>
+                                                    </optgroup>
+                                                    <optgroup label="Hong Kong" >
+                                                        <option value="Choice 2">Hong Kong, HKG</option>
+                                                    </optgroup>
+                                                    <optgroup label="Japan">
+                                                        <option value="Choice 3">Kansai, ITAMI</option>
+                                                    </optgroup>
+                                                    <optgroup label="Taiwan">
+                                                        <option value="Choice 4" selected="">Taipei, TPE</option>
                                                     </optgroup>
                                                 </select>
                                             </div>
@@ -475,21 +477,22 @@
                                             <label class="form-label">
                                                 <i class="cil-location-pin"></i>
                                                 From</label>
-                                            <select class="form-control border-light shadow-sm">
 
-                                                <optgroup label="United State">
-                                                    <option value="Choice 1" selected="">Boston, BOS</option>
-                                                    <option value="Choice 2">Chicago, ORD</option>
-                                                    <option value="Choice 3">Dallas, DFW</option>
-                                                    <option value="Choice 4">New York, JFK</option>
-                                                </optgroup>
+                                            <select class="form-control border-light shadow-sm">
                                                 <optgroup label="China">
-                                                    <option value="Choice 5">Shenzhen</option>
-                                                    <option value="Choice 6">Macau</option>
-                                                    <option value="Choice 7">GuangZhou</option>
-                                                    <option value="Choice 8">Zhuhai</option>
+                                                    <option value="Choice 1" >Shanghai, PVG</option>
+                                                </optgroup>
+                                                <optgroup label="Hong Kong" >
+                                                    <option value="Choice 2" selected="">Hong Kong, HKG</option>
+                                                </optgroup>
+                                                <optgroup label="Japan">
+                                                    <option value="Choice 3" >Kansai, ITAMI</option>
+                                                </optgroup>
+                                                <optgroup label="Taiwan">
+                                                    <option value="Choice 4">Taipei, TPE</option>
                                                 </optgroup>
                                             </select>
+
                                         </div>
 
                                         <div class="col-md-1" id="round-icon">
@@ -500,21 +503,18 @@
                                         <div class="col-md-4 mt-1">
                                             <label class="form-label">
                                                 To</label>
-                                            <select class="form-control border-light shadow-sm"
-                                            >
-
-                                                <optgroup label="United State">
-                                                    <option value="Choice 1">Boston, BOS</option>
-                                                    <option value="Choice 2">Chicago, ORD</option>
-                                                    <option value="Choice 3">Dallas, DFW</option>
-                                                    <option value="Choice 4">New York, JFK</option>
-                                                </optgroup>
-
+                                            <select class="form-control border-light shadow-sm">
                                                 <optgroup label="China">
-                                                    <option value="Choice 5">Shenzhen</option>
-                                                    <option value="Choice 6" selected="">Macau</option>
-                                                    <option value="Choice 7">GuangZhou</option>
-                                                    <option value="Choice 8">Zhuhai</option>
+                                                    <option value="Choice 1" >Shanghai, PVG</option>
+                                                </optgroup>
+                                                <optgroup label="Hong Kong" >
+                                                    <option value="Choice 2">Hong Kong, HKG</option>
+                                                </optgroup>
+                                                <optgroup label="Japan">
+                                                    <option value="Choice 3">Kansai, ITAMI</option>
+                                                </optgroup>
+                                                <optgroup label="Taiwan">
+                                                    <option value="Choice 4" selected="">Taipei, TPE</option>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -599,7 +599,7 @@
 
                                     <!-- Explore Button  -->
                                     <div class="col-1 mt-3">
-                                        <a href="#" class="btn btn-info btn-lg active shadow" role="button"
+                                        <a href="searchResult.html" class="btn btn-info btn-lg active shadow" role="button"
                                            id="explore-bt" aria-pressed="true">Explore</a>
                                     </div>
                                     <!-- Explore Button  -->
@@ -808,18 +808,18 @@
                                             <div class=" col-md-3 ">
                                                 <select class="form-control border-light shadow-sm"
                                                         >
-                                                    <optgroup label="United State">
-                                                        <option value="Choice 1">Boston, BOS</option>
-                                                        <option value="Choice 2">Chicago, ORD</option>
-                                                        <option value="Choice 3">Dallas, DFW</option>
-                                                        <option value="Choice 4" selected>New York, JFK</option>
-                                                    </optgroup>
                                                     <optgroup label="China">
-                                                        <option value="Choice 5">Shenzhen</option>
-                                                        <option value="Choice 6">Macau</option>
-                                                        <option value="Choice 7">GuangZhou</option>
-                                                        <option value="Choice 8">Zhuhai</option>
-                                                    </optgroup>
+                                                    <option value="Choice 1" >Shanghai, PVG</option>
+                                                </optgroup>
+                                                <optgroup label="Hong Kong" >
+                                                    <option value="Choice 2" >Hong Kong, HKG</option>
+                                                </optgroup>
+                                                <optgroup label="Japan">
+                                                    <option value="Choice 3" >Kansai, ITAMI</option>
+                                                </optgroup>
+                                                <optgroup label="Taiwan">
+                                                    <option value="Choice 4" selected="">Taipei, TPE</option>
+                                                </optgroup>
                                                 </select>
                                             </div>
 
@@ -827,25 +827,25 @@
                                             <div class="col-md-3">
                                                 <select class="form-control border-light shadow-sm"
                                                         >
-                                                    <optgroup label="United State">
-                                                        <option value="Choice 1">Boston, BOS</option>
-                                                        <option value="Choice 2">Chicago, ORD</option>
-                                                        <option value="Choice 3" selected>Dallas, DFW</option>
-                                                        <option value="Choice 4">New York, JFK</option>
-                                                    </optgroup>
                                                     <optgroup label="China">
-                                                        <option value="Choice 5">Shenzhen</option>
-                                                        <option value="Choice 6">Macau</option>
-                                                        <option value="Choice 7">GuangZhou</option>
-                                                        <option value="Choice 8">Zhuhai</option>
-                                                    </optgroup>
+                                                    <option value="Choice 1" >Shanghai, PVG</option>
+                                                </optgroup>
+                                                <optgroup label="Hong Kong" >
+                                                    <option value="Choice 2">Hong Kong, HKG</option>
+                                                </optgroup>
+                                                <optgroup label="Japan">
+                                                    <option value="Choice 3" selected="">Kansai, ITAMI</option>
+                                                </optgroup>
+                                                <optgroup label="Taiwan">
+                                                    <option value="Choice 4">Taipei, TPE</option>
+                                                </optgroup>
                                                 </select>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control border-light shadow-sm"
-                                                           name="daterange" value="10/13/2022 - 10/6/2022" style="height:36.5px;"  id="${datePickerName}">
+                                                           name="daterange" value="10/16/2022 - 10/27/2022" style="height:36.5px;"  id="${datePickerName}">
                                                 </div>
                                             </div>
 
