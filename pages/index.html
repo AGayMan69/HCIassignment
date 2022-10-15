@@ -39,7 +39,10 @@
     <!--    remix icon-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+    <!--    password strength checker-->
+    <link rel="stylesheet" href="../js/password.min.css">
     <link rel="stylesheet" href="../style/nav.css">
+
 
     <style>
         * {
@@ -209,7 +212,7 @@
 
         }
 
-        .form-control{
+        .form-control {
             cursor: pointer;
         }
 
@@ -270,6 +273,12 @@
 
         #signin_container {
             align-items: stretch;
+        }
+
+        .forgot-password-pic {
+            width: 50%;
+            aspect-ratio: 1/1;
+            object-fit: scale-down;
         }
     </style>
 
@@ -383,7 +392,7 @@
                                                     From</label>
                                                 <select class="form-control border-light shadow-sm">
                                                     <optgroup label="China">
-                                                        <option value="Choice 1" >Shanghai, PVG</option>
+                                                        <option value="Choice 1">Shanghai, PVG</option>
                                                     </optgroup>
                                                     <optgroup label="Hong Kong" selected="">
                                                         <option value="Choice 2">Hong Kong, HKG</option>
@@ -402,9 +411,9 @@
                                                     To</label>
                                                 <select class="form-control border-light shadow-sm">
                                                     <optgroup label="China">
-                                                        <option value="Choice 1" >Shanghai, PVG</option>
+                                                        <option value="Choice 1">Shanghai, PVG</option>
                                                     </optgroup>
-                                                    <optgroup label="Hong Kong" >
+                                                    <optgroup label="Hong Kong">
                                                         <option value="Choice 2">Hong Kong, HKG</option>
                                                     </optgroup>
                                                     <optgroup label="Japan">
@@ -468,6 +477,7 @@
                                     <!-- Add destination button -->
                                 </div>
 
+
                                 <div id="group-return">
                                     <!-- From   -->
                                     <div class="row m-3">
@@ -479,13 +489,13 @@
 
                                             <select class="form-control border-light shadow-sm">
                                                 <optgroup label="China">
-                                                    <option value="Choice 1" >Shanghai, PVG</option>
+                                                    <option value="Choice 1">Shanghai, PVG</option>
                                                 </optgroup>
-                                                <optgroup label="Hong Kong" >
+                                                <optgroup label="Hong Kong">
                                                     <option value="Choice 2" selected="">Hong Kong, HKG</option>
                                                 </optgroup>
                                                 <optgroup label="Japan">
-                                                    <option value="Choice 3" >Kansai, ITAMI</option>
+                                                    <option value="Choice 3">Kansai, ITAMI</option>
                                                 </optgroup>
                                                 <optgroup label="Taiwan">
                                                     <option value="Choice 4">Taipei, TPE</option>
@@ -504,9 +514,9 @@
                                                 To</label>
                                             <select class="form-control border-light shadow-sm">
                                                 <optgroup label="China">
-                                                    <option value="Choice 1" >Shanghai, PVG</option>
+                                                    <option value="Choice 1">Shanghai, PVG</option>
                                                 </optgroup>
-                                                <optgroup label="Hong Kong" >
+                                                <optgroup label="Hong Kong">
                                                     <option value="Choice 2">Hong Kong, HKG</option>
                                                 </optgroup>
                                                 <optgroup label="Japan">
@@ -613,6 +623,7 @@
         </div>
     </section>
 
+    <!--    login modal-->
     <div class="modal" id="login_modal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
@@ -635,7 +646,8 @@
                                     <label for="floatingPassword">Password</label>
                                 </div>
                             </form>
-                            <a href="" class="fw-light text-dark">Forgot Password?</a>
+                            <a href="" class="fw-light text-dark" data-coreui-toggle="modal"
+                               data-coreui-target="#reset_modal">Forgot Password?</a>
 
                             <div class="d-grid mt-4">
                                 <button class="btn btn-info d-block btn-lg fw-bold text-white">Sign In</button>
@@ -671,6 +683,82 @@
     </div>
     <!--    login modal-->
 
+    <!--    reset modal-->
+    <div class="modal" id="reset_modal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="ms-auto mt-2 me-2 btn-close" data-coreui-dismiss="modal"
+                        aria-label="Close"></button>
+                <div class="modal-body px-5">
+                    <div class="hstack align-items-stretch" id="reset_password_container">
+                        <img class="forgot-password-pic" src="../images/key_unlock.jpg" alt="">
+                        <div class="grid mx-5 pt-2" style="--cui-rows: 4;">
+                            <div class="fs-1 mt-5 fw-bold">
+                                Forgot Your Password?
+                            </div>
+                            <div>
+                                Fear not. We'll email you instructions to reset your password.
+                            </div>
+                            <div class="mt-4">
+                                <label for="emailInput" class="fs-5 fw-semibold form-label">Email address</label>
+                                <input type="email" name="" id="emailInput" class="form-control"
+                                       placeholder="name@example.com">
+                            </div>
+                            <div class="hstack gap-3 mt-5">
+                                <button class="btn btn-info text-capitalize flex-grow-1" data-coreui-toggle="modal"
+                                        data-coreui-target="#create_password_modal">
+                                    Reset password
+                                </button>
+                                <button class="btn btn-outline-info text-capitalize flex-grow-1"
+                                        data-coreui-target="#login_modal" data-coreui-toggle="modal">
+                                    Return to Login
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    reset modal-->
+
+    <!--    create password-->
+    <div class="modal" id="create_password_modal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="ms-auto mt-2 me-2 btn-close" data-coreui-dismiss="modal"
+                        aria-label="Close"></button>
+                <div class="modal-body px-5">
+                    <div class="hstack align-items-stretch" id="create_password_container">
+                        <img class="forgot-password-pic" src="../images/key_unlock.jpg" alt="">
+                        <div class="grid mx-5 pt-2" style="--cui-rows: 4;">
+                            <div class="fs-1 mt-5 fw-bold">
+                                Create Your Password
+                            </div>
+                            <div>
+                                Your new password must be different from previous used passwords.
+                            </div>
+                            <div class="mt-4">
+                                <label for="reset_password_input" class="fs-5 fw-semibold form-label">Password</label>
+                                <input type="password" name="" id="reset_password_input" class="form-control">
+                            </div>
+                            <div class="mt-4">
+                                <label for="reset_password_input_confirm" class="fs-5 fw-semibold form-label">Confirm
+                                    Password</label>
+                                <input type="password" name="" id="reset_password_input_confirm" class="form-control">
+                            </div>
+                            <div class="hstack gap-3 mt-5">
+                                <button class="text-white btn btn-info text-capitalize flex-grow-1"
+                                        data-coreui-dismiss="modal">
+                                    Confirm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jsdelivr date picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -685,6 +773,9 @@
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+
+    <!--    password strength checker-->
+    <script src="../js/password.min.js"></script>
 
     <script defer>
         function formatDate(date) {
@@ -757,6 +848,7 @@
             });
         }
 
+
         //Dropdown menu
         const dropDownTitle = document.getElementById('dropDownTitle');
         const groupReturn = document.getElementById('group-return');
@@ -769,6 +861,7 @@
         //Mulit city element
         const groupMultiCity = document.getElementById('group-multicity');
         groupMultiCity.style.display = "none";
+
 
         function changeDPMenuTitle(str) {
             dropDownTitle.innerText = str;
@@ -876,6 +969,7 @@
         }
 
     </script>
+
 
 </body>
 
