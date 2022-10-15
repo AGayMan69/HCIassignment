@@ -45,11 +45,11 @@
             aspect-ratio: 5/1;
         }
 
-        .navbar-nav>li>span {
+        .navbar-nav > li > span {
             font-size: 0.8rem !important;
         }
 
-        #logout-button>a>* {
+        #logout-button > a > * {
             color: red !important;
         }
 
@@ -57,7 +57,7 @@
             min-width: 100% !important;
         }
 
-        .container>.row {
+        .container > .row {
             margin: 0;
         }
 
@@ -65,13 +65,17 @@
             background-color: #f4f5f9;
         }
 
-        #staff-link>*>* {
+        #staff-link > * > * {
             color: #0045b0 !important;
             font-weight: bold;
         }
 
         #employee-sort {
             max-width: 10rem;
+        }
+
+        .table > :not(caption) > * > * {
+            padding: .8rem .8rem !important;
         }
     </style>
 </head>
@@ -187,27 +191,45 @@
         </div>
         <!--    sidebar-->
         <!--    body-->
-        <div class="wrapper flex-grow-1 admin-content p-5" >
+        <div class="wrapper flex-grow-1 admin-content p-5">
             <div class="fs-1 fw-bolder">
                 Staff
             </div>
             <hr>
             <div class="hstack">
                 <form action="" class="me-4">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" id="filter" class="form-control" placeholder="Search">
                 </form>
 
-                <select name="" id="employee-sort" class="form-select">
+                <i class="ri-sort-asc fs-5 ms-3 me-2"></i>
+                <select name="" id="employee-sort" class="fw-bold form-select">
                     <option selected value="1">Employee ID</option>
                     <option value="2">Gender</option>
                     <option value="3">Occupation</option>
                     <option value="4">Email</option>
                 </select>
 
-                <button class="btn btn-success ms-auto text-white fs-5 fw-bold">
+                <a href="dashboard_create_staff.html" class="btn btn-success ms-auto text-white fs-5 fw-bold">
                     Create User
-                </button>
+                </a>
             </div>
+
+            <table id="staff-table" class="table mt-4 table-hover fs-5">
+                <thead>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Occupation</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
 
         </div>
         <!--    body-->
@@ -220,5 +242,246 @@
     <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
             integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
             crossorigin="anonymous"></script>
+
+    <script>
+        table = $('#staff-table>tbody')
+        var staffData =
+            [
+                {
+                    "EmployeeID": "20222101",
+                    "First_Name": "Heather",
+                    "Last_Name": "Cheng",
+                    "Gender": "Female",
+                    "Occupation": "Operator",
+                    "Email": "heatherCheng@iveairline.com.hk",
+                    "Salary": "$30,000"
+                },
+                {
+                    "EmployeeID": "20222102",
+                    "First_Name": "Antonia",
+                    "Last_Name": "Ormond",
+                    "Gender": "Male",
+                    "Occupation": "Administrator",
+                    "Email": "antoniaOrmond@iveairline.com.hk",
+                    "Salary": "$100,000"
+                },
+                {
+                    "EmployeeID": "20222103",
+                    "First_Name": "Kathleen",
+                    "Last_Name": "Wiles",
+                    "Gender": "Female",
+                    "Occupation": "Administrator",
+                    "Email": "kathleenWiles@iveairline.com.hk",
+                    "Salary": "$200,000"
+                },
+
+                {
+                    "EmployeeID": "20222104",
+                    "First_Name": "Mary",
+                    "Last_Name": "Robinson",
+                    "Gender": "Female",
+                    "Occupation": "Operator",
+                    "Email": "maryRobinson@iveairline.com.hk",
+                    "Salary": "$20,000"
+                },
+
+                {
+                    "EmployeeID": "20222105",
+                    "First_Name": "Brandon",
+                    "Last_Name": "Straus",
+                    "Gender": "Male",
+                    "Occupation": "Administrator",
+                    "Email": "brandonStraus@iveairline.com.hk",
+                    "Salary": "$120,000"
+                },
+
+                {
+                    "EmployeeID": "20222106",
+                    "First_Name": "Hilario",
+                    "Last_Name": "Gorrell",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "hilarioGorrell@iveairline.com.hk",
+                    "Salary": "$40,000"
+                },
+                {
+                    "EmployeeID": "20222107",
+                    "First_Name": "Patricia",
+                    "Last_Name": "Snow",
+                    "Gender": "Female",
+                    "Occupation": "Sales",
+                    "Email": "patriciaSnow@iveairline.com.hk",
+                    "Salary": "$40,000"
+                },
+                {
+                    "EmployeeID": "20222108",
+                    "First_Name": "Harvey",
+                    "Last_Name": "Jennings",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "harveyJenning@iveairline.com.hk",
+                    "Salary": "$25,000"
+                },
+                {
+                    "EmployeeID": "20222109",
+                    "First_Name": "Tracy",
+                    "Last_Name": "Henson",
+                    "Gender": "Female",
+                    "Occupation": "Sales",
+                    "Email": "tracyHenson@iveairline.com.hk",
+                    "Salary": "$20,000"
+                },
+                {
+                    "EmployeeID": "20222110",
+                    "First_Name": "Patricia",
+                    "Last_Name": "Robinson",
+                    "Gender": "Female",
+                    "Occupation": "Administrator",
+                    "Email": "patriciaRobinson@iveairline.com.hk",
+                    "Salary": "$300,000"
+                },
+                {
+                    "EmployeeID": "20222111",
+                    "First_Name": "Xue",
+                    "Last_Name": "Lai",
+                    "Gender": "Female",
+                    "Occupation": "Operator",
+                    "Email": "xueLai@iveairline.com.hk",
+                    "Salary": "$20,000"
+                },
+                {
+                    "EmployeeID": "20222112",
+                    "First_Name": "Juan",
+                    "Last_Name": "Chen",
+                    "Gender": "Female",
+                    "Occupation": "Operator",
+                    "Email": "juanChen@iveairline.com.hk",
+                    "Salary": "$60,000"
+                },
+                {
+                    "EmployeeID": "20222113",
+                    "First_Name": "Cai",
+                    "Last_Name": "Tsui",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "CaiTsui@iveairline.com.hk",
+                    "Salary": "$40,000"
+                },
+                {
+                    "EmployeeID": "20222114",
+                    "First_Name": "Wen",
+                    "Last_Name": "Ni",
+                    "Gender": "Male",
+                    "Occupation": "Administrator",
+                    "Email": "wenNi@iveairline.com.hk",
+                    "Salary": "$90,000"
+                },
+                {
+                    "EmployeeID": "20222115",
+                    "First_Name": "Ye",
+                    "Last_Name": "Cheng",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "yeCheng@iveairline.com.hk",
+                    "Salary": "$20,000"
+                },
+                {
+                    "EmployeeID": "20222116",
+                    "First_Name": "Juan Kung",
+                    "Last_Name": "Chan",
+                    "Gender": "Female",
+                    "Occupation": "Operator",
+                    "Email": "juanKungChan@iveairline.com.hk",
+                    "Salary": "$23,000"
+                },
+                {
+                    "EmployeeID": "20222117",
+                    "First_Name": "Chung",
+                    "Last_Name": "Mao",
+                    "Gender": "Male",
+                    "Occupation": "Administrator",
+                    "Email": "chungMao@iveairline.com.hk",
+                    "Salary": "$100,000"
+                },
+                {
+                    "EmployeeID": "20222118",
+                    "First_Name": "Zhen",
+                    "Last_Name": "Shen",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "zhenShen@iveairline.com.hk",
+                    "Salary": "$18,000"
+                },
+                {
+                    "EmployeeID": "20222119",
+                    "First_Name": "Dong",
+                    "Last_Name": "Hao",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "dongHao@iveairline.com.hk",
+                    "Salary": "$19,000"
+                },
+                {
+                    "EmployeeID": "20222120",
+                    "First_Name": "Tain",
+                    "Last_Name": "Lung",
+                    "Gender": "Male",
+                    "Occupation": "Operator",
+                    "Email": "tainLung@iveairline.com.hk",
+                    "Salary": "$21,000"
+                },
+            ]
+
+        function removeStaff(key) {
+            console.log(`Removing user ${key}`)
+            console.log(staffData[key])
+            delete staffData[key]
+            staffData = staffData.filter(n => n)
+            loadTable()
+        }
+
+        function loadTable() {
+            table.html("")
+            $.each(staffData, function (key, value) {
+                const trbody = `
+                    <tr class="text-dark">
+                                             <td class="fw-semibold">${value.EmployeeID}
+                                             </th>
+                                             <td>${value.First_Name} ${value.Last_Name}</td>
+                                             <td>${value.Gender}</td>
+                                             <td>${value.Occupation}</td>
+                                             <td>${value.Email}</td>
+                                             <td>
+                                             <a href="./dashboard_edit_staff.html" class="btn btn-warning">
+                                             <i class="ri-pencil-fill text-white"></i>
+                                             <span class="fw-bolder text-uppercase text-white">Edit</span>
+                                             </a>
+                                             </td>
+                                             <td>
+                                             <button class="btn btn-danger" onclick="removeStaff(${key})">
+                                             <i class="ri-delete-back-2-fill text-white"></i>
+                                             <span class="fw-bolder text-uppercase text-white">Delete</span>
+                                             </button>
+                                             </td>
+
+                    </tr>
+                    `
+                table.append(trbody)
+            })
+        }
+
+        $(document).ready(function () {
+
+
+            $("input#filter").keyup(function (e) {
+                var filter = $(this).val()
+                $("tbody>tr").hide()
+                $(`tbody > tr:contains(${filter})`).show()
+            })
+
+
+            loadTable()
+        })
+    </script>
 </body>
 </html>

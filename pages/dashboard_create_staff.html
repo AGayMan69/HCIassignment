@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dream Airline DashBoard</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        .sidebar {
+            min-height: 92vh;
+        }
+
+        .nav-link > *, .nav-title {
+            color: black !important;
+        }
+
+        .navbar {
+            background-color: #070152;
+            min-height: 8vh;
+            max-height: 8vh;
+        }
+
+        .nav-bar-company-icon {
+            max-width: 18rem;
+            object-fit: cover;
+            object-position: -30px;
+            aspect-ratio: 5/1;
+        }
+
+        .navbar-nav > li > span {
+            font-size: 0.8rem !important;
+        }
+
+        #logout-button > a > * {
+            color: red !important;
+        }
+
+        .container {
+            min-width: 100% !important;
+        }
+
+        .container > .row {
+            margin: 0;
+        }
+
+        .admin-content {
+            background-color: #f4f5f9;
+        }
+
+        #staff-link > * > * {
+            color: #0045b0 !important;
+            font-weight: bold;
+        }
+
+        #employee-sort {
+            max-width: 10rem;
+        }
+        .table>:not(caption)>*>* {
+            padding: .8rem .8rem !important;
+        }
+
+        #staff_pic>img {
+            width: 200px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            clip-path: circle(90px at center);
+        }
+
+        #staff_pic:hover::after {
+            background-color: black;
+            opacity: .8;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 200px;
+            aspect-ratio: 1/1;
+            clip-path: circle(90px at center);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            content: "Upload Image";
+            font-weight: bold;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../js/password.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg pe-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../icon/png/logo-white-removebg.png" class="nav-bar-company-icon" alt="" srcset="">
+            </a>
+            <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                    data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="position-relative ri-message-2-line fs-4 me-4 text-white">
+                        <a href=""></a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            99+
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </li>
+
+                    <li class="position-relative ri-notification-4-line fs-4 ms-2 me-4 text-white">
+                        <a href=""></a>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            99+
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </li>
+                    <li class="text-white fw-bold mt-1 ms-4 me-3">
+                        Song Yong Nian
+                    </li>
+                    <li class="avatar">
+                        <img src="../images/avatar/2.jpg" alt="" class="avatar-img">
+                        <span class="avatar-status bg-success"></span>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex">
+        <!--    sidebar-->
+        <div class="col sidebar sidebar-show bg-white">
+            <ul class="sidebar-nav text-dark">
+                <li class="nav-item" id="overview-link">
+                    <a href="./dashboard.html" class="nav-link">
+                        <i class="nav-icon ri-dashboard-3-fill"></i>
+                        <span class="mt-2">Overview</span>
+                    </a>
+                </li>
+                <li class="nav-title"><strong>General</strong></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-task-fill"></i>
+                        <span class="mt-2">Tasks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-alert-fill"></i>
+                        <span class="mt-2">Alerts</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-plane-line"></i>
+                        <span class="mt-2">Fleet</span>
+                    </a>
+                </li>
+
+                <li class="nav-title">
+                    <strong>Management</strong>
+                </li>
+
+                <li class="nav-item" id="staff-link">
+                    <a class="nav-link" href="./dashboard_staff.html">
+                        <i class="nav-icon ri-user-2-fill"></i>
+                        <span class="mt-2">Staff</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-user-5-fill"></i>
+                        <span class="mt-2">Customer</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon ri-file-list-3-fill"></i>
+                        <span class="mt-2">Reports</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mt-auto">
+                    <a class="nav-link nav-link-success" href="#">
+                        <i class="nav-icon ri-settings-5-fill"></i>
+                        <span class="mt-2">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item mb-3" id="logout-button">
+                    <a class="nav-link nav-link-success" href="./admin_login.html">
+                        <i class="nav-icon ri-logout-box-line"></i>
+                        <span class="mt-2 text-uppercase">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--    sidebar-->
+        <!--    body-->
+        <div class="wrapper flex-grow-1 admin-content p-5">
+            <div class="fs-1 fw-bolder">
+                Create Staff Member
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center py-4 position-relative">
+                <div id="staff_pic" class="position-relative">
+                    <img src="../images/avatar/staff_placeholder.png" alt="" srcset="">
+                </div>
+            </div>
+            <form class="vstack px-1">
+                <div class="form-floating my-4">
+                    <input class="form-control" type="number" id="floating_employee_number" placeholder="22022222">
+                    <label for="floating_employee_number">Employee ID</label>
+                </div>
+                <div class="hstack gap-5 mb-4">
+                    <div class="form-floating my-3 flex-grow-1">
+                        <input class="form-control" type="text" id="floating_first_name" placeholder="Tai Man">
+                        <label for="floating_first_name">First Name</label>
+                    </div>
+                    <div class="form-floating my-3 flex-grow-1">
+                        <input class="form-control" type="text" id="floating_last_name" placeholder="Chan">
+                        <label for="floating_last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="fs-5 fw-semibold mb-4">
+                    <div class="form-check form-check-inline">
+                        <input id="inline_gender_male" type="radio" class="form-check-input" name="inline_gender">
+                        <label for="inline_gender_male" class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input id="inline_gender_female" type="radio" class="form-check-input" name="inline_gender">
+                        <label for="inline_gender_female" class="form-check-label">Female</label>
+                    </div>
+                </div>
+                <div class="fs-4 fw-semibold text-dark mt-3 mb-2">Occupation</div>
+                <select name="select_occupation" id="" class="form-select fw-semibold text-dark py-3 mb-4">
+                    <option value="1">Operator</option>
+                    <option value="2">Administrator</option>
+                    <option value="3">Sales</option>
+                </select>
+                <div class="form-floating my-3">
+                    <input class="form-control" type="email" id="floating_email" placeholder="Tai Man">
+                    <label for="floating_email">Email address</label>
+                </div>
+
+                <div class="form-floating my-3">
+                    <input type="password" name="" id="floating_password" class="form-control" placeholder="12345678xdcf#">
+                    <label for="floating_password">Password</label>
+                </div>
+
+                <div class="form-floating mt-4 mb-3">
+                    <input class="form-control" type="number" id="floating_salary" placeholder="1000000">
+                    <label for="floating_salary">Salary</label>
+                </div>
+                <div class="hstack gap-3 mt-3 justify-content-end">
+                    <a href="dashboard_staff.html" class="px-4 py-2 text-uppercase btn btn-success fw-semibold">
+                        Create
+                    </a>
+                    <a href="dashboard_staff.html" class="px-4 py-2 text-uppercase btn btn-outline-danger fw-semibold">
+                        Cancel
+                    </a>
+                </div>
+
+            </form>
+
+
+
+        </div>
+        <!--    body-->
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <!-- CoreUI for Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+            crossorigin="anonymous"></script>
+
+    <!--    password strength-->
+    <script src="../js/password.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#floating_password").password({
+                showPercent: true
+            })
+        })
+    </script>
+
+
+</body>
+</html>
