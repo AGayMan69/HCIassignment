@@ -468,7 +468,6 @@
                                     <!-- Add destination button -->
                                 </div>
 
-
                                 <div id="group-return">
                                     <!-- From   -->
                                     <div class="row m-3">
@@ -599,8 +598,8 @@
 
                                     <!-- Explore Button  -->
                                     <div class="col-1 mt-3">
-                                        <a href="searchResult.html" class="btn btn-info btn-lg active shadow" role="button"
-                                           id="explore-bt" aria-pressed="true">Explore</a>
+                                        <a href="#" class="btn btn-info btn-lg active shadow" role="button"
+                                           id="explore-bt" aria-pressed="true" onclick="redirectToResult()">Explore</a>
                                     </div>
                                     <!-- Explore Button  -->
 
@@ -758,7 +757,6 @@
             });
         }
 
-
         //Dropdown menu
         const dropDownTitle = document.getElementById('dropDownTitle');
         const groupReturn = document.getElementById('group-return');
@@ -771,7 +769,6 @@
         //Mulit city element
         const groupMultiCity = document.getElementById('group-multicity');
         groupMultiCity.style.display = "none";
-
 
         function changeDPMenuTitle(str) {
             dropDownTitle.innerText = str;
@@ -867,9 +864,18 @@
             multiCityItemListHtml.removeChild(curItem);
         }
 
+        function  redirectToResult(){
+            var target = document.getElementById('dropDownTitle').innerText;
+            target = target.replace(/\s+/g, "");
+
+            if (target === 'Return'){
+                location.replace('searchResult.html');
+            }else if (target === 'One-Way'){
+                location.replace('searchResult_Oneway.html');
+            }
+        }
 
     </script>
-
 
 </body>
 
