@@ -228,28 +228,29 @@
                     <img src="../images/avatar/staff_placeholder.png" alt="" srcset="">
                 </div>
             </div>
-            <form class="vstack px-1">
+
+            <form class="vstack px-1 needs-validation novalidate" action="dashboard_staff.html">
                 <div class="form-floating my-4">
-                    <input class="form-control" type="number" id="floating_employee_number" placeholder="22022222">
+                    <input class="form-control" type="number" id="floating_employee_number" placeholder="22022222" required>
                     <label for="floating_employee_number">Employee ID</label>
                 </div>
                 <div class="hstack gap-5 mb-4">
                     <div class="form-floating my-3 flex-grow-1">
-                        <input class="form-control" type="text" id="floating_first_name" placeholder="Tai Man">
+                        <input class="form-control" type="text" id="floating_first_name" placeholder="Tai Man" required>
                         <label for="floating_first_name">First Name</label>
                     </div>
                     <div class="form-floating my-3 flex-grow-1">
-                        <input class="form-control" type="text" id="floating_last_name" placeholder="Chan">
+                        <input class="form-control" type="text" id="floating_last_name" placeholder="Chan" required>
                         <label for="floating_last_name">Last Name</label>
                     </div>
                 </div>
                 <div class="fs-5 fw-semibold mb-4">
                     <div class="form-check form-check-inline">
-                        <input id="inline_gender_male" type="radio" class="form-check-input" name="inline_gender">
+                        <input id="inline_gender_male" type="radio" class="form-check-input" name="inline_gender" required>
                         <label for="inline_gender_male" class="form-check-label">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input id="inline_gender_female" type="radio" class="form-check-input" name="inline_gender">
+                        <input id="inline_gender_female" type="radio" class="form-check-input" name="inline_gender" required>
                         <label for="inline_gender_female" class="form-check-label">Female</label>
                     </div>
                 </div>
@@ -260,29 +261,34 @@
                     <option value="3">Sales</option>
                 </select>
                 <div class="form-floating my-3">
-                    <input class="form-control" type="email" id="floating_email" placeholder="Tai Man">
+                    <input class="form-control" type="email" id="floating_email" placeholder="Tai Man" required>
                     <label for="floating_email">Email address</label>
                 </div>
 
                 <div class="form-floating my-3">
-                    <input type="password" name="" id="floating_password" class="form-control" placeholder="12345678xdcf#">
+                    <input type="password" name="" id="floating_password" class="form-control" placeholder="12345678xdcf#" required>
                     <label for="floating_password">Password</label>
                 </div>
 
                 <div class="form-floating mt-4 mb-3">
-                    <input class="form-control" type="number" id="floating_salary" placeholder="1000000">
+                    <input class="form-control" type="number" id="floating_salary" placeholder="1000000" required>
                     <label for="floating_salary">Salary</label>
                 </div>
                 <div class="hstack gap-3 mt-3 justify-content-end">
-                    <a href="dashboard_staff.html" class="px-4 py-2 text-uppercase btn btn-success fw-semibold">
-                        Create
-                    </a>
+<!--                    <a href="dashboard_staff.html" class="px-4 py-2 text-uppercase btn btn-success fw-semibold">-->
+<!--                        Create-->
+<!--                    </a>-->
+                    <input type="submit" class="px-4 py-2 text-uppercase btn btn-success fw-semibold" value="Create">
+
                     <a href="dashboard_staff.html" class="px-4 py-2 text-uppercase btn btn-outline-danger fw-semibold">
                         Cancel
+
                     </a>
                 </div>
 
             </form>
+
+
 
 
 
@@ -307,6 +313,20 @@
                 showPercent: true
             })
         })
+
+        var forms = document.querySelectorAll(".needs-validation");
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            });
+
     </script>
 
 

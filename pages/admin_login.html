@@ -90,7 +90,7 @@
                 <a id="forgot_password_link" class="fs-6 text-muted fw-semibold text-end"
                    href="./admin_forget_password.html">Forgot password?</a>
                 <button class="signin-button btn btn-lg btn-info mt-3 p-3 text-white fw-bold" type="submit"
-                        id="submitBt"  disabled>Sign In
+                        id="submitBt">Sign In
                 </button>
             </form>
         </div>
@@ -118,7 +118,7 @@
     // })
 
     var forms = document.querySelectorAll(".needs-validation");
-    var chkResult = true
+    // var chkResult = true
 
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
@@ -134,36 +134,50 @@
 
     $(document).ready(function () {
 
+        $('#floating-email').change(function () {
+
+            if ($(this).val() == "thomas@airline.com.hk") {
+                $('#signInForm').attr('action', 'admin_reset_password.html');
+            } else {
+                $('#signInForm').attr('action', 'dashboard.html');
+            }
+
+        });
+    })
+
+
+    // $(document).ready(function () {
+
         // $("input#floating_dob").daterangepicker({
         //     singleDatePicker: true,
         //     showDropdowns: true,
         //     maxYear: parseInt(moment().format('YYYY'), 10)
         // });
 
-        function checkInputValid(inputElement) {
-            if (!inputElement.checkValidity()) {
-                result = false
-            }
-        }
-
-        $('form').change(function () {
-            result = true
-            forms.forEach(checkInputValid)
-            if (result) {
-                $('#submitBt').prop('disabled', false);
-
-
-                if ($('#floating-email').val() == "thomas@airline.com.hk") {
-                    $('#signInForm').attr('action', 'admin_reset_password.html');
-                } else {
-                    $('#signInForm').attr('action', 'dashboard.html');
-                }
-
-            } else {
-                $('#submitBt').prop('disabled', true);
-            }
-        });
-    })
+        // function checkInputValid(inputElement) {
+        //     if (!inputElement.checkValidity()) {
+        //         result = false
+        //     }
+        // }
+        //
+        // $('form').change(function () {
+        //     result = true
+        //     forms.forEach(checkInputValid)
+        //     if (result) {
+        //         $('#submitBt').prop('disabled', false);
+        //
+        //
+        //         if ($('#floating-email').val() == "thomas@airline.com.hk") {
+        //             $('#signInForm').attr('action', 'admin_reset_password.html');
+        //         } else {
+        //             $('#signInForm').attr('action', 'dashboard.html');
+        //         }
+        //
+        //     } else {
+        //         $('#submitBt').prop('disabled', true);
+        //     }
+        // });
+    // })
 </script>
 </body>
 </html>
