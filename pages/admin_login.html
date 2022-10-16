@@ -76,7 +76,7 @@
                 Sign In
             </div>
 
-            <form  class="vstack gap-4 mt-3 needs-validation novalidate" id="signInForm">
+            <form  class="vstack gap-4 mt-3 needs-validation" novalidate id="signInForm">
                 <div class="form-floating">
                     <input class="form-control" type="email" id="floating-email" placeholder="test@example.com"
                            required>
@@ -120,10 +120,29 @@
     var forms = document.querySelectorAll(".needs-validation");
     // var chkResult = true
 
+    // adding login fail props
+    $(document).ready(function () {
+        $('<div class="text-danger fs-6 mt-3 login-failed ">Login Failed. Account not existed or mismatched password </div>').insertAfter($('.signin-text'))
+        $('.login-failed').hide()
+    })
+    function checkAccount(){
+        var emailAddress = $('#floating-email').val()
+        var password = $('#floating-password').val()
+        if (
+            (emailAddress == "admin@iveairline.com.hk" && password == "12345678")
+            ||
+            (emailAddress == "thomas@iveairline.com.hk" && password == "abc")
+        ) {
+            console.log("login")
+           return true
+        }
+            $('.login-failed').show()
+            return false
+    }
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
+                if (!form.checkValidity() || !checkAccount()) {
                     event.preventDefault()
                     event.stopPropagation()
                 }
@@ -136,7 +155,7 @@
 
         $('#floating-email').change(function () {
 
-            if ($(this).val() == "thomas@airline.com.hk") {
+            if ($(this).val() == "thomas@iveairline.com.hk") {
                 $('#signInForm').attr('action', 'admin_reset_password.html');
             } else {
                 $('#signInForm').attr('action', 'dashboard.html');

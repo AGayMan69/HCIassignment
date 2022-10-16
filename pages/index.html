@@ -422,10 +422,10 @@
                         <a class="nav-link fs-6 link-active" aria-current="page" href="#">Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6" href="#">Popular</a>
+                        <a class="nav-link fs-6" href="#popular-flight">Popular</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6" href="#">Featured</a>
+                        <a class="nav-link fs-6" href="#feature-section">Featured</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6" href="#">View Flight</a>
@@ -607,7 +607,7 @@
                                                 <i class="cil-location-pin"></i>
                                                 From</label>
 
-                                            <select class="form-control border-light shadow-sm">
+                                            <select class="form-control border-light shadow-sm return-from">
                                                 <optgroup label="China">
                                                     <option value="Choice 1">Shanghai, PVG</option>
                                                 </optgroup>
@@ -632,7 +632,7 @@
                                         <div class="col-md-4 mt-1">
                                             <label class="form-label">
                                                 To</label>
-                                            <select class="form-control border-light shadow-sm">
+                                            <select class="form-control border-light shadow-sm return-to">
                                                 <optgroup label="China">
                                                     <option value="Choice 1">Shanghai, PVG</option>
                                                 </optgroup>
@@ -973,7 +973,7 @@
                             <h1 class="fw-bolder" style="grid-row: 1;">Sign in to your account</h1>
 
 
-                            <form action="index.html" class="mb-2 mt-5 vstack gap-2 needs-validation novalidate" style="grid-row: 3;">
+                            <form action="index.html" id="login-form" class="mb-2 mt-5 vstack gap-2 needs-validation " novalidate style="grid-row: 3;">
                                 <div class="form-floating mb-3">
                                     <input type="email" name="" id="floatingEmail" class="form-control"
                                            placeholder="name@example.com" required>
@@ -1239,7 +1239,7 @@
 
             var multiCityItem = `<div class="row mt-3" id="${itemName}">
                                             <div class=" col-md-3 ">
-                                                <select class="form-control border-light shadow-sm"
+                                                <select class="form-control border-light shadow-sm "
                                                         >
                                                     <optgroup label="China">
                                                     <option value="Choice 1" >Shanghai, PVG</option>
@@ -1314,19 +1314,53 @@
 
     <script>
 
-        var forms = document.querySelectorAll(".needs-validation")[0];
-        var chkResult = true
+        // var forms = document.querySelectorAll(".needs-validation");
+        // var chkResult = true
 
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-            });
+        // Array.prototype.slice.call(forms)
+        //     .forEach(function (form) {
+        //         form.addEventListener('submit', function (event) {
+        //             if (!form.checkValidity()) {
+        //                 console.log("not submitting")
+        //                 event.preventDefault()
+        //                 event.stopPropagation()
+        //             }
+        //             form.classList.add('was-validated')
+        //         }, false)
+        //     });
+        var loginForm
+        var emailInput
+        var passwordInput
+
+        function checkAccount() {
+            const email = emailInput.value
+            const password = passwordInput.value
+            if (email == "carrielam@gmail.com" && password == "12345") {
+                return true
+            }
+            $(".login-failed").show()
+            return false
+        }
+        $(document).ready(function () {
+            loginForm = $("form.needs-validation")
+            emailInput = loginForm[0][0]
+            const loginFail = document.createElement("div")
+            const text = document.createTextNode("Login Failed. Email address not existed or password mismatched")
+            loginFail.appendChild(text)
+            loginFail.classList.add("text-danger", "login-failed")
+            emailInput.parentNode.parentNode.insertBefore(loginFail, emailInput.parentNode)
+            $(".login-failed").hide()
+            passwordInput = loginForm[0][1]
+            loginForm.submit(function () {
+                if (!loginForm[0].checkValidity() || (!checkAccount())) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    console.log("invalid")
+                }
+                loginForm.addClass('was-validated')
+            })
+        })
+
 
         $(document).ready(function (){
             $('#emailInput').change(function (){
@@ -1364,6 +1398,15 @@
             $("#reset_password_input").password()
         })
 
+        // features destination
+        $(document).ready(function () {
+            $('#dest-taoyuan').click(function () {
+                changeDPMenuTitle('Return')
+                $(window).scrollTop($('#searchbar-section'))
+                $('.return-from option[value="Choice 2"]').prop('selected', true)
+                $('.return-to option[value="Choice 4"]').prop('selected', true)
+            })
+        })
 
     </script>
 
