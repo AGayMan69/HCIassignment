@@ -1,0 +1,8 @@
+.sidebar-nav .nav-item:hover {
+    background: #e0e0e0;
+}
+
+.sidebar-nav .nav-item:hover :is(span, i) {
+    color: #0246b1 !important;
+    font-weight: bold;
+}
