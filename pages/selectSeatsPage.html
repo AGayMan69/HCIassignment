@@ -247,7 +247,7 @@
             border-color: #00b894;
         }
 
-        .guideLabel{
+        .guideLabel {
             background-color: #fff;
             border: 2px solid #ddd;
             border-radius: 5px;
@@ -257,6 +257,103 @@
             line-height: 1.5rem;
             padding: 2px 0;
             width: 30%;
+        }
+
+        /*breath button*/
+        #breathing-button {
+            font-family:"Eras Bold ITC";
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin-left: -10px;
+            /*margin: 50px auto;*/
+            border: 1px solid #0a0c0d;
+            /*-webkit-animation: breathing 2s ease-out infinite normal;*/
+            /*animation: breathing 2s ease-out infinite normal;*/
+            font-size: 20px;
+            /*background: #f9b115;*/
+            /*color: #424246;*/
+            background: gray;
+            color: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /*orignal*/
+        /*-webkit-animation: breathing 2s ease-out infinite normal;*/
+        /*animation: breathing 2s ease-out infinite normal;*/
+        /*background: #f9b115;*/
+        /*color: #424246;*/
+
+        @-webkit-keyframes breathing {
+            0% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            25% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes breathing {
+            0% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+            25% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+
+        .fakeBreathing-button {
+            font-family:"Eras Bold ITC";
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin-left: -10px;
+            /*margin: 50px auto;*/
+            border: 1px solid #0a0c0d;
+            font-size: 20px;
+            background: #4f5d73;
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transform: scale(0.9);
+        }
+
+        .customCard{
+            margin-bottom: 69px;
         }
 
 
@@ -414,7 +511,8 @@
                     <div class="passengers " id="passengerSelection">
 
 
-                        <u><h1>Select <span style="font-size: 1.5em;font-family: Lemon;color: red" id="noOfSeatSelected">2</span> seats for
+                        <u><h1>Select <span style="font-size: 1.5em;font-family: Lemon;color: red"
+                                            id="noOfSeatSelected">2</span> seats for
                             your flight</h1></u>
 
                         <div class="row pt-2">
@@ -424,9 +522,13 @@
                                 <div class="card">
                                     <h5 class="card-header fs-6 fw-bold">Seat Guide</h5>
                                     <div class="card-body">
-                                        <div ><label class="guideLabel">1A</label> <span  style="padding-left:10px">Empty Seats</span></div>
-                                        <div class="mt-3"><label class="guideLabel"  style="background-color:lightgrey;color: gray">1A</label> <span  style="padding-left:10px">Unavailable</span></div>
-                                        <div class="mt-3"><label class="guideLabel bg-dark"> &nbsp;</label> <span style="padding-left:10px">Toilet</span></div>
+                                        <div><label class="guideLabel">1A</label> <span style="padding-left:10px">Empty Seats</span>
+                                        </div>
+                                        <div class="mt-3"><label class="guideLabel"
+                                                                 style="background-color:lightgrey;color: gray">1A</label>
+                                            <span style="padding-left:10px">Unavailable</span></div>
+                                        <div class="mt-3"><label class="guideLabel bg-dark"> &nbsp;</label> <span
+                                                style="padding-left:10px">Toilet</span></div>
                                     </div>
                                 </div>
 
@@ -598,8 +700,9 @@
 
                             <div class="col-3 selectSeats">
                                 <div class="card selectedSeatCard border-0">
-                                    <div class="card-body" >
-                                        <p class="card-text" style="visibility: hidden">supporting text below as a natural lead-in to
+                                    <div class="card-body">
+                                        <p class="card-text" style="visibility: hidden">supporting text below as a
+                                            natural lead-in to
                                             additional content.</p>
                                         <h5 class="card-title fs-5">Selected Seats</h5>
                                     </div>
@@ -616,62 +719,74 @@
 
             </div>
 
-            <div class="col-4">
 
-                <div class="row mx-1" style="width:100%;height:35%">
-                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background-color:white">
-                        <div class="mt-3 mx-3 fs-6 fw-semibold" style="color: #68bc7d">Refundable <img id=""
-                                                                                                       src="../icon/png/sale-sign.png"
-                                                                                                       style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
-                        </div>
-                        <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span
-                                style="color: #abb5c0">available</span>
-                        </div>
-                        <!--                        <h5 class="card-title text-start mt-3"></h5>-->
-                        <!--                        <p>Refundable</p>-->
-                        <div class="row d-flex d-flex justify-content-evenly mt-2" style="height: 25%;">
-                            <button type="button" class="btn btn-dark rounded-1 col-5">Cancel</button>
-                            <button type="button" class="btn btn-warning rounded-1 col-5" id="contBt"
-                                    style="font-size: small;">Continues
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-4" style="height: 100%">
 
-                <div class="row mx-1 pt-3" style="width: 100%;height:65%;">
-
+                <div class="row mx-1" style="width: 100%;height:65%;">
                     <div class="card border-0 shadow-sm" style="width:95%; height:100%; background: #e8f0f9">
 
-                        <div class="card-header py-3 bg-transparent">
+                        <div class="customCard">
+                            <div class="card-header py-3 bg-transparent">
 
-                            <h5 class="mb-0">Fare Summary</h5>
+                                <h5 class="mb-0 fw-semibold">Fare Summary</h5>
 
-                        </div>
+                            </div>
 
-
-                        <div class="card-body pt-5">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Adult (Economy)
-                                    <span id="adultPrice">$0</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">
-                                    Children (Economy)
-                                    <span id="childPrice">$0</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                    <div class="pt-3">
-                                        <strong>Total amount</strong>
-                                        <strong>
-                                            <p class="mb-0">(including tax)</p>
-                                        </strong>
-                                    </div>
-                                    <span><strong id="amountPrice">$0</strong></span>
-                                </li>
-                            </ul>
+                            <div class="card-body pt-5" style="margin-bottom: 160px">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                        <span id="dNoPass">Departure (Economy)$1920x2</span>
+                                        <span id="adultPrice">$3840.0</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">
+                                        <span id="rNoPass">Return (Economy)$1820x2</span>
+                                        <span id="childPrice">$3640.0</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                        <div class="pt-3">
+                                            <strong>Total amount</strong>
+                                            <strong>
+                                                <p class="mb-0">(including tax)</p>
+                                            </strong>
+                                        </div>
+                                        <span><strong id="amountPrice">HK$7480.0</strong></span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+                <div class="row mx-1 mt-3" style="width:100%;">
+                    <div class="card border-0" style="width:95%; height:auto; background-color:white">
+                        <div class="my-3">
+
+                            <div class="mt-3 mx-3 fs-6 fw-semibold mb-3" style="color: #68bc7d">Refundable <img id=""
+                                                                                                                src="../icon/png/sale-sign.png"
+                                                                                                                style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
+                            </div>
+
+
+                            <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span
+                                    style="color: #abb5c0">available</span></div>
+
+                            <div class="row d-flex d-flex justify-content-center mt-2 mb-2"
+                                 style="height: auto; margin-left: 15px;">
+
+                                <div class="col-4">
+                                    <div class="fakeBreathing-button">Cancel</div>
+                                </div>
+
+                                <div class="col-8">
+                                    <div id="breathing-button">Please Pick your Seats</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -753,7 +868,7 @@
                                     </div>
                                 </div>`;
 
-    seatInfo4C= `                                <div class="card selectedSeatCard4C" style="width:60%;margin-left:13%;margin-top:10px;">
+    seatInfo4C = `                                <div class="card selectedSeatCard4C" style="width:60%;margin-left:13%;margin-top:10px;">
                                     <div class="card-body" >
                                         <p class="card-text text-center fw-semibold"><span>Seats 4C</span></p>
                                     </div>
@@ -762,79 +877,76 @@
     var seatSelect = 2;
 
     $(document).ready(function () {
+
         $('#noOfSeatSelected').text(seatSelect);
 
-        $('#2E').click(function (){
+        $('#2E').click(function () {
 
-            if (!$(this).is(":checked")){
+            if (!$(this).is(":checked")) {
                 $('.selectedSeatCard2E').remove()
-                seatSelect +=1
-            }else if (seatSelect >0){
+                seatSelect += 1
+            } else if (seatSelect > 0) {
                 $('.selectSeats').append(seatInfo2E)
-                seatSelect-=1;
-            }else{
+                seatSelect -= 1;
+            } else {
                 $(this).prop('checked', false);
             }
             $('#noOfSeatSelected').text(seatSelect);
+            myFunction();
 
         })
 
-        $('#4B').click(function (){
-
-            if (!$(this).is(":checked")){
+        $('#4B').click(function () {
+            if (!$(this).is(":checked")) {
                 $('.selectedSeatCard4B').remove()
-                seatSelect +=1
-            }else if (seatSelect >0){
+                seatSelect += 1
+            } else if (seatSelect > 0) {
                 $('.selectSeats').append(seatInfo4B)
-                seatSelect-=1;
-            }else{
+                seatSelect -= 1;
+            } else {
                 $(this).prop('checked', false);
             }
             $('#noOfSeatSelected').text(seatSelect);
+            myFunction();
 
-
-
-            // if (seatSelect > 0){
-            //     if (!$(this).is(":checked")){
-            //         $('.selectedSeatCard4B').remove()
-            //         seatSelect +=1
-            //     }else{
-            //         $('.selectSeats').append(seatInfo4B)
-            //         seatSelect-=1;
-            //     }
-            // }else{
-            //     $(this).prop('checked', false);
-            // }
-            // $('#noOfSeatSelected').text(seatSelect);
         })
 
-        $('#4C').click(function (){
+        $('#4C').click(function () {
 
-            if (!$(this).is(":checked")){
+            if (!$(this).is(":checked")) {
                 $('.selectedSeatCard4C').remove()
-                seatSelect +=1
-            }else if (seatSelect >0){
+                seatSelect += 1
+            } else if (seatSelect > 0) {
                 $('.selectSeats').append(seatInfo4C)
-                seatSelect-=1;
-            }else{
+                seatSelect -= 1;
+            } else {
                 $(this).prop('checked', false);
             }
             $('#noOfSeatSelected').text(seatSelect);
-
-            // if (seatSelect > 0){
-            //     if (!$(this).is(":checked")){
-            //         $('.selectedSeatCard4C').remove()
-            //         seatSelect +=1
-            //     }else{
-            //         $('.selectSeats').append(seatInfo4C)
-            //         seatSelect-=1;
-            //     }
-            // }else{
-            //     $(this).prop('checked', false);
-            // }
-            // $('#noOfSeatSelected').text(seatSelect);
+            myFunction();
         })
 
+
+        function myFunction() {
+            console.log('calling')
+
+            if (seatSelect == 0) {
+                $('#breathing-button').text('Next Step');
+                $('#breathing-button').css('animation', 'breathing 2s ease-out infinite normal');
+                $('#breathing-button').css('background', '#f9b115');
+                $('#breathing-button').css('color', '#424246');
+                $('#breathing-button').attr('onclick', 'window.location = \'selectPaymentPage.html\'');
+                // breathingBt.style.background = ' #f9b115';
+                // breathingBt.style.color = '#424246';
+                // breathingBt.setAttribute('onclick','window.location = \'selectSeatsPage.html\'');
+            } else {
+                $('#breathing-button').text('Please Pick your Seats');
+                $('#breathing-button').css('animation', '');
+                $('#breathing-button').css('background', 'gray');
+                $('#breathing-button').css('color', '#FFFFFF');
+                $('#breathing-button').attr('onclick', '#');
+            }
+        }
     });
 
 </script>
@@ -845,9 +957,6 @@
         console.log(num);
         ele.style.fill = 'red';
     }
-
-
-
 
 
 </script>

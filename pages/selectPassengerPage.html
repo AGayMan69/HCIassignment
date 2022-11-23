@@ -831,6 +831,107 @@
             color: #686d73;
         }
 
+
+        /*breath button*/
+        #breathing-button {
+            font-family:"Eras Bold ITC";
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin-left: -10px;
+            /*margin: 50px auto;*/
+            border: 1px solid  #0a0c0d;
+            /*-webkit-animation: breathing 2s ease-out infinite normal;*/
+            /*animation: breathing 2s ease-out infinite normal;*/
+            font-size: 20px;
+            /*background: #f9b115;*/
+            /*color: #424246;*/
+            background: gray;
+            color: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /*orignal*/
+        /*-webkit-animation: breathing 2s ease-out infinite normal;*/
+        /*animation: breathing 2s ease-out infinite normal;*/
+        /*background: #f9b115;*/
+        /*color: #424246;*/
+
+        @-webkit-keyframes breathing {
+            0% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            25% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes breathing {
+            0% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+            25% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+
+        .fakeBreathing-button {
+            font-family:"Eras Bold ITC";
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin-left: -10px;
+            /*margin: 50px auto;*/
+            border: 1px solid #0a0c0d;
+            font-size: 20px;
+            background: #4f5d73;
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transform: scale(0.9);
+        }
+
+        .customCard{
+            margin-bottom: -124px;
+            /*margin-bottom: -81px;*/
+        }
+
+
+
     </style>
 
 </head>
@@ -1041,9 +1142,7 @@
                                                         <label for="username">First Name*</label>
                                                         <input type="text" class="form-control" id="username"
                                                                placeholder="Enter your First Name">
-                                                        <small id="usernameHelp" class="form-text">Username must be
-                                                            between 5 - 12
-                                                            characters.</small>
+                                                        <small id="usernameHelp" class="form-text">*First Name must be characters.</small>
 
                                                         <div class="valid-feedback">Looks good!</div>
                                                         <div class="invalid-feedback">Bad.</div>
@@ -1054,9 +1153,7 @@
                                                         <label for="password">Last Name*</label>
                                                         <input type="password" class="form-control" id="password"
                                                                placeholder="Enter your Last Name" required>
-                                                        <small id="passwordHelp" class="form-text">>Username must be
-                                                            between 5 - 12
-                                                            characters.</small>
+                                                        <small id="passwordHelp" class="form-text">*Last Name must be characters.</small>
 
                                                         <div class="valid-feedback">Looks good!</div>
                                                         <div class="invalid-feedback">Bad.</div>
@@ -1067,8 +1164,7 @@
                                                         <label for="phone">Phone*</label>
                                                         <input type="text" class="form-control" id="phone"
                                                                placeholder="Enter your phone number" required>
-                                                        <small id="phoneHelp" class="form-text">Phone number must be
-                                                            integer</small>
+                                                        <small id="phoneHelp" class="form-text">Phone number must be in format 12345678</small>
 
                                                         <div class="valid-feedback">Looks good!</div>
                                                         <div class="invalid-feedback">Bad.</div>
@@ -1139,7 +1235,7 @@
                                                       style="font-family:Lemon,serif;">Passenger 2 info:</span>
                                                 <label for="username">First Name*</label>
                                                 <input type="text" class="form-control" id="username2"
-                                                       placeholder="Enter your username">
+                                                       placeholder="Enter your first name">
                                                 <small id="usernameHelp2" class="form-text">Username must be between 5 -
                                                     12
                                                     characters.</small>
@@ -1148,27 +1244,27 @@
                                             <div class="form-group">
                                                 <label for="password">Last Name*</label>
                                                 <input type="password" class="form-control" id="password2"
-                                                       placeholder="Enter your password">
+                                                       placeholder="Enter your last name">
                                                 <small id="passwordHelp2" class="form-text">Password must be
                                                     alphanumeric, 8 - 20
                                                     characters (@, _ and - are allowed).</small>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="text" class="form-control" id="email2" placeholder="@">
-                                                <small id="emailHelp2" class="form-text">Enter valid email
-                                                    address.</small>
                                             </div>
 
 
                                             <div class="form-group">
                                                 <label for="phone">Phone</label>
                                                 <input type="text" class="form-control" id="phone2"
-                                                       placeholder="Enter your phone number">
-                                                <small id="phoneHelp2" class="form-text">Phone number must be in format
-                                                    222-222-2222.</small>
+                                                       placeholder="(Optional) Enter your phone number">
+                                                <small id="phoneHelp2" class="form-text">Phone number must be in format 12345678</small>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" id="email2" placeholder="(Optional) @">
+                                                <small id="emailHelp2" class="form-text">Enter valid email
+                                                    address.</small>
+                                            </div>
+
 
                                             <div class="form-group mt-0">
                                                 <div class="gender d-flex justify-content-start">
@@ -1338,46 +1434,25 @@
 
             <div class="col-4">
 
-                <div class="row mx-1" style="width:100%;height:35%">
-                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background-color:white">
-                        <div class="mt-3 mx-3 fs-6 fw-semibold" style="color: #68bc7d">Refundable <img id=""
-                                                                                                       src="../icon/png/sale-sign.png"
-                                                                                                       style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
-                        </div>
-                        <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span
-                                style="color: #abb5c0">available</span>
-                        </div>
-                        <!--                        <h5 class="card-title text-start mt-3"></h5>-->
-                        <!--                        <p>Refundable</p>-->
-                        <div class="row d-flex d-flex justify-content-evenly mt-2" style="height: 25%;">
-                            <button type="button" class="btn btn-dark rounded-1 col-5">Cancel</button>
-                            <button type="button" class="btn btn-warning rounded-1 col-5" id="contBt"
-                                    style="font-size: small;">Continues
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mx-1 pt-3" style="width: 100%;height:65%;">
-
+                <div class="row mx-1" style="width: 100%;height:65%;">
                     <div class="card border-0 shadow-sm" style="width:95%; height:100%; background: #e8f0f9">
 
+                        <div class="customCard">
                         <div class="card-header py-3 bg-transparent">
 
-                            <h5 class="mb-0">Fare Summary</h5>
+                            <h5 class="mb-0 fw-semibold">Fare Summary</h5>
 
                         </div>
 
-
-                        <div class="card-body pt-5">
+                        <div class="card-body pt-5" style="margin-bottom: 160px">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Adult (Economy)
-                                    <span id="adultPrice">$0</span>
+                                    <span id="dNoPass">Departure (Economy)$1920x1</span>
+                                    <span id="adultPrice">$1920.0</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">
-                                    Children (Economy)
-                                    <span id="childPrice">$0</span>
+                                    <span id="rNoPass">Return (Economy)$1820x1</span>
+                                    <span id="childPrice">$1820.0</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
                                     <div class="pt-3">
@@ -1386,14 +1461,107 @@
                                             <p class="mb-0">(including tax)</p>
                                         </strong>
                                     </div>
-                                    <span><strong id="amountPrice">$0</strong></span>
+                                    <span><strong id="amountPrice">HK$3740.0</strong></span>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    </div>
                 </div>
 
+
+                <div class="row mx-1 mt-3" style="width:100%;">
+                    <div class="card border-0" style="width:95%; height:auto; background-color:white">
+                        <div class="my-3">
+
+                            <div class="mt-3 mx-3 fs-6 fw-semibold mb-3" style="color: #68bc7d">Refundable <img id=""
+                                                                                                                src="../icon/png/sale-sign.png"
+                                                                                                                style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
+                            </div>
+
+                            <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span
+                                    style="color: #abb5c0">available</span></div>
+
+
+
+                            <div class="row d-flex d-flex justify-content-center"
+                                 style="height:auto; margin-left: 15px;">
+
+                                <div class="col-4">
+                                    <div class="fakeBreathing-button">Cancel</div>
+                                </div>
+
+                                <div class="col-8">
+                                    <div id="breathing-button">Please Finish payment</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+<!--                <div class="row mx-1" style="width: 100%;height:65%;">-->
+
+<!--                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background: #e8f0f9">-->
+
+<!--                        <div class="card-header py-3 bg-transparent">-->
+
+<!--                            <h5 class="mb-0 fw-semibold">Fare Summary</h5>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="card-body pt-5">-->
+<!--                            <ul class="list-group list-group-flush">-->
+<!--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">-->
+<!--                                    <span id="dNoPass">Departure (Economy)$1920x1</span>-->
+<!--                                    <span id="adultPrice">$1920.0</span>-->
+<!--                                </li>-->
+<!--                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">-->
+<!--                                    <span id="rNoPass">Return (Economy)$1820x1</span>-->
+<!--                                    <span id="childPrice">$1820.0</span>-->
+<!--                                </li>-->
+<!--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">-->
+<!--                                    <div class="pt-3">-->
+<!--                                        <strong>Total amount</strong>-->
+<!--                                        <strong>-->
+<!--                                            <p class="mb-0">(including tax)</p>-->
+<!--                                        </strong>-->
+<!--                                    </div>-->
+<!--                                    <span><strong id="amountPrice">HK$3740.0</strong></span>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--                <div class="row mx-1 mt-3" style="width:100%;">-->
+<!--                    <div class="card border-0" style="width:95%; height:auto; background-color:white">-->
+<!--                        <div class="mt-3 mx-3 fs-6 fw-semibold" style="color: #68bc7d">Refundable <img id=""-->
+<!--                                                                                                       src="../icon/png/sale-sign.png"-->
+<!--                                                                                                       style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>-->
+<!--                        </div>-->
+<!--                        <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span style="color: #abb5c0">available</span></div>-->
+
+<!--                        <div class="row d-flex d-flex justify-content-center mt-2 mb-2"-->
+<!--                             style="height: auto; margin-left: 15px;">-->
+
+<!--                            <div class="col-4">-->
+<!--                                <div class="fakeBreathing-button">Cancel</div>-->
+<!--                            </div>-->
+
+<!--                            <div class="col-8">-->
+<!--                                <div id="breathing-button">Please Fill the form</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
             </div>
+
+
+
         </div>
 
         <div class="row d-flex flex-row-reverse bd-highlight" style="margin: 0">
@@ -1415,8 +1583,8 @@
             </div>
 
             <div class="modal-body fs-4 text-center" style="font-family:Lemon ">
-                Sorry traveller, this flight is full <img src="../icon/png/sorry.png"
-                                                          style="width:80px;height: 80px;background: #f9fafe" alt="">
+                Sorry traveller, No seats available for more passengers <img src="../icon/png/sorry.png"
+                                                          style="width:80px;height: 80px;" alt="">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
@@ -1513,11 +1681,16 @@
                 $('#exampleModal').modal('show');
             }
 
+            // <span id="dNoPass">Departure Flight (Economy)x1</span>
+
             $('#noDisplay01').text(sum1);
-            $('#adultPrice').text(sum1 * 1920);
+
+            $('#adultPrice').text('$'+ ((sum1+sum2) * 1920)+'.0' );
             $('#noDisplay02').text(sum2);
-            $('#childPrice').text(sum2 * 1920);
-            $('#amountPrice').text((sum1 * 1920) + (sum2 * 1920))
+            $('#childPrice').text('$'+ ((sum1+sum2) *  1820)+'.0');
+            $('#amountPrice').text( 'HK$ '+ ((sum1+sum2) * 1920  + (sum1+sum2) *  1820)+'.0');
+            $('#dNoPass').text('Departure (Economy)$1920x'+(sum1+sum2));
+            $('#rNoPass').text('Return (Economy)$1820x'+(sum1+sum2));
 
         });
 
@@ -1527,6 +1700,8 @@
 
 
     });
+
+
 
 </script>
 
@@ -1540,6 +1715,8 @@
     footerLeft = document.getElementById('footerLeft');
     prevArrow = document.getElementsByClassName('prev-page')[0];
     nextArrow = document.getElementsByClassName('next-page')[0];
+    breathingBt = document.getElementById('breathing-button');
+    customCard = document.getElementsByClassName('customCard')[0];
 
 
     pI.hidden = true;
@@ -1548,6 +1725,12 @@
     toFrom.hidden = false;
 
     pageNo = 0;
+
+
+    // .customCard{
+    //     margin-bottom: -124px;
+    //     /*margin-bottom: -81px;*/
+    // }
 
     function nextPage(num) {
         pageNo += num;
@@ -1571,6 +1754,8 @@
             pI.hidden = true;
             toFrom.hidden = false;
             toMeal.hidden = true;
+            customCard.style.marginBottom = '-124px';
+
         } else if (pageNo == 1) {
             nextArrow.style.visibility = '';
             footerLeft.style.visibility = '';
@@ -1594,9 +1779,23 @@
                 pI.hidden = true;
                 pM.hidden = false;
                 toMeal.hidden = true;
+
+                breathingBt.innerText = 'Next Step'
+                breathingBt.style.animation = 'breathing 2s ease-out infinite normal';
+                breathingBt.style.background = ' #f9b115';
+                breathingBt.style.color = '#424246';
+                breathingBt.setAttribute('onclick','window.location = \'selectSeatsPage.html\'');
+                customCard.style.marginBottom = '-81px';
+
             }
         }
     }
+
+    /*orignal*/
+    /*-webkit-animation: breathing 2s ease-out infinite normal;*/
+    /*animation: breathing 2s ease-out infinite normal;*/
+    /*background: #f9b115;*/
+    /*color: #424246;*/
 
 
     person1 = document.getElementById('person1');
@@ -1611,15 +1810,10 @@
             }
         } else if (num == 2) {
 
-            if (tCkBox == true) {
-                person1.style.filter = 'grayscale(100)';
-                if (patterns[phone].test(phone2)) {
-
-                }
+            if ($('#username2').val() ==  'Mary Chan') {
+                person2.style.filter = 'grayscale(100)';
             }
-
         }
-
     }
 
     const inputs = document.querySelectorAll('input');
