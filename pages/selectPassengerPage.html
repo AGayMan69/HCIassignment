@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Airline - search</title>
+
+    <!--  *****************    -->
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <!-- jsdelivr date picker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!--    password strength checker-->
+    <link rel="stylesheet" href="../js/password.min.css">
+    <link rel="stylesheet" href="../style/nav.css">
+    <!--  *****************    -->
+
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Happy+Monkey|Lemon);
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Mukta', sans-serif;
+            /*font-family: 'Dosis', sans-serif；*/
+        }
+
+        body {
+            background-color: #f3f5f7;
+        }
+
+        .pCard {
+            width: 250px;
+            border-color: #eeeced;
+            cursor: pointer;
+        }
+
+        .pCard:hover {
+            border-bottom-width: 5px;
+            border-bottom-color: #2898b5;
+            background-color: #f9f9fb;
+        }
+
+        .reIcon {
+            width: 55px;
+            height: 55px;
+            display: block;
+            margin-top: 7px;
+            margin-left: 20px;
+
+            -webkit-filter: drop-shadow(2px 2px 0 gray) drop-shadow(-1px -1px 0 white);
+            filter: drop-shadow(2px 2px 0 gray) drop-shadow(-1px -1px 0 white);
+
+        }
+
+        .pState {
+            font-family: "Yu Gothic Medium";
+            font-weight: bold;
+            font-size: 12px;
+            /*font-weight: 400;*/
+            display: inline-block;
+            margin-top: 15px;
+            color: #818485;
+            margin-left: 10px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .list-group-item {
+            background: #e8f0f9;
+        }
+
+        .passengers {
+            font-family: "Happy Monkey";
+            padding: 1em;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 60em;
+        }
+
+        .passengers h1 {
+            font-family: 'Lemon';
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .passenger {
+            margin-bottom: 1em;
+            padding-right: 1.69492%;
+        }
+
+        .passenger__label, .passenger__label span {
+            font-family: 'Lemon';
+        }
+
+        @media screen and (min-width: 31em) {
+            .passenger__label {
+                text-align: center;
+                margin-bottom: 1em;
+            }
+        }
+
+        @media screen and (max-width: 30.99em) {
+            .passenger__label {
+                display: inline-block;
+                vertical-align: middle;
+                width: calc(100% - 10.25em);
+            }
+        }
+
+        @media screen and (max-width: 24.5em) {
+            .passenger__label span {
+                display: block;
+            }
+        }
+
+        @media screen and (min-width: 31em) and (max-width: 39.99em) {
+            .passenger__label span {
+                display: block;
+            }
+        }
+
+        .passenger__stepper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .passenger__stepper > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @media screen and (max-width: 30.99em) {
+            .passenger__stepper {
+                width: 10em;
+            }
+        }
+
+        @media screen and (min-width: 31em) {
+            .passenger__stepper {
+                display: block;
+                max-width: 14em;
+                margin: 0 auto;
+            }
+
+            .passenger__stepper::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+        }
+
+        .stepper {
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            font-size: 1.25em;
+            background: black;
+            color: white;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            /*box-shadow: 0.125em 0.125em 0 0 white, 0.125em 0.125em 0 1px black;*/
+        }
+
+        .stepper:active {
+            box-shadow: 0 0 0 1px white, 0 0 0 1px black;
+            transform: translate(0.125rem, 0.125rem);
+        }
+
+        .stepper__display {
+            font-size: 2em;
+            margin: 0 0.5em;
+        }
+
+        @media screen and (min-width: 31em) {
+            .stepper__display {
+                font-size: 5em;
+                float: left;
+                line-height: 1.2;
+                margin: 0;
+                padding-left: 1rem;
+            }
+
+            .stepper {
+                position: absolute;
+                right: 1rem;
+            }
+
+            .stepper__more {
+                top: 0;
+            }
+
+            .stepper__less {
+                bottom: 0;
+            }
+        }
+
+
+        /*footer*/
+        .footer {
+            width: 100%;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .prev-page, .page-progress, .next-page {
+            display: block;
+            float: left;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .prev-page, .next-page {
+            width: 60px;
+        }
+
+        .arrow {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: #2196f3;
+            margin: 29px auto;
+            position: relative;
+        }
+
+        .arrow::before, .arrow::after {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 10px;
+            background: #2196f3;
+        }
+
+        .prev-page .arrow::before, .prev-page .arrow::after {
+            left: -1px;
+        }
+
+        .prev-page .arrow::before {
+            transform: rotate(-45deg);
+            top: -3px;
+        }
+
+        .prev-page .arrow::after {
+            transform: rotate(45deg);
+            top: 3px;
+        }
+
+        .next-page .arrow::before, .next-page .arrow::after {
+            right: -1px;
+        }
+
+        .next-page .arrow::before {
+            transform: rotate(45deg);
+            top: -3px;
+        }
+
+        .next-page .arrow::after {
+            transform: rotate(-45deg);
+            top: 3px;
+        }
+
+        .footerText {
+            display: block;
+            width: 695px;
+            /*text-align: end;*/
+        }
+
+
+        /*!*form*!*/
+        /*form {*/
+        /*    background: white;*/
+        /*}*/
+
+        /*form label {*/
+        /*    margin-bottom: .5rem;*/
+        /*    text-align: right;*/
+        /*    display: block;*/
+        /*    letter-spacing: 2px;*/
+        /*    color: #adb5bd;*/
+        /*    text-transform: uppercase;*/
+        /*}*/
+
+        /*.form-control {*/
+        /*    border: none;*/
+        /*    background: none;*/
+        /*    border-bottom: 2px solid rgba(0, 0, 0, 0.2);*/
+        /*    transition: border-color .4s ease-out;*/
+        /*    border-radius: 0;*/
+        /*}*/
+
+        /*.form-control:active,*/
+        /*.form-control:focus,*/
+        /*.btn.focus,*/
+        /*.btn:focus {*/
+        /*    outline: none;*/
+        /*    box-shadow: none;*/
+        /*    border-color: black;*/
+        /*}*/
+
+        /*.form-control.valid {*/
+        /*    border-color: green;*/
+        /*}*/
+
+        /*.form-control.invalid {*/
+        /*    border-color: red;*/
+        /*}*/
+
+        /*.form-control + small {*/
+        /*    color: red;*/
+        /*    opacity: 0;*/
+        /*    height: 0;*/
+        /*    transition: opacity .4s ease-out;*/
+        /*}*/
+
+        /*.form-control.invalid + small {*/
+        /*    opacity: 1;*/
+        /*    height: auto;*/
+        /*    margin-bottom: 20px;*/
+        /*    transition: opacity .4s ease-out;*/
+        /*}*/
+
+        /*.btn {*/
+        /*    border: 2px solid black;*/
+        /*    padding: 0.375rem 2.75rem;*/
+        /*    text-transform: uppercase;*/
+        /*    font-weight: 900;*/
+        /*    border-radius: 0;*/
+        /*}*/
+
+        /*.btn:hover {*/
+        /*    color: white;*/
+        /*    background: black;*/
+        /*    transition: all .4s ease-out;*/
+        /*}*/
+
+
+        /*Slider & form */
+
+        @keyframes tonext {
+            75% {
+                left: 0;
+            }
+            95% {
+                left: 100%;
+            }
+            98% {
+                left: 100%;
+            }
+            99% {
+                left: 0;
+            }
+        }
+
+        @keyframes tostart {
+            75% {
+                left: 0;
+            }
+            95% {
+                left: -300%;
+            }
+            98% {
+                left: -300%;
+            }
+            99% {
+                left: 0;
+            }
+        }
+
+        @keyframes snap {
+            96% {
+                scroll-snap-align: center;
+            }
+            97% {
+                scroll-snap-align: none;
+            }
+            99% {
+                scroll-snap-align: none;
+            }
+            100% {
+                scroll-snap-align: center;
+            }
+        }
+
+        /*body {*/
+        /*    max-width: 37.5rem;*/
+        /*    margin: 0 auto;*/
+        /*    padding: 0 1.25rem;*/
+        /*    font-family: 'Lato', sans-serif;*/
+        /*}*/
+
+        /** {*/
+        /*    box-sizing: border-box;*/
+        /*    scrollbar-color: transparent transparent; !* thumb and track color *!*/
+        /*    scrollbar-width: 0px;*/
+        /*}*/
+
+        *::-webkit-scrollbar {
+            width: 0;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: transparent;
+            border: none;
+        }
+
+        /** {*/
+        /*    -ms-overflow-style: none;*/
+        /*}*/
+
+        ol, li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            position: relative;
+            padding-top: 75%;
+            filter: drop-shadow(0 0 10px #0003);
+            perspective: 100px;
+        }
+
+        .carousel__viewport {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            overflow-x: scroll;
+            counter-reset: item;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel__slide {
+            position: relative;
+            flex: 0 0 100%;
+            width: 100%;
+            /*background-color: #f99;*/
+            counter-increment: item;
+        }
+
+        /*.carousel__slide:nth-child(even) {*/
+        /*    background-color: #99f;*/
+        /*}*/
+
+        .carousel__slide:before {
+            /*content: counter(item);*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -40%, 70px);
+            color: #fff;
+            font-size: 2em;
+        }
+
+        /*.carousel__snapper {*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    scroll-snap-align: center;*/
+        /*}*/
+
+        /*@media (hover: hover) {*/
+        /*    .carousel__snapper {*/
+        /*        animation-name: tonext, snap;*/
+        /*        animation-timing-function: ease;*/
+        /*        animation-duration: 4s;*/
+        /*        animation-iteration-count: 0;*/
+        /*    }*/
+
+        /*    .carousel__slide:last-child .carousel__snapper {*/
+        /*        animation-name: tostart, snap;*/
+        /*    }*/
+        /*}*/
+
+        @media (prefers-reduced-motion: reduce) {
+            .carousel__snapper {
+                animation-name: none;
+            }
+        }
+
+        .carousel:hover .carousel__snapper,
+        .carousel:focus-within .carousel__snapper {
+            animation-name: none;
+        }
+
+        .carousel__navigation {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            top: 490px;
+        }
+
+        .carousel__navigation-list,
+        .carousel__navigation-item {
+            display: inline-block;
+        }
+
+        .carousel__navigation-button {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            /*background-color: #333;*/
+            background-clip: content-box;
+            border: 0.25rem solid transparent;
+            border-radius: 50%;
+            font-size: 0;
+
+        }
+
+        .carousel::before,
+        .carousel::after,
+        .carousel__prev,
+        .carousel__next {
+            position: absolute;
+            top: 0;
+            margin-top: 37.5%;
+            width: 4rem;
+            height: 4rem;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            font-size: 0;
+            outline: 0;
+        }
+
+        .carousel::before,
+        .carousel__prev {
+            left: -1rem;
+        }
+
+        .carousel::after,
+        .carousel__next {
+            right: -1rem;
+        }
+
+        .carousel::before,
+        .carousel::after {
+            content: '';
+            z-index: 1;
+            background-color: #333;
+            background-size: 1.5rem 1.5rem;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #fff;
+            font-size: 2.5rem;
+            line-height: 4rem;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .carousel::before {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+        .carousel::after {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+
+        /*form*/
+        form {
+            width: 100%;
+            background: white;
+        }
+
+        form label {
+            /*margin-bottom: .5rem;*/
+            text-align: right;
+            display: block;
+            letter-spacing: 2px;
+            color: #adb5bd;
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            border: none;
+            background: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            transition: border-color .4s ease-out;
+            border-radius: 0;
+        }
+
+        .form-control:active,
+        .form-control:focus,
+        .btn.focus,
+        .btn:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: black;
+        }
+
+        .form-control.valid {
+            border-color: green;
+        }
+
+        .form-control.invalid {
+            border-color: red;
+        }
+
+        .form-control + small {
+            color: red;
+            opacity: 0;
+            height: 0;
+            transition: opacity .4s ease-out;
+        }
+
+        .form-control.invalid + small {
+            opacity: 1;
+            height: auto;
+            margin-bottom: 20px;
+            transition: opacity .4s ease-out;
+        }
+
+        .btn {
+            border: 2px solid black;
+            padding: 0.375rem 2.75rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            border-radius: 0;
+        }
+
+        .btn:hover {
+            color: white;
+            background: black;
+            transition: all .4s ease-out;
+        }
+
+        .form-check-area {
+            font-size: 14px;
+        }
+
+        /* Meal select */
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap');
+        #mealContainer hr {
+            margin: 20px 0;
+            border: none;
+            border-bottom: 1px solid #d9d9d9;
+        }
+
+        #mealContainer label, .container input {
+            cursor: pointer;
+        }
+
+        #mealContainer h2, #mealContainer h3, #mealContainer h4, #mealContainer h5 {
+            font-weight: 600;
+            line-height: 1.3;
+            color: #1f2949;
+        }
+
+        #mealContainer h2 {
+            font-size: 24px;
+        }
+
+        #mealContainer h3 {
+            font-size: 18px;
+        }
+
+        #mealContainer h4 {
+            font-size: 14px;
+        }
+
+        #mealContainer h5 {
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        #mealContainer img {
+            max-width: 100%;
+            display: block;
+            vertical-align: middle;
+        }
+
+        #mealContainer {
+            margin: 15px auto;
+            padding: 0 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 400;
+            /*background: #f0f3f6;*/
+            color: #3a3a3a;
+        }
+
+        .top-text-wrapper {
+            margin: 20px 0 30px 0;
+        }
+
+        .top-text-wrapper h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .top-text-wrapper code {
+            font-size: 0.85em;
+            background: linear-gradient(90deg, #fce3ec, #ffe8cc);
+            color: #f20;
+            padding: 0.1rem 0.3rem 0.2rem;
+            border-radius: 0.2rem;
+        }
+
+        .tab-section-wrapper {
+            padding: 30px 0;
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-gap: 30px;
+            place-items: center;
+            place-content: center;
+        }
+
+        .grid-col-auto {
+            grid-auto-flow: column;
+            grid-template-rows: auto;
+        }
+
+        /* ******************* Main Styeles : Radio Card */
+        label.radio-card {
+            cursor: pointer;
+        }
+
+        label.radio-card .card-content-wrapper {
+            background: #fff;
+            border-radius: 5px;
+            max-width: 280px;
+            min-height: 330px;
+            padding: 15px;
+            display: grid;
+            box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.04);
+            transition: 200ms linear;
+        }
+
+        label.radio-card .check-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border: solid 2px #e3e3e3;
+            border-radius: 50%;
+            transition: 200ms linear;
+            position: relative;
+        }
+
+        label.radio-card .check-icon:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.93552 4.58423C0.890286 4.53718 0.854262 4.48209 0.829309 4.42179C0.779553 4.28741 0.779553 4.13965 0.829309 4.00527C0.853759 3.94471 0.889842 3.88952 0.93552 3.84283L1.68941 3.12018C1.73378 3.06821 1.7893 3.02692 1.85185 2.99939C1.91206 2.97215 1.97736 2.95796 2.04345 2.95774C2.11507 2.95635 2.18613 2.97056 2.2517 2.99939C2.31652 3.02822 2.3752 3.06922 2.42456 3.12018L4.69872 5.39851L9.58026 0.516971C9.62828 0.466328 9.68554 0.42533 9.74895 0.396182C9.81468 0.367844 9.88563 0.353653 9.95721 0.354531C10.0244 0.354903 10.0907 0.369582 10.1517 0.397592C10.2128 0.425602 10.2672 0.466298 10.3112 0.516971L11.0651 1.25003C11.1108 1.29672 11.1469 1.35191 11.1713 1.41247C11.2211 1.54686 11.2211 1.69461 11.1713 1.82899C11.1464 1.88929 11.1104 1.94439 11.0651 1.99143L5.06525 7.96007C5.02054 8.0122 4.96514 8.0541 4.90281 8.08294C4.76944 8.13802 4.61967 8.13802 4.4863 8.08294C4.42397 8.0541 4.36857 8.0122 4.32386 7.96007L0.93552 4.58423Z' fill='white'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            background-size: 12px;
+            background-position: center center;
+            transform: scale(1.6);
+            transition: 200ms linear;
+            opacity: 0;
+        }
+
+        label.radio-card input[type='radio'] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        label.radio-card input[type='radio']:checked + .card-content-wrapper {
+            box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5), 0 0 0 2px #3057d5;
+        }
+
+        label.radio-card input[type='radio']:checked + .card-content-wrapper .check-icon {
+            background: #3057d5;
+            border-color: #3057d5;
+            transform: scale(1.2);
+        }
+
+        label.radio-card input[type='radio']:checked + .card-content-wrapper .check-icon:before {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        label.radio-card input[type='radio']:focus + .card-content-wrapper .check-icon {
+            box-shadow: 0 0 0 4px rgba(48, 86, 213, 0.2);
+            border-color: #3056d5;
+        }
+
+        label.radio-card .card-content img {
+            margin-bottom: 10px;
+        }
+
+        label.radio-card .card-content h4 {
+            font-size: 16px;
+            letter-spacing: -0.24px;
+            text-align: center;
+            color: #1f2949;
+            margin-bottom: 10px;
+        }
+
+        label.radio-card .card-content h5 {
+            font-size: 14px;
+            line-height: 1.4;
+            text-align: center;
+            color: #686d73;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- nav bar-->
+<nav class="navbar navbar-expand-lg bg-body shadow">
+    <div class="container-fluid mx-5 my-2">
+        <a class="navbar-brand " href="#">
+            <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+        </a>
+        <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item nav-book">
+                    <a class="nav-link fs-6 link-active" aria-current="page" href="./index.html">Book</a>
+                </li>
+                <li class="nav-item nav-flight">
+                    <a class="nav-link fs-6" href="./index.html#popular-flight">Popular</a>
+                </li>
+                <li class="nav-item nav-feature">
+                    <a class="nav-link fs-6" href="./index.html#feature-section">Featured</a>
+                </li>
+                <li class="nav-item nav-history">
+                    <a class="nav-link fs-6" href="#">View Flight</a>
+                </li>
+            </ul>
+
+            <i class="ri-global-line me-3"></i>
+            <select name="" id="language-select"
+                    class="form-select form-select-sm">
+                <option selected>🇬🇧 English</option>
+                <option>🇨🇳 简体中文</option>
+                <option>🇭🇰 繁體中文</option>
+                <option>🇯🇵 日本語</option>
+            </select>
+            <div class="mx-4 fw-bold">Help & support</div>
+            <a class="ms-2" id="signin_toggle"
+               data-coreui-toggle="modal"
+               data-coreui-target="#login_modal"
+            >
+                <div class="avatar bg-black text-white me-2">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="d-inline fw-bold text-body">Sign In</div>
+            </a>
+        </div>
+    </div>
+</nav>
+<!--                                        nav bar-->
+
+<div class="container pt-5" style="height:100vh;">
+
+    <section id="StepBar">
+        <div class="container d-flex justify-content-center">
+            <div class="card-group">
+
+                <div class="row">
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 rounded-start shadow-sm my-1 tpItem" id="tpItem01">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/flights.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block ">
+                                    <span class="card-text text-justify pState" style="color: #04cc03">Done</span>
+                                    <h5 class="card-title pName">Select Flights</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem02">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/Passenger.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 02</span>
+                                    <h5 class="card-title pName">Passenger</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem03">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/blackAndWhite/seats-bw.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 03</span>
+                                    <h5 class="card-title pName">Select Seats</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem04">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/blackAndWhite/payment-bw.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 04</span>
+                                    <h5 class="card-title pName">Payment</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0  rounded-end  shadow-sm my-1 tpItem" id="tpItem05">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/blackAndWhite/confirm-bw.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 05</span>
+                                    <h5 class="card-title pName">Confirm</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="SelectFSection" class="mt-4" style="width:100%; height:100%">
+
+        <div class="row">
+
+            <div class="col-8">
+
+                <div class="card border-0 shadow-sm" style="margin-left:23px;width:99%;">
+
+                    <div class="passengers" id="passengerSelection">
+
+
+                        <h1>Select number of passengers</h1>
+                        <div class="row pt-2">
+
+                            <div class="col-8">
+                                <div class="passenger">
+                                    <p class="passenger__label">Adult <span>(age 12 & up)</span></p>
+                                    <div class="passenger__stepper">
+                                        <button type="button" class="stepper stepper__less">-</button>
+                                        <p class="stepper__display" id="noDisplay01">0</p>
+                                        <button type="button" class="stepper stepper__more">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img src="../icon/png/adult.png" style="width:150px;height: 150px" alt="">
+                            </div>
+                        </div>
+
+                        <div class="row pt-5">
+
+                            <div class="col-8">
+
+                                <div class="passenger">
+                                    <p class="passenger__label">Children <span>(age 0-11yrs)</span></p>
+
+                                    <div class="passenger__stepper">
+                                        <button type="button" class="stepper stepper__less">-</button>
+                                        <p class="stepper__display" id="noDisplay02">0</p>
+                                        <button type="button" class="stepper stepper__more">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <img src="../icon/png/child.png" style="width:150px;height: 150px" alt="">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="passengerInfo">
+
+                        <div class="container pt-5 mb-5" style="width:85%">
+
+                            <section class="carousel" aria-label="Gallery">
+                                <ol class="carousel__viewport">
+                                    <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                                        <div class="carousel__snapper">
+                                            <div class="">
+                                                <form class="px-2 px-sm-5 py-5 needs-validation" novalidate
+                                                      id="PassengerForm" action="#">
+                                                    <div class="form-group">
+                                                        <span class="fs-4" style="font-family:Lemon,serif;">Passenger 1 info:</span>
+                                                        <label for="username">First Name*</label>
+                                                        <input type="text" class="form-control" id="username"
+                                                               placeholder="Enter your First Name">
+                                                        <small id="usernameHelp" class="form-text">Username must be
+                                                            between 5 - 12
+                                                            characters.</small>
+
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                        <div class="invalid-feedback">Bad.</div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="password">Last Name*</label>
+                                                        <input type="password" class="form-control" id="password"
+                                                               placeholder="Enter your Last Name" required>
+                                                        <small id="passwordHelp" class="form-text">>Username must be
+                                                            between 5 - 12
+                                                            characters.</small>
+
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                        <div class="invalid-feedback">Bad.</div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="phone">Phone*</label>
+                                                        <input type="text" class="form-control" id="phone"
+                                                               placeholder="Enter your phone number" required>
+                                                        <small id="phoneHelp" class="form-text">Phone number must be
+                                                            integer</small>
+
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                        <div class="invalid-feedback">Bad.</div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="email">Email</label>
+                                                        <input type="text" class="form-control" id="email"
+                                                               placeholder="@" required>
+                                                        <small id="emailHelp" class="form-text">Enter valid email
+                                                            address.</small>
+
+
+                                                    </div>
+
+                                                    <div class="form-group mt-0">
+                                                        <div class="gender d-flex justify-content-start">
+                                                            <input class="mx-1" type="radio" value="None" id="male2"
+                                                                   name="gender" checked/>
+                                                            <label class="mx-1" for="male" class="radio"
+                                                                   chec>Male</label>
+                                                            <input class="mx-1" type="radio" value="None" id="female2"
+                                                                   name="gender" required/>
+                                                            <label class="mx-1" for="female"
+                                                                   class="radio">Female</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-check-area my-2">
+                                                        <!--                                                            <div class="form-check">-->
+                                                        <!--                                                                <input type="checkbox" id="receive-email" class="form-check-input bounce" name="receive-email" />-->
+                                                        <!--                                                                <label for="receive-email" class="form-check-label">Yes, I want to receive <strong>notification emails</strong></label>-->
+                                                        <!--                                                            </div>-->
+                                                        <!--                                                            -->
+                                                        <div class="form-check">
+                                                            <input type="checkbox" id="agree-terms"
+                                                                   class="form-check-input bounce" name="agree-terms"
+                                                                   required/>
+                                                            <label for="agree-terms" class="form-check-label">I agree to
+                                                                the <a href="#">Terms, Privacy Policy</a> and
+                                                                <a href="#">Fees</a></label>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <!--                                                        <button class="btn d-block mx-auto">Submit</button>-->
+                                                </form>
+                                            </div>
+
+
+                                            <!--                                            <a href="#carousel__slide2"-->
+                                            <!--                                               class="carousel__next"  onclick="nextForm(1)">Go to next slide</a>-->
+                                            <a href="#carousel__slide2"
+                                               class="carousel__next" onclick="nextForm(1)">Go to next slide</a>
+
+                                        </div>
+                                    </li>
+
+
+                                    <li id="carousel__slide2" tabindex="0"
+                                        class="carousel__slide">
+                                        <div class="carousel__snapper"></div>
+
+                                        <form class="px-2 px-sm-5 py-5">
+                                            <div class="form-group">
+                                                <span class="fs-2"
+                                                      style="font-family:Lemon,serif;">Passenger 2 info:</span>
+                                                <label for="username">First Name*</label>
+                                                <input type="text" class="form-control" id="username2"
+                                                       placeholder="Enter your username">
+                                                <small id="usernameHelp2" class="form-text">Username must be between 5 -
+                                                    12
+                                                    characters.</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="password">Last Name*</label>
+                                                <input type="password" class="form-control" id="password2"
+                                                       placeholder="Enter your password">
+                                                <small id="passwordHelp2" class="form-text">Password must be
+                                                    alphanumeric, 8 - 20
+                                                    characters (@, _ and - are allowed).</small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" id="email2" placeholder="@">
+                                                <small id="emailHelp2" class="form-text">Enter valid email
+                                                    address.</small>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" class="form-control" id="phone2"
+                                                       placeholder="Enter your phone number">
+                                                <small id="phoneHelp2" class="form-text">Phone number must be in format
+                                                    222-222-2222.</small>
+                                            </div>
+
+                                            <div class="form-group mt-0">
+                                                <div class="gender d-flex justify-content-start">
+                                                    <input class="mx-1" type="radio" value="None" id="male"
+                                                           name="gender" checked/>
+                                                    <label class="mx-1" for="male" class="radio" chec>Male</label>
+                                                    <input class="mx-1" type="radio" value="None" id="female"
+                                                           name="gender"/>
+                                                    <label class="mx-1" for="female" class="radio">Female</label>
+                                                </div>
+                                            </div>
+
+                                            <!--                                                <button class="btn d-block mx-auto">Submit</button>-->
+                                        </form>
+
+                                        <!--                                        <a href="#carousel__slide1"-->
+                                        <!--                                           class="carousel__prev" onclick="nextForm(3)">Go to previous slide</a>-->
+                                        <a href="#carousel__slide1"
+                                           class="carousel__next" onclick="nextForm(2)">Go to next slide</a>
+                                    </li>
+
+                                </ol>
+                                <aside class="carousel__navigation">
+                                    <ol class="carousel__navigation-list">
+                                        <li class="carousel__navigation-item">
+                                            <!--                        <a href="#carousel__slide1"-->
+                                            <!--                           class="carousel__navigation-button">Go to slide 1</a>-->
+                                            <img src="../icon/png/person.png" href="#carousel__slide1"
+                                                 class="carousel__navigation-button" id="person1" alt="">
+                                        </li>
+                                        <li class="carousel__navigation-item">
+                                            <!--                        <a href="#carousel__slide2"-->
+                                            <!--                           class="carousel__navigation-button">Go to slide 2</a>-->
+
+                                            <img src="../icon/png/person.png" href="#carousel__slide2"
+                                                 class="carousel__navigation-button" id="person2" alt="">
+                                        </li>
+
+                                    </ol>
+                                </aside>
+                            </section>
+
+
+                        </div> <!-- /.container -->
+
+
+                    </div>
+
+
+                    <div id="mealInfo">
+
+                        <div class="row">
+
+                            <div class="container" id="mealContainer" style="height: 90%;width: 90%;">
+
+                                <div class="top-text-wrapper">
+                                    <span class="fs-4" style="font-family:Lemon">Please Select Your flight meal, No extra charge</span>
+                                </div>
+
+                                <div class="grid-wrapper grid-col-auto">
+                                    <label for="radio-card-1" class="radio-card ">
+                                        <input type="radio" name="radio-card" id="radio-card-1" checked/>
+                                        <div class="card-content-wrapper border border-light shadow-sm rounded border-1">
+                                            <span class="check-icon"></span>
+                                            <div class="card-content">
+                                                <img
+                                                        src="../images/food/foodJp.png"
+                                                        alt=""
+                                                />
+                                                <h4>Japanese</h4>
+                                                <h5>Rice, Tempura, Sashimi, Donburi</h5>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <!-- /.radio-card -->
+
+                                    <label for="radio-card-2" class="radio-card">
+                                        <input type="radio" name="radio-card" id="radio-card-2"/>
+                                        <div class="card-content-wrapper border border-light shadow-sm rounded border-1">
+                                            <span class="check-icon"></span>
+                                            <div class="card-content">
+                                                <img
+                                                        src="../images/food/foodUsa.png" STYLE="width: 188.61px;"
+                                                        alt=""
+                                                />
+                                                <h4>USA</h4>
+                                                <h5>Cheeseburger, Delmonico's steak, Nachos</h5>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <!-- /.radio-card -->
+
+                                    <label for="radio-card-3" class="radio-card">
+                                        <input type="radio" name="radio-card" id="radio-card-3" checked/>
+                                        <div class="card-content-wrapper border border-light shadow-sm rounded border-1">
+                                            <span class="check-icon"></span>
+                                            <div class="card-content">
+                                                <img
+                                                        src="../images/food/noFood.png"
+                                                        alt=""
+                                                />
+                                                <h4>Not required</h4>
+                                                <h5>I don't need any food</h5>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <!-- /.radio-card -->
+
+
+                                </div>
+                                <!-- /.grid-wrapper -->
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="">
+                        <div class="footer">
+                            <div class="prev-page" onclick="nextPage(-1)">
+                                <div class="arrow" ng-show="current_page.number > 1"></div>
+                            </div>
+                            <div class="footerText">
+
+
+                                <div class="d-flex justify-content-between" id="footerContent">
+
+                                    <!--footer left side-->
+                                    <div style="font-family: 'Lemon'; display: flex;justify-content: center;align-items: center;"
+                                         id="footerLeft">
+                                        Fill Your info
+                                    </div>
+
+
+                                    <!--footer right side-->
+
+                                    <div id="footerRight">
+
+                                        <div style="font-family: 'Lemon';" id="fillInfo">
+                                            <img src="../icon/png/fillForm.png" alt="" width="40" height="40"
+                                                 style="margin-bottom: 10px; margin-right:5px">Next Step, Fill Your info
+                                        </div>
+
+
+                                        <div style="font-family: 'Lemon';" id="chooseMeal">
+                                            <img src="../icon/png/meal.png" alt="" width="40" height="40"
+                                                 style="margin-bottom: 10px; margin-right:5px">Next
+                                            Step, Choose Your Meal
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="next-page" id="next-page" onclick="nextPage(1)">
+                                <div class="arrow" ng-show="current_page.number < pages.length"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-4">
+
+                <div class="row mx-1" style="width:100%;height:35%">
+                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background-color:white">
+                        <div class="mt-3 mx-3 fs-6 fw-semibold" style="color: #68bc7d">Refundable <img id=""
+                                                                                                       src="../icon/png/sale-sign.png"
+                                                                                                       style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
+                        </div>
+                        <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span
+                                style="color: #abb5c0">available</span>
+                        </div>
+                        <!--                        <h5 class="card-title text-start mt-3"></h5>-->
+                        <!--                        <p>Refundable</p>-->
+                        <div class="row d-flex d-flex justify-content-evenly mt-2" style="height: 25%;">
+                            <button type="button" class="btn btn-dark rounded-1 col-5">Cancel</button>
+                            <button type="button" class="btn btn-warning rounded-1 col-5" id="contBt"
+                                    style="font-size: small;">Continues
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-1 pt-3" style="width: 100%;height:65%;">
+
+                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background: #e8f0f9">
+
+                        <div class="card-header py-3 bg-transparent">
+
+                            <h5 class="mb-0">Fare Summary</h5>
+
+                        </div>
+
+
+                        <div class="card-body pt-5">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Adult (Economy)
+                                    <span id="adultPrice">$0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">
+                                    Children (Economy)
+                                    <span id="childPrice">$0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                    <div class="pt-3">
+                                        <strong>Total amount</strong>
+                                        <strong>
+                                            <p class="mb-0">(including tax)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong id="amountPrice">$0</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row d-flex flex-row-reverse bd-highlight" style="margin: 0">
+
+        </div>
+
+    </section>
+</div>
+
+
+<!--Modal-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body fs-4 text-center" style="font-family:Lemon ">
+                Sorry traveller, this flight is full <img src="../icon/png/sorry.png"
+                                                          style="width:80px;height: 80px;background: #f9fafe" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="exampleModal2Label"></h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body fs-4 text-center" style="font-family:Lemon ">
+                Sorry traveller, Please fill out all the form<img src="../icon/png/sorry.png"
+                                                                  style="width:80px;height: 80px;background: #f9fafe"
+                                                                  alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  *****************    -->
+<!-- jsdelivr date picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        defer></script>
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous" defer></script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+<!--  *****************    -->
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+        $('#footerLeft').css('visibility', 'hidden');
+        $('.prev-page ').css('visibility', 'hidden');
+
+
+        var sum1 = 0;
+        var sum2 = 0;
+
+        $('.stepper__more:eq(0)').click(function () {
+            sum1 += 1;
+        });
+        $('.stepper__less:eq(0)').click(function () {
+            sum1 -= 1;
+        });
+        $('.stepper__more:eq(1)').click(function () {
+            sum2 += 1;
+        });
+        $('.stepper__less:eq(1)').click(function () {
+            sum2 -= 1;
+        });
+
+        $('.stepper').click(function () {
+            if (sum1 < 0) {
+                sum1 = 0;
+            }
+            if (sum2 < 0) {
+                sum2 = 0;
+            }
+            if ((sum1 + sum2) == 3) {
+                $('.stepper').css('background', 'gray');
+                $('#contBt').prop('disabled', true);
+            } else {
+                $('#contBt').prop('disabled', false);
+
+            }
+
+            $('#seatAvailable').text((3 - sum1 - sum2) + ' Seats');
+
+            if ($('#seatAvailable').text() == '0 Seats') {
+                $('#seatAvailable').css('color', '#f394a9');
+            } else {
+                $('#seatAvailable').css('color', '');
+            }
+
+            if ((sum1 + sum2) == 3) {
+                $('#exampleModal').modal('show');
+            }
+
+            $('#noDisplay01').text(sum1);
+            $('#adultPrice').text(sum1 * 1920);
+            $('#noDisplay02').text(sum2);
+            $('#childPrice').text(sum2 * 1920);
+            $('#amountPrice').text((sum1 * 1920) + (sum2 * 1920))
+
+        });
+
+        console.log((3 - sum1 - sum2) + ' Seats');
+
+        // $('.prev-page ').hide();
+
+
+    });
+
+</script>
+
+<script>
+
+    ps = document.getElementById('passengerSelection');
+    pI = document.getElementById('passengerInfo');
+    pM = document.getElementById('mealInfo');
+    toMeal = document.getElementById('chooseMeal');
+    toFrom = document.getElementById('fillInfo');
+    footerLeft = document.getElementById('footerLeft');
+    prevArrow = document.getElementsByClassName('prev-page')[0];
+    nextArrow = document.getElementsByClassName('next-page')[0];
+
+
+    pI.hidden = true;
+    pM.hidden = true;
+    toMeal.hidden = true;
+    toFrom.hidden = false;
+
+    pageNo = 0;
+
+    function nextPage(num) {
+        pageNo += num;
+        console.log('clicking')
+        // ps.hidden = true;
+        // pI.hidden = false;
+        // toFrom.hidden = true;
+        // toMeal.hidden = false;
+        console.log(pageNo);
+
+        if (pageNo < 0) {
+            pageNo = 0;
+        }
+        if (pageNo > 2) {
+            pageNo = 2;
+
+        } else if (pageNo == 0) {
+            prevArrow.style.visibility = 'hidden';
+            footerLeft.style.visibility = 'hidden';
+            ps.hidden = false;
+            pI.hidden = true;
+            toFrom.hidden = false;
+            toMeal.hidden = true;
+        } else if (pageNo == 1) {
+            nextArrow.style.visibility = '';
+            footerLeft.style.visibility = '';
+            footerLeft.innerText = 'Number of Passenger';
+            prevArrow.style.visibility = '';
+            ps.hidden = true;
+            pI.hidden = false;
+            pM.hidden = true;
+            toFrom.hidden = true;
+            toMeal.hidden = false;
+        } else if (pageNo == 2) {
+
+            ckBox = document.getElementById('agree-terms').checked;
+
+            if (ckBox == false) {
+                $('#exampleModal2').modal('show');
+                pageNo = 1;
+            } else {
+                nextArrow.style.visibility = 'hidden';
+                footerLeft.innerText = 'Passenger Info';
+                pI.hidden = true;
+                pM.hidden = false;
+                toMeal.hidden = true;
+            }
+        }
+    }
+
+
+    person1 = document.getElementById('person1');
+    person2 = document.getElementById('person2');
+
+    function nextForm(num) {
+        tCkBox = document.getElementById('agree-terms').checked;
+        phone2 = document.getElementById('phone2').value;
+        if (num == 1) {
+            if (tCkBox == true) {
+                person1.style.filter = 'grayscale(100)';
+            }
+        } else if (num == 2) {
+
+            if (tCkBox == true) {
+                person1.style.filter = 'grayscale(100)';
+                if (patterns[phone].test(phone2)) {
+
+                }
+            }
+
+        }
+
+    }
+
+    const inputs = document.querySelectorAll('input');
+    //
+
+    const patterns = {
+        username: /^[a-z\d]{5,12}$/i,
+        password: /^[\d\w@-]{8,20}$/i,
+        email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
+        phone: /^\d{8}$/
+    };
+
+    inputs.forEach((input) => {
+        input.addEventListener('keyup', (e) => {
+            validate(e.target, patterns[e.target.attributes.id.value]);
+        });
+    });
+
+    function validate(field, regex) {
+        if (regex.test(field.value)) {
+            field.className = 'form-control valid';
+        } else {
+            field.className = 'form-control invalid';
+        }
+    }
+
+
+    // function SubmitForm(){
+    //     document.getElementById('PassengerForm').submit();
+    // }
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Airline - search</title>
+    <!--  *****************    -->
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <!-- jsdelivr date picker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!--    password strength checker-->
+    <link rel="stylesheet" href="../js/password.min.css">
+    <link rel="stylesheet" href="../style/nav.css">
+    <!--  *****************    -->
+
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Happy+Monkey|Lemon);
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Mukta', sans-serif;
+            /*font-family: 'Dosis', sans-serif；*/
+        }
+
+        body {
+            background-color: #f3f5f7;
+        }
+
+        .pCard {
+            width: 250px;
+            border-color: #eeeced;
+            cursor: pointer;
+        }
+
+        .pCard:hover {
+            border-bottom-width: 5px;
+            border-bottom-color: #2898b5;
+            background-color: #f9f9fb;
+        }
+
+        .reIcon {
+            width: 55px;
+            height: 55px;
+            display: block;
+            margin-top: 7px;
+            margin-left: 20px;
+
+            -webkit-filter: drop-shadow(2px 2px 0 gray) drop-shadow(-1px -1px 0 white);
+            filter: drop-shadow(2px 2px 0 gray) drop-shadow(-1px -1px 0 white);
+
+        }
+
+        .pState {
+            font-family: "Yu Gothic Medium";
+            font-weight: bold;
+            font-size: 12px;
+            /*font-weight: 400;*/
+            display: inline-block;
+            margin-top: 15px;
+            color: #818485;
+            margin-left: 10px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .list-group-item {
+            background: #e8f0f9;
+        }
+
+        .passengers {
+            font-family: "Happy Monkey";
+            padding: 1em;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 60em;
+        }
+
+        .passengers h1 {
+            font-family: 'Lemon';
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .passenger {
+            margin-bottom: 1em;
+            padding-right: 1.69492%;
+        }
+
+        .passenger__label, .passenger__label span {
+            font-family: 'Lemon';
+        }
+
+
+        .plane {
+            margin: 20px 0;
+            max-width: 340px;
+        }
+
+        .cockpit {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 5px solid #d8d8d8;
+        }
+
+        .cockpit:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 500px;
+            width: 100%;
+            border-radius: 50%;
+            border-right: 5px solid #d8d8d8;
+            border-left: 5px solid #d8d8d8;
+        }
+
+        .cockpit h1 {
+            line-height: 250px;
+            text-align: center;
+            display: block;
+        }
+
+        .seat-map {
+            box-sizing: border-box;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .seat-row {
+            padding: 7px 5px;
+            border-style: solid;
+            border-width: 0 5px;
+            border-color: #ccc;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .seat-row--exit {
+            padding-top: 45px;
+        }
+
+        .seat-row--exit:before, .seat-row--exit:after {
+            content: 'EXIT';
+            line-height: 1;
+            position: absolute;
+            top: 15px;
+        }
+
+        .seat-row--exit:before {
+            left: 5px;
+        }
+
+        .seat-row--exit:after {
+            right: 5px;
+        }
+
+        .seat-row--large {
+            padding-top: 30px;
+        }
+
+        .seat-row--wings {
+            border-width: 0 20px;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .seat-row .seat {
+            display: flex;
+            flex: 1;
+            position: relative;
+            justify-content: center;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+        .seat-row .seat.empty {
+            background-color: #fff;
+            visibility: hidden;
+            margin: 0;
+            flex: 0.75;
+        }
+
+        .seat-row .seat input[type=checkbox] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .seat-row .seat input[type=checkbox]:checked + label {
+            background: #00b894;
+            border-color: #00b894;
+            color: #fff;
+        }
+
+        .seat-row .seat input[type=checkbox]:disabled + label {
+            background: #ddd;
+            color: #999;
+            overflow: hidden;
+        }
+
+        .seat-row .seat input[type=checkbox]:disabled + label:hover {
+            border-color: transparent;
+            cursor: not-allowed;
+        }
+
+        .seat-row .seat label {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.5rem;
+            padding: 4px 0;
+            position: relative;
+            width: 100%;
+        }
+
+        .seat-row .seat label:hover {
+            cursor: pointer;
+            border-color: #00b894;
+        }
+
+        .guideLabel{
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.5rem;
+            padding: 2px 0;
+            width: 30%;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- nav bar-->
+<nav class="navbar navbar-expand-lg bg-body shadow">
+    <div class="container-fluid mx-5 my-2">
+        <a class="navbar-brand " href="#">
+            <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+        </a>
+        <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item nav-book">
+                    <a class="nav-link fs-6 link-active" aria-current="page" href="./index.html">Book</a>
+                </li>
+                <li class="nav-item nav-flight">
+                    <a class="nav-link fs-6" href="./index.html#popular-flight">Popular</a>
+                </li>
+                <li class="nav-item nav-feature">
+                    <a class="nav-link fs-6" href="./index.html#feature-section">Featured</a>
+                </li>
+                <li class="nav-item nav-history">
+                    <a class="nav-link fs-6" href="#">View Flight</a>
+                </li>
+            </ul>
+
+            <i class="ri-global-line me-3"></i>
+            <select name="" id="language-select"
+                    class="form-select form-select-sm">
+                <option selected>🇬🇧 English</option>
+                <option>🇨🇳 简体中文</option>
+                <option>🇭🇰 繁體中文</option>
+                <option>🇯🇵 日本語</option>
+            </select>
+            <div class="mx-4 fw-bold">Help & support</div>
+            <a class="ms-2" id="signin_toggle"
+               data-coreui-toggle="modal"
+               data-coreui-target="#login_modal"
+            >
+                <div class="avatar bg-black text-white me-2">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="d-inline fw-bold text-body">Sign In</div>
+            </a>
+        </div>
+    </div>
+</nav>
+<!--                                        nav bar-->
+
+<div class="container pt-5" style="height:100vh;">
+
+    <section id="StepBar">
+        <div class="container d-flex justify-content-center">
+            <div class="card-group">
+
+                <div class="row">
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 rounded-start shadow-sm my-1 tpItem" id="tpItem01">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/flights.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block ">
+                                    <span class="card-text text-justify pState" style="color: #04cc03">Done</span>
+                                    <h5 class="card-title pName">Select Flights</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem02">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/Passenger.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState" style="color: #04cc03">Done</span>
+                                    <h5 class="card-title pName">Passenger</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem03">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/seats.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 03</span>
+                                    <h5 class="card-title pName">Select Seats</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem04">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/blackAndWhite/payment-bw.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 04</span>
+                                    <h5 class="card-title pName">Payment</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0  rounded-end  shadow-sm my-1 tpItem" id="tpItem05">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/blackAndWhite/confirm-bw.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 05</span>
+                                    <h5 class="card-title pName">Confirm</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="SelectFSection" class="mt-4" style="width:100%; height:100%">
+
+        <div class="row">
+
+            <div class="col-8">
+
+                <div class="card border-0 shadow-sm " style="margin-left:23px;width:99%;">
+
+                    <div class="passengers " id="passengerSelection">
+
+
+                        <u><h1>Select <span style="font-size: 1.5em;font-family: Lemon;color: red" id="noOfSeatSelected">2</span> seats for
+                            your flight</h1></u>
+
+                        <div class="row pt-2">
+
+                            <div class="col-3">
+
+                                <div class="card">
+                                    <h5 class="card-header fs-6 fw-bold">Seat Guide</h5>
+                                    <div class="card-body">
+                                        <div ><label class="guideLabel">1A</label> <span  style="padding-left:10px">Empty Seats</span></div>
+                                        <div class="mt-3"><label class="guideLabel"  style="background-color:lightgrey;color: gray">1A</label> <span  style="padding-left:10px">Unavailable</span></div>
+                                        <div class="mt-3"><label class="guideLabel bg-dark"> &nbsp;</label> <span style="padding-left:10px">Toilet</span></div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-6 ">
+
+                                <!--Seats map-->
+                                <div class="plane">
+                                    <div class="cockpit">
+                                        <h1>Economy Class</h1>
+                                    </div>
+
+                                    <div class="seat-map" seat-row="29" seats-per-row="7">
+                                        <div class="seat-row seat-row--1 seat-row--exit">
+                                            <div class="seat">
+                                                <input type="checkbox" id="1A" disabled/>
+                                                <label for="1A">1A</label>
+                                            </div>
+                                            <div class="seat taken">
+                                                <input type="checkbox" id="1B" disabled/>
+                                                <label for="1B">1B</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="1C" disabled/>
+                                                <label for="1C">1C</label>
+                                            </div>
+                                            <div class="seat empty">
+
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="1D" disabled/>
+                                                <label for="1D">1D</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="1E" disabled/>
+                                                <label for="1E">1E</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="1F" disabled/>
+                                                <label for="1F">1F</label>
+                                            </div>
+                                        </div>
+                                        <div class="seat-row seat-row--2">
+                                            <div class="seat">
+                                                <input type="checkbox" id="2A" disabled/>
+                                                <label for="2A">2A</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="2B" disabled/>
+                                                <label for="2B">2B</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="2C" disabled/>
+                                                <label for="2C">2C</label>
+                                            </div>
+                                            <div class="seat empty">
+
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="2D" disabled/>
+                                                <label for="2D">2D</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="2E"/>
+                                                <label for="2E">2E</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="2F" disabled/>
+                                                <label for="2F">2F</label>
+                                            </div>
+                                        </div>
+                                        <div class="seat-row seat-row--3">
+                                            <div class="seat">
+                                                <input type="checkbox" id="3A" disabled/>
+                                                <label for="3A">3A</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="3B" disabled/>
+                                                <label for="3B">3B</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="3C" disabled/>
+                                                <label for="3C">3C</label>
+                                            </div>
+                                            <div class="seat empty">
+
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="3D" disabled/>
+                                                <label for="3D">3D</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="3E" disabled/>
+                                                <label for="3E">3E</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="3F" disabled/>
+                                                <label for="3F">3F</label>
+                                            </div>
+                                        </div>
+                                        <div class="seat-row seat-row--4">
+                                            <div class="seat">
+                                                <input type="checkbox" id="4A" disabled/>
+                                                <label for="4A">4A</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="4B"/>
+                                                <label for="4B">4B</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="4C"/>
+                                                <label for="4C">4C</label>
+                                            </div>
+                                            <div class="seat empty">
+
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="4D" disabled/>
+                                                <label for="4D">4D</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="4E" disabled/>
+                                                <label for="4E">4E</label>
+                                            </div>
+                                            <div class="seat">
+                                                <input type="checkbox" id="4F" disabled/>
+                                                <label for="4F">4F</label>
+                                            </div>
+                                        </div>
+                                        <div class="seat-row seat-row--5 seat-row--large seat-row--wings">
+
+                                            <div class="seat bg-dark">
+                                                <input type="checkbox" id="5A" style="margin-right:50px;" disabled/>
+                                                <label for="5A" class="bg-dark"></label>
+                                            </div>
+
+                                            <div class="seat" style="visibility:hidden">
+                                                <input type="checkbox" id="5B"/>
+                                                <label for="5B">5B</label>
+                                            </div>
+
+                                            <div class="seat" style="visibility:hidden">
+                                                <input type="checkbox" id="5C" style="visibility:hidden"/>
+                                                <label for="5C">5C</label>
+                                            </div>
+                                            <div class="seat empty">
+                                            </div>
+
+                                            <div class="seat bg-dark">
+                                                <input type="checkbox" id="5D" disabled/>
+                                                <label for="5D" class="bg-dark"></label>
+                                            </div>
+                                            <!--            <div class="seat">-->
+                                            <!--                <input type="checkbox" id="5E" />-->
+                                            <!--                <label for="5E">5E</label>-->
+                                            <!--            </div>-->
+                                            <!--            <div class="seat">-->
+                                            <!--                <input type="checkbox" id="5F" />-->
+                                            <!--                <label for="5F">5F</label>-->
+                                            <!--            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-3 selectSeats">
+                                <div class="card selectedSeatCard border-0">
+                                    <div class="card-body" >
+                                        <p class="card-text" style="visibility: hidden">supporting text below as a natural lead-in to
+                                            additional content.</p>
+                                        <h5 class="card-title fs-5">Selected Seats</h5>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-4">
+
+                <div class="row mx-1" style="width:100%;height:35%">
+                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background-color:white">
+                        <div class="mt-3 mx-3 fs-6 fw-semibold" style="color: #68bc7d">Refundable <img id=""
+                                                                                                       src="../icon/png/sale-sign.png"
+                                                                                                       style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
+                        </div>
+                        <div class="my-2 mx-3 fs-6 fw-semibold"><span id="seatAvailable">3 Seats</span> <span
+                                style="color: #abb5c0">available</span>
+                        </div>
+                        <!--                        <h5 class="card-title text-start mt-3"></h5>-->
+                        <!--                        <p>Refundable</p>-->
+                        <div class="row d-flex d-flex justify-content-evenly mt-2" style="height: 25%;">
+                            <button type="button" class="btn btn-dark rounded-1 col-5">Cancel</button>
+                            <button type="button" class="btn btn-warning rounded-1 col-5" id="contBt"
+                                    style="font-size: small;">Continues
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-1 pt-3" style="width: 100%;height:65%;">
+
+                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background: #e8f0f9">
+
+                        <div class="card-header py-3 bg-transparent">
+
+                            <h5 class="mb-0">Fare Summary</h5>
+
+                        </div>
+
+
+                        <div class="card-body pt-5">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Adult (Economy)
+                                    <span id="adultPrice">$0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">
+                                    Children (Economy)
+                                    <span id="childPrice">$0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                    <div class="pt-3">
+                                        <strong>Total amount</strong>
+                                        <strong>
+                                            <p class="mb-0">(including tax)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong id="amountPrice">$0</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row d-flex flex-row-reverse bd-highlight" style="margin: 0">
+
+        </div>
+
+    </section>
+</div>
+
+
+<!--Modal-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body fs-4 text-center" style="font-family:Lemon ">
+                Sorry traveller, this flight is full <img src="../icon/png/sorry.png"
+                                                          style="width:80px;height: 80px;background: #f9fafe" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="exampleModal2Label"></h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body fs-4 text-center" style="font-family:Lemon ">
+                Sorry traveller, Please fill out all the form<img src="../icon/png/sorry.png"
+                                                                  style="width:80px;height: 80px;background: #f9fafe"
+                                                                  alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  *****************    -->
+<!-- jsdelivr date picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        defer></script>
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous" defer></script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+<!--  *****************    -->
+
+<script type="text/javascript">
+
+    seatInfo2E = `                                <div class="card selectedSeatCard2E" style="width:60%;margin-left:13%;margin-top:10px;">
+                                    <div class="card-body" >
+                                        <p class="card-text text-center fw-semibold"><span>Seats 2E</span></p>
+                                    </div>
+                                </div>`;
+
+    seatInfo4B = `                                <div class="card selectedSeatCard4B" style="width:60%;margin-left:13%;margin-top:10px;">
+                                    <div class="card-body" >
+                                        <p class="card-text text-center fw-semibold"><span>Seats 4B</span></p>
+                                    </div>
+                                </div>`;
+
+    seatInfo4C= `                                <div class="card selectedSeatCard4C" style="width:60%;margin-left:13%;margin-top:10px;">
+                                    <div class="card-body" >
+                                        <p class="card-text text-center fw-semibold"><span>Seats 4C</span></p>
+                                    </div>
+                                </div>`;
+
+    var seatSelect = 2;
+
+    $(document).ready(function () {
+        $('#noOfSeatSelected').text(seatSelect);
+
+        $('#2E').click(function (){
+
+            if (!$(this).is(":checked")){
+                $('.selectedSeatCard2E').remove()
+                seatSelect +=1
+            }else if (seatSelect >0){
+                $('.selectSeats').append(seatInfo2E)
+                seatSelect-=1;
+            }else{
+                $(this).prop('checked', false);
+            }
+            $('#noOfSeatSelected').text(seatSelect);
+
+        })
+
+        $('#4B').click(function (){
+
+            if (!$(this).is(":checked")){
+                $('.selectedSeatCard4B').remove()
+                seatSelect +=1
+            }else if (seatSelect >0){
+                $('.selectSeats').append(seatInfo4B)
+                seatSelect-=1;
+            }else{
+                $(this).prop('checked', false);
+            }
+            $('#noOfSeatSelected').text(seatSelect);
+
+
+
+            // if (seatSelect > 0){
+            //     if (!$(this).is(":checked")){
+            //         $('.selectedSeatCard4B').remove()
+            //         seatSelect +=1
+            //     }else{
+            //         $('.selectSeats').append(seatInfo4B)
+            //         seatSelect-=1;
+            //     }
+            // }else{
+            //     $(this).prop('checked', false);
+            // }
+            // $('#noOfSeatSelected').text(seatSelect);
+        })
+
+        $('#4C').click(function (){
+
+            if (!$(this).is(":checked")){
+                $('.selectedSeatCard4C').remove()
+                seatSelect +=1
+            }else if (seatSelect >0){
+                $('.selectSeats').append(seatInfo4C)
+                seatSelect-=1;
+            }else{
+                $(this).prop('checked', false);
+            }
+            $('#noOfSeatSelected').text(seatSelect);
+
+            // if (seatSelect > 0){
+            //     if (!$(this).is(":checked")){
+            //         $('.selectedSeatCard4C').remove()
+            //         seatSelect +=1
+            //     }else{
+            //         $('.selectSeats').append(seatInfo4C)
+            //         seatSelect-=1;
+            //     }
+            // }else{
+            //     $(this).prop('checked', false);
+            // }
+            // $('#noOfSeatSelected').text(seatSelect);
+        })
+
+    });
+
+</script>
+
+<script>
+
+    function getSeat(num, ele) {
+        console.log(num);
+        ele.style.fill = 'red';
+    }
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

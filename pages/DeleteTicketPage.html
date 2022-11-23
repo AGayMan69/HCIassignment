@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Airline - search</title>
+
+    <!--  *****************    -->
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <!-- jsdelivr date picker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!--    password strength checker-->
+    <link rel="stylesheet" href="../js/password.min.css">
+    <link rel="stylesheet" href="../style/nav.css">
+    <!--  *****************    -->
+
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Happy+Monkey|Lemon);
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Mukta', sans-serif;
+            /*font-family: 'Dosis', sans-serif；*/
+        }
+
+        body {
+            background-color: #f3f5f7;
+        }
+
+        /*!*depeture & return card*!*/
+        .qrCodeImg {
+            height: auto;
+            width: 100%;
+        }
+
+        .ticket {
+            background: #fff;
+            border-radius: 4px;
+            color: #0b1521;
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+            padding: 30px;
+            /*margin: 80px auto;*/
+            /*max-width: 400px;*/
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0 50px 0;
+            position: relative;
+        }
+
+        .ticket-header > svg.separator {
+            animation: flight 2s infinite;
+            display: block;
+            color: #d3e6f4;
+            height: 30px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+        }
+
+        .ticket-departure {
+            text-align: left;
+        }
+
+        .ticket-destination {
+            text-align: right;
+        }
+
+        .ticket .city-abbr {
+            color: #3b8acf;
+            font-size: 45px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 50px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .ticket .city-name {
+            color: #aaaaac;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .ticket .item:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        .ticket .colName {
+            color: #aaaaac;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 20px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .ticket .value {
+            color: #000;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .row-vertical {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .row-vertical > .col {
+            flex: 0;
+        }
+
+        .row > .col {
+            flex: 1;
+        }
+
+        .row > .col.half {
+            flex-basis: 50%;
+        }
+
+
+        .page-tab-header > .navigation .nav-item {
+            background-color: #efefef;
+            border-width: 1px 1px 1px 0;
+            border-style: solid;
+            border-color: #d8d8d8 #b8b8b8 #efefef #b8b8b8;
+            box-shadow: none;
+            top: 1px;
+            width: auto;
+            max-width: 100%;
+        }
+
+        /* Lazy Load Styles */
+        .card-image {
+            display: block;
+            min-height: 20rem; /* layout hack */
+            background: #fff center center no-repeat;
+            background-size: cover;
+            filter: blur(3px); /* blur the lowres image */
+        }
+
+        .card-image > img {
+            display: block;
+            width: 100%;
+            opacity: 0; /* visually hide the img element */
+        }
+
+        .card-image.is-loaded {
+            filter: none; /* remove the blur on fullres image */
+            transition: filter 1s;
+        }
+
+
+        /* Layout Styles */
+        /*html, body {*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    margin: 0;*/
+        /*    font-size: 16px;*/
+        /*    font-family: sans-serif;*/
+        /*}*/
+
+        .card-list {
+            display: block;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 0;
+            text-align: center;
+            list-style: none;
+        }
+
+        .customCard {
+            display: inline-block;
+            width: 90%;
+            max-width: 20rem;
+            margin: 1rem;
+            font-size: 1rem;
+            text-decoration: none;
+            overflow: hidden;
+            box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+            transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+        }
+
+        .customCard:hover {
+            transform: translateY(-0.5rem) scale(1.0125);
+            box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+        }
+
+        .card-description {
+            display: block;
+            padding: 1em 0.5em;
+            color: #515151;
+            text-decoration: none;
+        }
+
+        .card-description > h2 {
+            margin: 0 0 0.5em;
+        }
+
+        .card-description > p {
+            margin: 0;
+        }
+
+        .cFlight:hover {
+            cursor: pointer;
+            font-weight: 600;
+            color: #f1e8e6;
+            background-color: #f55951;
+        }
+
+
+        /* Verification Code Modal*/
+        .account {
+            width: 100%;
+            max-width: 500px !important;
+            height: 300px;
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+        }
+
+        .account .cards {
+            box-shadow: 0 0 2px 1px rgba(143, 1431, 143, 0.21) !important;
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+        }
+
+        .account .card-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .account .card-header p {
+            margin-top: 13px;
+            font-size: 13px;
+        }
+
+        .account .card-body {
+            padding: 50px;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .w-100 {
+            width: 100% !important;
+        }
+
+        .account .col {
+            max-width: 350px;
+        }
+
+        .account .card-footer {
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .account .btn {
+            padding: 8px 22px;
+            text-align: center;
+            border-radius: 40px;
+            color: #fff;
+        }
+
+        .account .btn-info {
+            background: #46b2f0;
+        }
+
+        .activation-code-input {
+            display: none;
+        }
+
+        .activation-code {
+            direction: ltr;
+            position: relative;
+        }
+
+        .activation-code::before {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-bottom: 2px solid;
+            border-color: #ccc;
+            transition: opacity 0.3s ease;
+        }
+
+        .activation-code > span {
+            position: absolute;
+            display: block;
+            font-size: 13px;
+            color: #ccc;
+            top: 0;
+            right: 0;
+            transition: all 0.3s ease;
+        }
+
+        .activation-code .activation-code-inputs {
+            display: flex;
+            /*flex-direction: row;*/
+            /*flex-wrap: nowrap;*/
+            flex-flow: row nowrap;
+        }
+
+        .activation-code .activation-code-inputs input {
+            display: flex;
+            flex-flow: column nowrap;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            min-width: 0;
+            line-height: 36px;
+            text-align: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid;
+            border-color: #ccc;
+            margin-right: 8px;
+            /*background: red;*/
+            opacity: 0;
+        }
+
+        .activation-code .activation-code-inputs input:last-child {
+            margin-right: 0;
+        }
+
+        .activation-code.active::before {
+            opacity: 0;
+        }
+
+        .activation-code.active .activation-code-inputs input {
+            opacity: 1 !important;
+        }
+
+        .activation-code .activation-code-inputs input:focus {
+            border-color: #46b2f0 !important;
+        }
+
+        .activation-code.active > span {
+            transform: translate(0, -100%);
+            line-height: 30px;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body shadow">
+    <div class="container-fluid mx-5 my-2">
+        <a class="navbar-brand " href="#">
+            <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+        </a>
+        <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item nav-book">
+                    <a class="nav-link fs-6 link-active" aria-current="page" href="./index.html">Book</a>
+                </li>
+                <li class="nav-item nav-flight">
+                    <a class="nav-link fs-6" href="./index.html#popular-flight">Popular</a>
+                </li>
+                <li class="nav-item nav-feature">
+                    <a class="nav-link fs-6" href="./index.html#feature-section">Featured</a>
+                </li>
+                <li class="nav-item nav-history">
+                    <a class="nav-link fs-6" href="#">View Flight</a>
+                </li>
+            </ul>
+
+            <i class="ri-global-line me-3"></i>
+            <select name="" id="language-select"
+                    class="form-select form-select-sm">
+                <option selected>🇬🇧 English</option>
+                <option>🇨🇳 简体中文</option>
+                <option>🇭🇰 繁體中文</option>
+                <option>🇯🇵 日本語</option>
+            </select>
+            <div class="mx-4 fw-bold">Help & support</div>
+            <a class="ms-2" id="signin_toggle"
+               data-coreui-toggle="modal"
+               data-coreui-target="#login_modal"
+            >
+                <div class="avatar bg-black text-white me-2">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="d-inline fw-bold text-body">Sign In</div>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container pt-5" style="height:100vh;">
+
+    <section class="mt-4" style="width:100%; height:100%">
+
+        <div class="row d-flex justify-content-center text-center" style="margin-left:22px;margin-right:22px;">
+            <div class="card mb-4 rounded-3 border-0 shadow-sm mx-auto" style="width:100%;">
+
+                <div class="row align-middle my-3" style="margin: 0;height:auto;">
+                    <h1 style="font-family: Lemon">Your Flights</h1>
+                    <h5 style="font-family: 'Candara Light'">All tickets can be cancelled within 3 days</h5>
+                </div>
+
+
+                <div class="row">
+                    <ul class="card-list">
+                        <li class="card customCard" id="card1">
+                            <div class="row">
+                                <section class="page__segment">
+                                    <div class="page__frame">
+                                        <div class="tab__content">
+                                            <div class="ticket">
+                                                <div class="ticket-header">
+                                                    <div class="ticket-departure">
+                                                        <h1 class="city-abbr">TPA</h1><span
+                                                            class="city-name">Yogyakarta</span>
+                                                    </div>
+                                                    <svg class="separator" xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         version="1.1" x="0px" y="0px" viewbox="0 0 510 510"
+                                                         style="enable-background:new 0 0 510 510;"
+                                                         xml:space="preserve">
+      <g id="flights"></g>
+                                                        <path d="M510,255c0-20.4-17.85-38.25-38.25-38.25H331.5L204,12.75h-51l63.75,204H76.5l-38.25-51H0L25.5,255L0,344.25h38.25    l38.25-51h140.25l-63.75,204h51l127.5-204h140.25C492.15,293.25,510,275.4,510,255z"
+                                                              fill="currentColor"></path>
+    </svg>
+                                                    <div class="ticket-destination">
+                                                        <h1 class="city-abbr">HKG</h1><span
+                                                            class="city-name">Jakarta</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ticket-body text-start">
+                                                    <div class="row">
+                                                        <div class="col item">
+                                                            <p class="colName h2">Flight</p><span
+                                                                class="value">815</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Gate</p><span class="value">22A</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Seat</p><span class="value">10C</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col half">
+                                                            <div class="row-vertical">
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Class</p><span
+                                                                            class="value">Economy</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Departure</p><span
+                                                                            class="value">3:45am, Dec 15</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Refundable Remain</p><span
+                                                                            class="value" id="demo"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col half">
+                                                            <img class="ticket-qrcode qrCodeImg"
+                                                                 src="https://1.bp.blogspot.com/-tWxtTHsnBvQ/Wx0E35ydjVI/AAAAAAAAA6w/SxUTG14Kx8ABJkT4_7S18j4W-Sj5a50YACLcBGAs/s1600/qr.png"
+                                                                 alt="Ticket Code"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div class="card-footer cFlight" id="showModal">
+                                    Cancel Flight
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="card customCard" id="card2">
+                            <div class="row">
+                                <section class="page__segment">
+                                    <div class="page__frame">
+                                        <div class="tab__content">
+                                            <div class="ticket">
+                                                <div class="ticket-header">
+                                                    <div class="ticket-departure">
+                                                        <h1 class="city-abbr">TPA</h1><span
+                                                            class="city-name">Yogyakarta</span>
+                                                    </div>
+                                                    <svg class="separator" xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         version="1.1" x="0px" y="0px" viewbox="0 0 510 510"
+                                                         style="enable-background:new 0 0 510 510;"
+                                                         xml:space="preserve">
+      <g id="flights"></g>
+                                                        <path d="M510,255c0-20.4-17.85-38.25-38.25-38.25H331.5L204,12.75h-51l63.75,204H76.5l-38.25-51H0L25.5,255L0,344.25h38.25    l38.25-51h140.25l-63.75,204h51l127.5-204h140.25C492.15,293.25,510,275.4,510,255z"
+                                                              fill="currentColor"></path>
+    </svg>
+                                                    <div class="ticket-destination">
+                                                        <h1 class="city-abbr">HKG</h1><span
+                                                            class="city-name">Jakarta</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ticket-body text-start">
+                                                    <div class="row">
+                                                        <div class="col item">
+                                                            <p class="colName h2">Flight</p><span
+                                                                class="value">815</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Gate</p><span class="value">22A</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Seat</p><span class="value">10C</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col half">
+                                                            <div class="row-vertical">
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Class</p><span
+                                                                            class="value">Economy</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Departure</p><span
+                                                                            class="value">3:45am, Dec 15</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Refundable Remain</p><span
+                                                                            class="value" id="demo2"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col half">
+                                                            <img class="ticket-qrcode qrCodeImg"
+                                                                 src="https://1.bp.blogspot.com/-tWxtTHsnBvQ/Wx0E35ydjVI/AAAAAAAAA6w/SxUTG14Kx8ABJkT4_7S18j4W-Sj5a50YACLcBGAs/s1600/qr.png"
+                                                                 alt="Ticket Code"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div class="card-footer cFlight">
+                                    Cancel Flight
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="card customCard" id="card3">
+                            <div class="row">
+                                <section class="page__segment">
+                                    <div class="page__frame">
+                                        <div class="tab__content">
+                                            <div class="ticket">
+                                                <div class="ticket-header">
+                                                    <div class="ticket-departure">
+                                                        <h1 class="city-abbr">TPA</h1><span
+                                                            class="city-name">Yogyakarta</span>
+                                                    </div>
+                                                    <svg class="separator" xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         version="1.1" x="0px" y="0px" viewbox="0 0 510 510"
+                                                         style="enable-background:new 0 0 510 510;"
+                                                         xml:space="preserve">
+      <g id="flights"></g>
+                                                        <path d="M510,255c0-20.4-17.85-38.25-38.25-38.25H331.5L204,12.75h-51l63.75,204H76.5l-38.25-51H0L25.5,255L0,344.25h38.25    l38.25-51h140.25l-63.75,204h51l127.5-204h140.25C492.15,293.25,510,275.4,510,255z"
+                                                              fill="currentColor"></path>
+    </svg>
+                                                    <div class="ticket-destination">
+                                                        <h1 class="city-abbr">HKG</h1><span
+                                                            class="city-name">Jakarta</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ticket-body text-start">
+                                                    <div class="row">
+                                                        <div class="col item">
+                                                            <p class="colName h2">Flight</p><span
+                                                                class="value">815</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Gate</p><span class="value">22A</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Seat</p><span class="value">10C</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col half">
+                                                            <div class="row-vertical">
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Class</p><span
+                                                                            class="value">Economy</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Departure</p><span
+                                                                            class="value">3:45am, Dec 15</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Refundable Remain</p><span
+                                                                            class="value" id="demo3"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col half">
+                                                            <img class="ticket-qrcode qrCodeImg"
+                                                                 src="https://1.bp.blogspot.com/-tWxtTHsnBvQ/Wx0E35ydjVI/AAAAAAAAA6w/SxUTG14Kx8ABJkT4_7S18j4W-Sj5a50YACLcBGAs/s1600/qr.png"
+                                                                 alt="Ticket Code"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div class="card-footer cFlight">
+                                    Cancel Flight
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="card customCard" id="card4">
+                            <div class="row">
+                                <section class="page__segment">
+                                    <div class="page__frame">
+                                        <div class="tab__content">
+                                            <div class="ticket">
+                                                <div class="ticket-header">
+                                                    <div class="ticket-departure">
+                                                        <h1 class="city-abbr">TPA</h1><span
+                                                            class="city-name">Yogyakarta</span>
+                                                    </div>
+                                                    <svg class="separator" xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         version="1.1" x="0px" y="0px" viewbox="0 0 510 510"
+                                                         style="enable-background:new 0 0 510 510;"
+                                                         xml:space="preserve">
+      <g id="flights"></g>
+                                                        <path d="M510,255c0-20.4-17.85-38.25-38.25-38.25H331.5L204,12.75h-51l63.75,204H76.5l-38.25-51H0L25.5,255L0,344.25h38.25    l38.25-51h140.25l-63.75,204h51l127.5-204h140.25C492.15,293.25,510,275.4,510,255z"
+                                                              fill="currentColor"></path>
+    </svg>
+                                                    <div class="ticket-destination">
+                                                        <h1 class="city-abbr">HKG</h1><span
+                                                            class="city-name">Jakarta</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ticket-body text-start">
+                                                    <div class="row">
+                                                        <div class="col item">
+                                                            <p class="colName h2">Flight</p><span
+                                                                class="value">815</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Gate</p><span class="value">22A</span>
+                                                        </div>
+                                                        <div class="col item">
+                                                            <p class="colName h2">Seat</p><span class="value">10C</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col half">
+                                                            <div class="row-vertical">
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Class</p><span
+                                                                            class="value">Economy</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Departure</p><span
+                                                                            class="value">3:45am, Dec 15</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="item">
+                                                                        <p class="colName h2">Refundable Remain</p><span
+                                                                            class="value" id="demo4"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col half">
+                                                            <img class="ticket-qrcode qrCodeImg"
+                                                                 src="https://1.bp.blogspot.com/-tWxtTHsnBvQ/Wx0E35ydjVI/AAAAAAAAA6w/SxUTG14Kx8ABJkT4_7S18j4W-Sj5a50YACLcBGAs/s1600/qr.png"
+                                                                 alt="Ticket Code"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div class="card-footer cFlight">
+                                    Cancel Flight
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content py-2">
+            <div class="modal-body fs-6 text-center" style="font-family:Lemon ">
+
+                <div class="account">
+                    <div class="cards">
+                        <div class="card-header">
+                            <p class="text-center font-08-rem mt-13 fw-semibold"
+                               style="font-family:Lemon; font-size: 18px">
+                                We've sent a notification to your mobile device. <br>Please enter your CODE<br>
+                                <span style="color: red;font-family:Lemon; font-size: 14px" id="invalidCode">*Incorrect Code, please try again</span>
+                            </p>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="row flex-center">
+                                <div class="col">
+                                    <input class="activation-code-input w-100" id="verCode" placeholder="code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-info w-100" id="confirmBt">CONFIRM</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer border-0 d-flex justify-content-center">
+                <!--                <button type="button" class="btn btn-secondary" >Close</button>-->
+                <button type="button" class="btn btn-primary " data-coreui-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  *****************    -->
+<!-- jsdelivr date picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        defer></script>
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous" defer></script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+<!--  *****************    -->
+
+
+<script>
+
+    $(document).ready(function () {
+        $(".activation-code-input").activationCodeInput({
+            number: 6
+        });
+    });
+
+    function inputFilter(e) {
+        var key = e.keyCode || e.which;
+
+        if (
+            (!e.shiftKey && !e.altKey && !e.ctrlKey && key >= 48 && key <= 57) ||
+            (key >= 96 && key <= 105) ||
+            key == 8 ||
+            key == 9 ||
+            key == 13 ||
+            key == 37 ||
+            key == 39
+        ) {
+        } else {
+            return false;
+        }
+    }
+
+    jQuery.fn.activationCodeInput = function (options) {
+        var defaults = {
+            number: 4,
+            length: 1
+        };
+        var settings = $.extend({}, defaults, options);
+        // $('#log').append('options = ' + JSON.stringify(options));
+        // $('#log1').append('defaults = ' + JSON.stringify(defaults));
+        // $('#log2').append('settings = ' + JSON.stringify(settings));
+
+        return this.each(function () {
+            var self = $(this);
+            var activationCode = $("<div />").addClass("activation-code");
+            var placeHolder = self.attr("placeholder");
+            // alert(placeHolder);
+            activationCode.append($("<span />").text(placeHolder));
+            self.replaceWith(activationCode);
+            activationCode.append(self);
+
+            var activationCodeInputs = $("<div />").addClass("activation-code-inputs");
+
+            for (var i = 1; i <= settings.number; i++) {
+                activationCodeInputs.append(
+                    $("<input />").attr({
+                        maxLength: settings.length,
+                        onkeydown: "return inputFilter(event)",
+                        oncopy: "return false",
+                        onpaste: "return false",
+                        oncut: "return false",
+                        ondrag: "return false",
+                        ondrop: "return false"
+                    })
+                );
+            }
+
+            activationCode.prepend(activationCodeInputs);
+
+            activationCode.on("click touchstart", function (event) {
+                // console.log(event);
+                // console.log(event.type);
+                if (!activationCode.hasClass("active")) {
+                    activationCode.addClass("active");
+                    setTimeout(function () {
+                        activationCode
+                            .find(".activation-code-inputs input:first-child")
+                            .focus();
+                    }, 200);
+                }
+            });
+
+            activationCode
+                .find(".activation-code-inputs")
+                .on("keyup input", "input", function (event) {
+                    // $(this).css('background','red');
+                    if (
+                        $(this).val().toString().length == settings.length ||
+                        event.keyCode == 39
+                    ) {
+                        $(this).next().focus();
+                        if ($(this).val().toString().length) {
+                            $(this).css("border-color", "#46b2f0");
+                        }
+                    }
+                    if (event.keyCode == 8 || event.keyCode == 37) {
+                        $(this).prev().focus();
+                        if (!$(this).val().toString().length) {
+                            $(this).css("border-color", "#ccc");
+                        }
+                    }
+                    var value = "";
+                    activationCode.find(".activation-code-inputs input").each(function () {
+                        // value = value + $(this).val().toString();
+                        value += $(this).val().toString();
+                    });
+                    self.attr({
+                        value: value
+                    });
+                });
+
+            $(document).on("click touchstart", function (e) {
+                // console.log(e.target);
+                // console.log($(e.target).parent());
+                // console.log($(e.target).parent().parent());
+                // false true = false
+                // true false = false
+                // false false = false
+                //true true = true
+                if (
+                    !$(e.target).parent().is(activationCode) &&
+                    !$(e.target).is(activationCode) &&
+                    !$(e.target).parent().parent().is(activationCode)
+                ) {
+                    var hide = true;
+
+                    activationCode.find(".activation-code-inputs input").each(function () {
+                        if ($(this).val().toString().length) {
+                            hide = false;
+                        }
+                    });
+                    if (hide) {
+                        activationCode.removeClass("active");
+                    } else {
+                        activationCode.addClass("active");
+                    }
+                }
+            });
+        });
+    };
+    $('#invalidCode').hide();
+    $(document).ready(function () {
+        $('#confirmBt').click(function () {
+            j = $('#verCode').val();
+            if (j == '123456') {
+                $('#staticBackdrop').modal('hide');
+                $('#card1').remove();
+            } else {
+                $('#invalidCode').show();
+                $()
+            }
+        })
+
+        $('#showModal').click(function () {
+            $('#staticBackdrop').modal('show');
+        });
+
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    // Set the date we're counting down to
+    var countDownDate = new Date("Nov 25, 2022 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        document.getElementById("demo2").innerHTML = days - 1 + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        document.getElementById("demo3").innerHTML = days - 1 + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        document.getElementById("demo4").innerHTML = days - 1 + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
+    // var cardList = document.getElementsByClassName('card-list')[0];
+    // function deleteCard(num){
+    //     temp = document.getElementById('card'+num);
+    //     cardList.removeChild(temp);
+    // }
+
+</script>
+
+<script>
+
+
+</script>
+
+</body>
+
+</html>
