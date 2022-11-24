@@ -4,38 +4,42 @@
     <meta charset="UTF-8">
     <title>Dream Airline - search result</title>
 
+    <!--  *****************    -->
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
-
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-
-    <!--    &lt;!&ndash; JavaScript Bundle with Popper &ndash;&gt;-->
-    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"-->
-    <!--            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"-->
-    <!--            crossorigin="anonymous"></script>-->
-
     <!-- jsdelivr date picker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
-
     <!-- CoreUI for Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
           integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
-
     <!-- Mukta Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
-
     <!-- CoreUI Icons -->
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
-
     <!--    remix icon-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!--    password strength checker-->
+    <link rel="stylesheet" href="../js/password.min.css">
     <link rel="stylesheet" href="../style/nav.css">
+
+
+    <!-- Manrope Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+
+
+    <!-- tag input-->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"
+            rel="stylesheet"
+    />
+
+    <!--  *****************    -->
 
 
     <style>
@@ -49,6 +53,13 @@
             background-color: lightgray;
         }
 
+        body {
+            height: 100vh;
+            /*background-image: url("../images/search_result_bg.jpg");*/
+            background-color: #f5f7f9;
+            background-size: cover;
+            background-position: bottom;
+        }
 
         /*.firstRow {*/
         /*    width: 70%;*/
@@ -187,9 +198,6 @@
             font-weight: 680;
         }
 
-        .currency {
-
-        }
 
         p.card-text.item-date {
             font-size: 15px;
@@ -201,25 +209,265 @@
         }
 
         body {
-            background-image: url("../images/search_result_bg.jpg");
-            background-size: cover;
-        }
-
-        .container {
-            background-color: #f4f5f9;
+            background-color: #f4f5f9 !important;
         }
 
         button.btn.btn-outline-info.btn-md:hover {
             color: white;
         }
 
+        /*sidebar*/
+        .sidebar {
+            display: block;
+            width: 250px;
+            height: 104vh;
+            left:-190px;
+            /*background-color: #f5f7f9;*/
+            background-color:transparent;
+            color: #252A31;
+            position: absolute;
+            font-family: Manrope;
+        }
+
+        .fTitle {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .fContent {
+            padding-top: 10px;
+            font-size: 14px;
+            font-weight: lighter;
+            padding-bottom: 10px;
+        }
+
+        .bootstrap-tagsinput .tag {
+            margin-right: 2px;
+            color: white !important;
+            background-color: red;
+            padding: 0.2rem;
+        }
+        #inSidebar{
+            display: none;
+        }
+
+        /*page number*/
+
+
+        pagination .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .customContainer {
+            background: transparent;
+            /*padding: 15px 0;*/
+            /*margin: 15px auto;*/
+            border-radius: 1rem;
+            /*box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);*/
+            counter-reset: pagination;
+            text-align: center;
+        }
+        .customContainer:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+        .customContainer ul {
+            width: 100%;
+        }
+        .xlarge {
+            width: 65rem;
+        }
+        .large {
+            width: 45rem;
+        }
+        .middle {
+            width: 32rem;
+        }
+        .small {
+            width: 22rem;
+        }
+        .xsmall {
+            width: 14rem;
+        }
+        .customContainer ul, .customContainer li {
+            list-style: none;
+            display: inline;
+            padding-left: 0px;
+        }
+        .customContainer li {
+            counter-increment: pagination;
+        }
+
+        .customContainer li:hover a {
+            color: #fdfdfd;
+            background-color: #1d1f20;
+            border: solid 1px #1d1f20;
+        }
+        .customContainer li.active a {
+            color: #fdfdfd;
+            background-color: #1d1f20;
+            border: solid 1px #1d1f20;
+        }
+        .customContainer li:first-child {
+            float: left;
+        }
+        .customContainer li:first-child a:after {
+            content: "Previous";
+        }
+        .customContainer li:nth-child(2) {
+            counter-reset: pagination;
+        }
+        .customContainer li:last-child {
+            float: right;
+        }
+        .customContainer li:last-child a:after {
+            content: "Next";
+        }
+        .customContainer li a {
+            border: solid 1px #d7d7d7;
+            border-radius: 0.6rem;
+            color: #7d7d7d;
+            background-color:white;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            text-align: center;
+            padding: 0.5rem 0.9rem;
+
+        }
+        .customContainer li a:after {
+            content: " " counter(pagination) " ";
+        }
+        .large li a {
+            display: none;
+        }
+        .large li:first-child a {
+            display: inline-block;
+        }
+        .large li:first-child a:after {
+            content: "Previous";
+        }
+        .large li:nth-child(2) a {
+            display: inline-block;
+        }
+        .large li:nth-child(3) a {
+            display: inline-block;
+        }
+        .large li:nth-child(4) a {
+            display: inline-block;
+        }
+        .large li:nth-child(5) a {
+            display: inline-block;
+        }
+        .large li:nth-child(6) a {
+            display: inline-block;
+        }
+        .large li:nth-child(7) a {
+            display: inline-block;
+        }
+        .large li:nth-child(8) a {
+            display: inline-block;
+        }
+        .large li:last-child a {
+            display: inline-block;
+        }
+        .large li:last-child a:after {
+            content: "Next";
+        }
+        .large li:nth-last-child(2) a {
+            display: inline-block;
+        }
+        .large li:nth-last-child(3) {
+            display: inline-block;
+        }
+        .large li:nth-last-child(3):after {
+            padding: 0 1rem;
+            content: "...";
+        }
+        .middle li a {
+            display: none;
+        }
+        .middle li:first-child a {
+            display: inline-block;
+        }
+        .middle li:first-child a:after {
+            content: "<";
+        }
+        .middle li:last-child a {
+            display: inline-block;
+        }
+        .middle li:last-child a:after {
+            content: ">";
+        }
+        .middle li:nth-child(2) a {
+            display: inline-block;
+        }
+        .middle li:nth-child(3) a {
+            display: inline-block;
+        }
+        .middle li:nth-child(4) a {
+            display: inline-block;
+        }
+        .middle li:nth-child(5) a {
+            display: inline-block;
+        }
+        .middle li:nth-last-child(2) a {
+            display: inline-block;
+        }
+        .middle li:nth-last-child(3) {
+            display: inline-block;
+        }
+        .middle li:nth-last-child(3):after {
+            padding: 0 1rem;
+            content: "...";
+        }
+        .small li {
+            display: none;
+        }
+        .small li:first-child {
+            width: 50%;
+            display: inline;
+        }
+        .small li:first-child a:after {
+            content: "Previous Page";
+        }
+        .small li:last-child {
+            display: inline;
+        }
+        .small li:last-child a:after {
+            content: "Next Page";
+        }
+        .xsmall li {
+            display: none;
+        }
+        .xsmall li.active {
+            display: inline;
+        }
+        .xsmall li:first-child {
+            display: inline;
+        }
+        .xsmall li:first-child a:after {
+            content: "Prev";
+        }
+        .xsmall li:last-child {
+            display: inline;
+        }
+        .xsmall li:last-child a:after {
+            content: "Next";
+        }
+        .customContainer ul{
+            margin-bottom: 0;
+        }
+
+
     </style>
 
 </head>
 <body>
 
-
-<!-- nav bar-->
+<!--                                        nav bar-->
 <nav class="navbar navbar-expand-lg bg-body shadow">
     <div class="container-fluid mx-5 my-2">
         <a class="navbar-brand " href="#">
@@ -236,10 +484,10 @@
                     <a class="nav-link fs-6 link-active" aria-current="page" href="#">Book</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fs-6" href="#">Popular</a>
+                    <a class="nav-link fs-6" href="#popular-flight">Popular</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fs-6" href="#">Featured</a>
+                    <a class="nav-link fs-6" href="#feature-section">Featured</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fs-6" href="#">View Flight</a>
@@ -264,13 +512,156 @@
                 </div>
                 <div class="d-inline fw-bold text-body">Sign In</div>
             </a>
+
         </div>
     </div>
 </nav>
-
-
 <!--                                        nav bar-->
-<div class="container text-center pt-5 px-5">
+
+<!--sidebar filter-->
+<div class="sidebar">
+    <div class="row mx-2">
+
+        <div class="col-12 text-end my-2">
+            <!--            <div style="height:6vh;"> <img src="../icon/png/filter.png" style="height:100%" ></div>-->
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#4f5d73"
+                 class="bi bi-filter-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm.5 5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1zM4 8.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm2 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </div>
+
+        <div id="inSidebar">
+
+        <div class="col-12 my-3">
+            <span class="fTitle">Form</span>
+            <div class="fContent">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Hong Kong, HKG</option>
+                    <option value="1">Shang Hai, PVG</option>
+                    <option value="2">Kansai, ITAMI</option>
+                </select>
+            </div>
+
+
+            <span class="fTitle">To</span>
+            <div class="fContent">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Shang Hai, PVG</option>
+                    <option value="1">Taipei, TPA</option>
+                    <option value="2">Kansai, ITAMI</option>
+                </select>
+                <hr>
+            </div>
+
+            <label for="customRange1" class="form-label fTitle">Price Range</label>
+            <input type="range" class="form-range" id="customRange1" min="0" max="50000" value="25000">
+            <div class="row d-flex justify-content-between fw-semibold">
+                <div class="col-4">$0</div>
+                <div class="col-4 text-center">To</div>
+                <div class="col-4 text-end" id="maxRange">50000</div>
+            </div>
+            <hr>
+
+            <label for="customRange2" class="form-label fTitle">Duration (Max Travel Time)</label>
+            <input type="range" class="form-range" id="customRange2" min="1" max="24">
+            <div class="row d-flex justify-content-between fw-semibold">
+                <div class="col-12 text-end">Up to <span id="maxRange2">any</span></div>
+            </div>
+            <hr>
+
+            <span class="fTitle">Stops</span>
+            <div class="fContent">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Any
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Nonstop
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" >
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Up to 1 stop
+                    </label>
+                </div>
+            </div>
+            <hr>
+
+            <span class="fTitle">Class</span>
+            <div class="fContent">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="fd" id="fd1" checked>
+                    <label class="form-check-label" for="fd1">
+                        Economy
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="fd" id="fd2" >
+                    <label class="form-check-label" for="fd2">
+                        Business
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="fd" id="fd3" >
+                    <label class="form-check-label" for="fd3">
+                        First
+                    </label>
+                </div>
+            </div>
+            <hr>
+
+            <span class="fTitle">Shortcut Options</span>
+            <div class="fContent">
+                <div class="row">
+                    <div class="col-3 mx-1 my-1">
+                        <button type="button" class="btn btn-danger btn-sm" style="font-size: 12px;color: #FFFFFF">
+                            Cheapest
+                        </button>
+                    </div>
+                    <div class="col-3 mx-1 my-1">
+                        <button type="button" class="btn btn-warning btn-sm" style="font-size: 12px;color: #FFFFFF">
+                            PREMIUM
+                        </button>
+                    </div>
+                    <div class="col-3 mx-3 my-1">
+                        <button type="button" class="btn btn-success btn-sm" style="font-size: 12px;color: #FFFFFF">Hot
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <span class="fTitle">Custom Keyword</span>
+            <div class="fContent">
+                <input
+                        type="text"
+                        class="form-control p-4"
+                        data-role="tagsinput"
+                />
+            </div>
+            <div class="text-end" >
+                <input class="btn btn-dark" type="button" value="Show" id="searchBt">
+                <input class="btn btn-dark" type="button" value="Clear">
+            </div>
+        </div>
+<!--        <hr>-->
+<!--        <div class="text-end" >-->
+<!--            <input class="btn btn-dark" type="button" value="Search" id="searchBt">-->
+<!--            <input class="btn btn-dark" type="button" value="Clear">-->
+<!--        </div>-->
+
+
+    </div>
+    </div>
+</div>
+
+
+
+<div class="container text-center mt-5">
 
 
     <div class="row">
@@ -278,12 +669,11 @@
         <div class="col-6 departureTitle">
 
             <p class="h2 fw-semibold  text-start p-3 depReplace">Departure <br> <small class="text-muted"
-                                                                            style="font-size:60%;">Taiwan,
-                TPE (15-10-2022)</small></p>
+                                                                            style="font-size:60%;">Hong Kong
+                HKG (15-10-2022)</small></p>
         </div>
 
         <div class="col-6 d-flex flex-row-reverse">
-
             <div class="dropdown pt-5 px-1  pe-3">
                 <a href="#" class="btn btn-dark dropdown-toggle sortDropDown" data-bs-toggle="dropdown" role="button">
                     <i class="cil-sort-descending" style="font-size:21px"></i></a>
@@ -293,14 +683,12 @@
                     <button type="button" class="dropdown-item fw-semibold text-black-25" href="#" onclick="fakeSortByPrice()">Price</button>
                 </div>
             </div>
-
             <div class="dropdown  pt-5 pe-2">
                 <a href="#" class="btn btn-dark dropdown-toggle sortDropDown" data-bs-toggle="dropdown" role="button"><i
                         class="cil-calendar" style="font-size:21px"></i></a>
                 <div class="dropdown-menu fs-6" style="min-width: inherit;">
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -399,413 +787,630 @@
     </div>
     <!--    <h5 class="mt-2 fw-normal text-start ps-3">Who let the dog out </h5>-->
 
+
+    <div class="customContainer py-3">
+
+        <div class="pagination">
+            <ul>
+                <li><a href="#"></a></li>
+                <li class="pageNo active " value="0"><a href="#"></a></li>
+                <li class="pageNo" value="1"><a href="#"></a></li>
+                <li class="pageNo" value="2"><a href="#"></a></li>
+                <li><a href="#"></a></li>
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+<!--                <li><a href="#"></a></li>-->
+            </ul>
+        </div>
+
+    </div>
+
+
     <section id="section-Departure">
 
         <div class="section-DepartureItem">
 
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">14:30 <span class="terminalName">Terminal 1</span></p>
-                            </div>
+            <div class="result">
+                <!--   HK to TW search result -->
+                <div class="row px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">14:30 <span class="terminalName">Terminal 1</span></p>
+                                </div>
 
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">HKEEC2</span></div>
-                            </div>
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKEEC2</span></div>
+                                </div>
 
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">16:30 <span class="terminalName">Terminal 2</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">2 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">$1,920 </span> <span
-                                            class="currency fw-lighter">HKD</span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">16:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">2 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$1,920 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
+                <!--   HK to TW search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">15:30 <span class="terminalName">Terminal 8</span></p>
+                                </div>
 
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKBBC2</span></div>
+                                </div>
+
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">17:30 <span class="terminalName">Terminal 5</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">7 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$2,710 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--   HK to TW search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">16:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKJEC9</span></div>
+                                </div>
+
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">18:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">6 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$2,710 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="result">
+                <!--   HK to TW search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">17:30 <span class="terminalName">Terminal 9</span></p>
+                                </div>
+
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKRRC2</span></div>
+                                </div>
+
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">19:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">9 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$2,820 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--   HK to TW search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">18:30 <span class="terminalName">Terminal 1</span></p>
+                                </div>
+
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKOOC2</span></div>
+                                </div>
+
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">20:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">2 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$2,920 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--   HK to TW search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">19:30 <span class="terminalName">Terminal 4</span></p>
+                                </div>
+
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKEEC4</span></div>
+                                </div>
+
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">21:30 <span class="terminalName">Terminal 5</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">2 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$3,820 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="result">
+                <!--   HK to TW search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">14:30 <span class="terminalName">Terminal 1</span></p>
+                                </div>
+
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">TWEEC2</span></div>
+                                </div>
+
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
+                                    <p class="card-text airportName2">Taoyuan International</p>
+                                    <p class="time-From2">16:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">0 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">Sold out </span> <span
+                                                class="currency fw-lighter"><s>HKD</s></span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
+
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="result">
+                <!--   HK to JP search result -->
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">19:30 <span class="terminalName">Terminal 4</span></p>
+                                </div>
 
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">15:30 <span class="terminalName">Terminal 8</span></p>
-                            </div>
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKEEC4</span></div>
+                                </div>
 
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">HKBBC2</span></div>
-                            </div>
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">ITAMI</p>
+                                    <p class="card-text airportName2">ITAMI International</p>
+                                    <p class="time-From2">21:30 <span class="terminalName">Terminal 2</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">15 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
 
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">17:30 <span class="terminalName">Terminal 5</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">7 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
-
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">$2,710 </span> <span
-                                            class="currency fw-lighter">HKD</span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$5,820 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
 
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">16:30 <span class="terminalName">Terminal 2</span></p>
-                            </div>
-
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">HKJEC9</span></div>
-                            </div>
-
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">18:30 <span class="terminalName">Terminal 2</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">6 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
-
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">$2,710 </span> <span
-                                            class="currency fw-lighter">HKD</span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
-                                    </div>
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
-
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
 
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">17:30 <span class="terminalName">Terminal 9</span></p>
-                            </div>
 
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">HKRRC2</span></div>
-                            </div>
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">19:30 <span class="terminalName">Terminal 4</span></p>
+                                </div>
 
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">19:30 <span class="terminalName">Terminal 2</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">9 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">HKEEC4</span></div>
+                                </div>
 
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">$2,820 </span> <span
-                                            class="currency fw-lighter">HKD</span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">ITAMI</p>
+                                    <p class="card-text airportName2">ITAMI International</p>
+                                    <p class="time-From2">21:30 <span class="terminalName">Terminal 5</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">3 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$6,820 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
 
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">18:30 <span class="terminalName">Terminal 1</span></p>
-                            </div>
-
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">HKOOC2</span></div>
-                            </div>
-
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">20:30 <span class="terminalName">Terminal 2</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">2 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
-
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">$2,920 </span> <span
-                                            class="currency fw-lighter">HKD</span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
-                                    </div>
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
 
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">19:30 <span class="terminalName">Terminal 4</span></p>
-                            </div>
 
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">HKEEC4</span></div>
-                            </div>
+                <div class="row pt-5 px-2  searchResult">
+                    <div class="card shadow-sm border-light" style="height:180px; padding:0;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ticketOption-From text-start border-end">
+                                    <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
+                                    <p class="card-text airportName">Hong Kong International</p>
+                                    <p class="time-From">19:30 <span class="terminalName">Terminal 4</span></p>
+                                </div>
 
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">21:30 <span class="terminalName">Terminal 5</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">2 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
+                                <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
+                                    <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
+                                    <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
+                                            class="fw-lighter" style="font-size: 14px;">JPEEC4</span></div>
+                                </div>
 
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">$3,820 </span> <span
-                                            class="currency fw-lighter">HKD</span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
+                                <div class="col-3 ticketOption-To">
+                                    <p class="fw-bolder fs-3 text-center mb-0">ITAMI</p>
+                                    <p class="card-text airportName2">ITAMI International</p>
+                                    <p class="time-From2">21:30 <span class="terminalName">Terminal 8</span></p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="py-5"><span
+                                            style="font-size: 14px;font-weight: 600;">1 seats left</span><span
+                                            style="font-size: 14px;"> at this price</span></div>
+
+                                </div>
+                                <div class="col-3 ticketOption-Price">
+                                    <div class="pe-5 my-2">
+                                        <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
+                                        <div><span class="unitPrice">$9,820 </span> <span
+                                                class="currency fw-lighter">HKD</span>
+                                        </div>
+                                        <div class="pt-2">
+                                            <button type="button" class="btn btn-outline-info btn-md"
+                                                    style="width: 101px; height: 34px;">Select
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
+                        <div class="card-footer text-muted p-0">
+                            <div class="row">
+                                <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
+                                                        width="150px"></div>
+                                <div class="col-6"></div>
 
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--   HK to TW search result -->
-            <div class="row pt-5 px-2  searchResult">
-                <div class="card shadow-sm border-light" style="height:180px; padding:0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3 ticketOption-From text-start border-end">
-                                <p class="fw-bolder fs-3 text-center mb-0">HKG</p>
-                                <p class="card-text airportName">Hong Kong International</p>
-                                <p class="time-From">14:30 <span class="terminalName">Terminal 1</span></p>
-                            </div>
-
-                            <div class="col-1 ticketOption-duration pb-0 px-0 border-end">
-                                <div style="padding-top: 22px;"><i class="cil-flight-takeoff pb-0"></i></div>
-                                <div><span class="" style="font-size: 21px;font-weight: 800;">2:30HR</span><br><span
-                                        class="fw-lighter" style="font-size: 14px;">TWEEC2</span></div>
-                            </div>
-
-                            <div class="col-3 ticketOption-To">
-                                <p class="fw-bolder fs-3 text-center mb-0">TPE</p>
-                                <p class="card-text airportName2">Taoyuan International</p>
-                                <p class="time-From2">16:30 <span class="terminalName">Terminal 2</span></p>
-                            </div>
-                            <div class="col-2">
-                                <div class="py-5"><span
-                                        style="font-size: 14px;font-weight: 600;">0 seats left</span><span
-                                        style="font-size: 14px;"> at this price</span></div>
-
-                            </div>
-                            <div class="col-3 ticketOption-Price">
-                                <div class="pe-5 my-2">
-                                    <div class="total-cost"><i class="bi bi-exclamation-circle"></i>Total cost</div>
-                                    <div><span class="unitPrice">Sold out </span> <span
-                                            class="currency fw-lighter"><s>HKD</s></span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <button type="button" class="btn btn-outline-info btn-md"
-                                                style="width: 101px; height: 34px;">Select
-                                        </button>
-                                    </div>
+                                <div class="col-3">
+                                    <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card-footer text-muted p-0">
-                        <div class="row">
-                            <div class="col-3"><img class="" src="../icon/png/logo-no-background.png" alt=""
-                                                    width="150px"></div>
-                            <div class="col-6"></div>
-
-                            <div class="col-3">
-                                <div><small class="text-muted" style="padding-left: 81px;">💺View Seatmap</small></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
+
         </div>
     </section>
 
@@ -2019,5 +2624,100 @@
     </script>
 </div>
 
+
+
+
+<!--  *****************    -->
+<!-- jsdelivr date picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        defer></script>
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous" defer></script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+
+<!--tag input-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+<!--  *****************    -->
+
+
+<script>
+
+    $(document).ready(function (){
+
+        $('.result').hide();
+        $('.result:eq(0)').show();
+
+
+        $('.sidebar').hover(function (){
+
+            $(this).css('left','0');
+            $('#inSidebar').css('display','block')
+            $(this).css('background-color','#f5f7f9');
+        })
+
+        $('.sidebar').mouseleave(function (){
+            $('.sidebar').css('left','-190px');
+            $('#inSidebar').css('display','none')
+            $('.sidebar').css('background-color','transparent');
+        })
+
+        $('.pageNo').click(function (){
+            for (let i=0;i<$('.pageNo').length;i++){
+                $('.pageNo:'+'eq('+i+')').removeClass('active');
+            }
+            $(this).addClass('active');
+            var idx =$(this).val();
+            $('.result').hide();
+            $('.result:eq('+idx+')').show();
+        });
+
+        $('#searchBt').click(function (){
+            $('.result').hide();
+            $('.result:eq(3)').show();
+        });
+
+    });
+
+    $('#customRange1').change(function () {
+        $('#maxRange').text($(this).val());
+    })
+
+    $('#customRange2').change(function () {
+        $('#maxRange2').text($(this).val() + ' hr');
+    })
+
+
+    $(function () {
+        $('input')
+            .on('change', function (event) {
+                var $element = $(event.target);
+                var $container = $element.closest('.example');
+
+                if (!$element.data('tagsinput')) return;
+
+                var val = $element.val();
+                if (val === null) val = 'null';
+                var items = $element.tagsinput('items');
+
+                $('code', $('pre.val', $container)).html(
+                    $.isArray(val)
+                        ? JSON.stringify(val)
+                        : '"' + val.replace('"', '\\"') + '"'
+                );
+                $('code', $('pre.items', $container)).html(
+                    JSON.stringify($element.tagsinput('items'))
+                );
+            })
+            .trigger('change');
+    });
+</script>
+
+
 </body>
 </html>
+
