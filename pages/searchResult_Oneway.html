@@ -227,6 +227,9 @@
             color: #252A31;
             position: absolute;
             font-family: Manrope;
+            transition: all 1s;
+            transition-timing-function: ease-out;
+
         }
 
         .fTitle {
@@ -248,7 +251,9 @@
             padding: 0.2rem;
         }
         #inSidebar{
-            display: none;
+            visibility: hidden;
+            transition: visibility 0.9s;
+            transition-timing-function: ease;
         }
 
         /*page number*/
@@ -750,7 +755,7 @@
 
 
 
-<div class="container text-center mt-5">
+<div class="container text-center mt-5" style="height: 130vh">
 
 
     <div class="row">
@@ -3109,14 +3114,15 @@
         $('.sidebar').hover(function (){
 
             $(this).css('left','0');
-            $('#inSidebar').css('display','block')
+            $('#inSidebar').css('visibility','visible')
             $(this).css('background-color','#f5f7f9');
         })
 
         $('.sidebar').mouseleave(function (){
             $('.sidebar').css('left','-190px');
-            $('#inSidebar').css('display','none')
+            $('#inSidebar').css('visibility','hidden')
             $('.sidebar').css('background-color','transparent');
+
         })
 
         $('.pageNo').click(function (){
