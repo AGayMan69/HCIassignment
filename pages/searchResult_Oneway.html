@@ -220,7 +220,7 @@
         .sidebar {
             display: block;
             width: 250px;
-            height: 104vh;
+            height: 100%;
             left:-190px;
             /*background-color: #f5f7f9;*/
             background-color:transparent;
@@ -254,7 +254,7 @@
         /*page number*/
 
 
-        pagination .center {
+        .pagination .center {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -461,6 +461,18 @@
             margin-bottom: 0;
         }
 
+        .form-switch .form-check-input:focus {
+            border-color: rgba(0, 0, 0, 0.25);
+            outline: 0;
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+        }
+        .form-switch .form-check-input:checked {
+            background-color: #30D158;
+            border-color: #30D158;
+            border: none;
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+        }
 
     </style>
 
@@ -612,6 +624,33 @@
                         First
                     </label>
                 </div>
+            </div>
+            <hr>
+
+            <span class="fTitle">Extra Filter</span>
+            <div class="fContent">
+                <div class="form-check form-switch fs-6">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Low Criminal rate</label>
+                </div>
+
+                <div class="form-check form-switch fs-6">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1">
+                    <label class="form-check-label" for="flexSwitchCheckDefault1">Low COVID count</label>
+                </div>
+
+                <div class="form-check form-switch fs-6">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3">
+                    <label class="form-check-label" for="flexSwitchCheckDefault3">No Gun</label>
+                </div>
+
+                <div class="form-check form-switch fs-6">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+                    <label class="form-check-label" for="flexSwitchCheckDefault2">Cold Weather</label>
+                </div>
+
+
+
             </div>
             <hr>
 
