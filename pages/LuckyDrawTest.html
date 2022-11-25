@@ -44,50 +44,19 @@
         }
     }
 
-    /** {*/
-    /*    padding: 0;*/
-    /*    margin: 0;*/
-    /*    font-family: '微軟正黑體';*/
-    /*}*/
-
-    /*body {*/
-    /*    background-color: #3DBFBB;*/
-    /*}*/
-
-    /*.container {*/
-    /*    max-width: 1000px;*/
-    /*    min-width: 400px;*/
-    /*    margin: 0 auto;*/
-    /*}*/
-
-    /*header {*/
-    /*    text-align: center;*/
-    /*    padding: 50px;*/
-    /*}*/
-
-    /*header p {*/
-    /*    padding-top: 20px;*/
-    /*}*/
-
-    /*header p span {*/
-    /*    font-size: 32px;*/
-    /*    font-weight: bold;*/
-    /*    margin: 0 5px;*/
-    /*}*/
-
     section.lottery {
         width: 100%;
         margin: 20px auto;
         position: relative;
         border-radius: 10px;
-        box-shadow: 0px 0px 0px 20px #F52037, 23px 23px 30px 1px #333;
-        background: #c0091c;
+        box-shadow: 0px 0px 0px 20px #20bcf5, 23px 23px 30px 1px #333;
+        background: #0974c0;
     }
 
     @media screen and (max-width: 767px) {
         section.lottery {
             width: 360px;
-            box-shadow: 0px 0px 0px 15px #F52037, 18px 18px 30px 1px #333;
+            box-shadow: 0px 0px 0px 15px #20eef5, 18px 18px 30px 1px #333;
         }
     }
 
@@ -109,12 +78,12 @@
         text-align: center;
         position: absolute;
         display: block;
-        border: 3px solid #c0091c;
+        border: 3px solid #0995c0;
         box-sizing: border-box;
         background: #fff;
         font-size: 19.2px;
         border-radius: 15px;
-        box-shadow: 0px -5px #fcb2ba inset;
+        box-shadow: 0px -5px #b2fcf3 inset;
     }
 
     section.lottery ul li.shiny {
@@ -131,7 +100,7 @@
 
     section.lottery ul li.active {
         font-weight: bold;
-        background-color: #ffd79a;
+        background-color: #ffe6b5;
         box-shadow: 0px -5px #FF9A01 inset;
     }
 
@@ -211,7 +180,7 @@
         height: 156.52174px;
         top: -8px;
         color: #341f00;
-        font-size: 40px;
+        font-size: 34px;
         background-color: #FF9A01;
         border: none;
         border-radius: 5px;
@@ -268,6 +237,11 @@
         }
     }
 
+    #luckydraw .modal-content {
+        background: transparent;
+        border: none !important;
+    }
+
 </style>
 
 
@@ -283,7 +257,7 @@
 <div class="col-6">
   <!--PREVIOUS FLIGHTS -->
   <button type="button" class="btn bg-light fw-semibold changeFBtn" data-coreui-toggle="modal"
-          data-coreui-target="#staticBackdrop">CHEAPEST FLIGHTS
+          data-coreui-target="#luckydraw">CHEAPEST FLIGHTS
   </button>
 </div>
 
@@ -294,16 +268,11 @@
   <!-- Vertically centered modal -->
 
 
-  <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1"
+  <div class="modal fade" id="luckydraw"  data-coreui-keyboard="false" tabindex="-1"
        aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
 
       <div class="modal-content border border-light rounded-2">
-        <div class="modal-header border-0">
-          <h5 class="modal-title fs-3 fw-semibold radius-10 border-bottom border-0 border-2"
-              id="staticBackdropLabel">CHEAPEST FLIGHTS</h5>
-          <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
-        </div>
         <div class="modal-body">
 
           <div class="container">
@@ -320,7 +289,7 @@
                   <li class="shiny item-6"></li>
                   <li class="shiny item-7"></li>
                   <li class="shiny item-8"></li>
-                  <div class="lottery_btn"><button>開始<br />抽獎</button></div>
+                  <div class="lottery_btn"><button>LUCKY<br />DRAW</button></div>
                 </ul>
               </section>
               <footer></footer>
@@ -332,15 +301,6 @@
 
 
 
-        </div>
-        <div class="modal-footer border border-white">
-          <!--                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>-->
-
-          <button class="confirmBt fw-semibold bg-secondary" id="modelCancelBt" data-coreui-dismiss="modal">
-            Cancel
-          </button>
-          <button class="confirmBt fw-semibold" data-coreui-dismiss="modal" id="SelectBt01">Select</button>
-          <!--                    <button type="button" class="btn btn-primary">Understood</button>-->
         </div>
       </div>
     </div>
@@ -368,50 +328,40 @@
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
 
 
-<script type="text/javascript">
-
-
-    $(document).ready(function () {
-
-
-    });
-
-</script>
-
 <script>
   const $el = $('.lottery'),
-          prize_list = [ // 獎品項目
+          prize_list = [
             {
-              "name":"再抽一次",
-              "img":"https://cdn-icons-png.flaticon.com/512/1933/1933691.png"
+              "name":"Redraw",
+              "img":"../images/redraw.png"
             },
             {
-              "name":"+8積分",
-              "img":"https://cdn-icons-png.flaticon.com/512/616/616490.png"
+              "name":"+8credit",
+              "img":"../images/credit.png"
             },
             {
-              "name":"+108積分",
-              "img":"https://cdn-icons-png.flaticon.com/512/616/616490.png"
+              "name":"+1080credit",
+              "img":"../images/credit.png"
             },
             {
-              "name":"謝謝惠顧",
-              "img":"https://cdn-icons-png.flaticon.com/512/742/742751.png"
+              "name":"",
+              "img":"../images/thank-you.png"
             },
             {
-              "name":"iphone8s",
+              "name":"iphone14Pro",
               "img":"https://cdn-icons-png.flaticon.com/512/644/644458.png"
             },
             {
-              "name":"+12積分",
-              "img":"https://cdn-icons-png.flaticon.com/512/616/616490.png"
+              "name":"+12credit",
+              "img":"../images/credit.png"
             },
             {
-              "name":"+58積分",
-              "img":"https://cdn-icons-png.flaticon.com/512/616/616490.png"
+              "name":"+508credit",
+              "img":"../images/credit.png"
             },
             {
-              "name":"謝謝惠顧",
-              "img":"https://cdn-icons-png.flaticon.com/512/742/742751.png"
+              "name":"",
+              "img":"../images/thank-you.png"
             }
           ];
 
@@ -421,28 +371,23 @@
     );
   });
 
-  // 獎品結果
   var prizeId = -1;
 
-  // 獎品抽獎
   function draw(oMain, callback){
     let timer = null,
             index = oMain.find(".active").index(),
             len = oMain.find("li").length,
-            iSpeed = 100, // 速度
-            iLast = len; // 倒數圈數
+            iSpeed = 100,
+            iLast = len;
     (function run(){
       index++;
 
-      // 跑3個後加速
       if(index > 2) iSpeed = 100;
-      // 最後一圈減速
       if(iLast < 2) iSpeed = 300;
 
       if(index >= len) index = 0;
       oMain.find("li").removeClass("active").eq(index).addClass("active");
 
-      // 轉動
       timer = setTimeout(run, iSpeed);
 
       if(prizeId !== -1 && index === prizeId){
@@ -461,16 +406,14 @@
       prizeId = Math.floor(Math.random() * 8);
     });
 
-    // 禁用按鈕 & 效果移除
     $el.find('button').prop("disabled", true);
     $el.find('li').removeClass("shiny");
 
     draw($el, function(){
       setTimeout(() => {
-        // 恢復按鈕
         $el.find('button').prop("disabled", false);
         $el.find('li').removeClass("active").addClass("shiny");
-        alert("恭喜獲得："+ prize_list[prizeId].name + "!!");
+        alert("You have got："+ prize_list[prizeId].name + "!!");
       });
     });
   });

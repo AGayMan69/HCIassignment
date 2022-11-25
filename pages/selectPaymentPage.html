@@ -491,7 +491,6 @@
             margin-top: 0px;
         }
         .card__body {
-            background-color: #f8f6f6;
             border-radius: 4px;
             width: 100%;
             margin-top: 100px;
@@ -510,10 +509,11 @@
             font-size: 60%;
         }
         .card__method {
-            color: #d3cece;
+            color: #5f605f;
             text-transform: uppercase;
             text-align: left;
-            font-size: 11px;
+            font-size: 16px;
+            font-weight: 500;
             margin-bottom: 5px;
         }
         .card__payment {
@@ -553,11 +553,11 @@
         }
         .card__tag {
             text-transform: uppercase;
-            background-color: #f8f6f6;
+            background-color: #f1f1f1;
             box-sizing: border-box;
             padding: 3px 5px;
             border-radius: 3px;
-            font-size: 10px;
+            font-size: 15px;
             color: #d3cece;
         }
 
@@ -651,6 +651,10 @@
             text-align: center;
             cursor: pointer;
             transform: scale(0.9);
+        }
+
+        #cardnumber {
+            width: 100%;
         }
     </style>
 </head>
@@ -759,7 +763,7 @@
                         </div>
                     </div>
 
-                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem04">
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem04" style="background-color: #c4e9f969">
                         <div class="row ">
                             <div class="col-md-4 pImg">
                                 <img class="w-100 reIcon" src="../images/ReservePageIcon/payment.png">
@@ -856,12 +860,12 @@
 
                             <div class="panel-footer">
 
-                                <div class="row" style="width: 100%;">
+                                <div class="row mt-2" style="width: 100%;">
                                     <div class="col-6" id="invalidCardWarning" style="vertical-align: middle;">
                                         <span class="info2" style="color:red;font-size: 14px"> &nbsp; &nbsp; &nbsp;* Incorrect credit card number. </span>
                                     </div>
 
-                                    <div class="col-6 d-flex justify-content-center">
+                                    <div class="col-6 d-flex justify-content-end">
 
                                         <div id="trueBt">
 
@@ -919,7 +923,7 @@
                                     <h1 class="card__price"><span>$</span>7480<span>.00</span></h1>
 
                                     <p class="card__method">Payment method</p>
-                                    <div class="card__payment">
+                                    <div class="card__payment shadow">
                                         <img src="https://seeklogo.com/images/M/master-card-logo-5806741801-seeklogo.com.png" class="card__credit-card">
                                         <div class="card__card-details">
                                             <p class="card__card-type">Credit / debit card</p>
@@ -958,13 +962,13 @@
 
                         </div>
 
-                        <div class="card-body pt-5" style="margin-bottom: 160px">
+                        <div class="card-body " style="margin-bottom: 160px">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     <span id="dNoPass">Departure (Economy)$1920x2</span>
                                     <span id="adultPrice">$3840.0</span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3 pb-5">
                                     <span id="rNoPass">Return (Economy)$1820x2</span>
                                     <span id="childPrice">$3640.0</span>
                                 </li>
@@ -1146,6 +1150,11 @@
         bButton.style.animation = 'breathing 2s ease-out infinite normal';
         bButton.style.background = '#f9b115';
         bButton.style.color = '#424246';
+
+        $('#breathing-button').css('background', 'linear-gradient(0deg, rgb(13, 159, 213) 0%, rgb(68, 239, 225))');
+        $('#breathing-button').css('color', '#FFFFFF');
+        $('#breathing-button').css('font-weight', '700');
+        $('#breathing-button').css('border', 'none');
         bButton.setAttribute('onclick','window.location = \'confirmPage.html\'');
         document.getElementsByClassName('customCard')[0].style.marginBottom = '48px';
 

@@ -33,6 +33,9 @@
     <style>
 
         @import url(https://fonts.googleapis.com/css?family=Happy+Monkey|Lemon);
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
         * {
             margin: 0;
@@ -129,7 +132,7 @@
         /*}*/
 
         .page__segment.white {
-            background-color: #fff;
+            background-color: transparent;
         }
 
         .tab__content {
@@ -159,7 +162,6 @@
         .page-tab-header {
             width: 100%;
             position: relative;
-            background-color: white;
         }
 
         .page-tab-header > .header-set {
@@ -183,6 +185,7 @@
 
         .page-tab-header > .navigation:hover .navigation-menu {
             height: auto;
+            background: transparent;
         }
 
         .page-tab-header > .navigation .navigation-toggle {
@@ -193,6 +196,7 @@
         }
 
         .page-tab-header > .navigation .navigation-menu {
+            background: transparent;
             height: 0;
             overflow: hidden;
             position: absolute;
@@ -202,7 +206,6 @@
             width: 100%;
             border: 1px solid #e8e8e8;
             border-radius: 0 0 4px 4px;
-            background-color: white;
             box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.54);
         }
 
@@ -487,25 +490,40 @@
         }
 
         /*breath button*/
+        /*breath button*/
+        div:has(> #breathing-button) {
+            padding-left: 0 !important;
+        }
+
         #breathing-button {
+            font-family: "Overpass";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             width: 100%;
-            padding: 10px;
-            margin-left: -10px;
-            /*margin: 50px auto;*/
-            border: 1px solid #d1d1d1;
-            -webkit-animation: breathing 2s ease-out infinite normal;
-            animation: breathing 2s ease-out infinite normal;
-            font-size: 25px;
-            background: #f9b115;
-            color: #424246;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 20px;
-            text-align: center;
+            height: 100%;
+            font-weight: bold;
+            font-size: 28px;
+
+            padding-block: 17px;
+            background: linear-gradient(0deg, rgb(13, 159, 213) 0%, rgb(68, 239, 225));
+            color: #ffffff;
+
+            animation: breathing 2s cubic-bezier(0, 0.48, 0.22, 1.38) infinite normal;
+            border-radius: 10px;
             cursor: pointer;
         }
 
+        #breathing-button:hover,
+        #breathing-button:focus {
+            animation: pulse .5s;
+            box-shadow: 0 0 0 1em transparent;
+        }
 
-
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 253, 253, 0.83); }
+        }
 
         @-webkit-keyframes breathing {
             0% {
@@ -554,6 +572,262 @@
                 transform: scale(0.9);
             }
         }
+
+        .flight-details {
+            background: url("../images/payment_background.jpg");
+            background-size: cover;
+            background-position: top;
+        }
+
+        .thank-message {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3rem!important;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .information-subh {
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.7rem !important;
+            font-weight: 200 !important;
+            margin-top: 1.2em;
+            margin-bottom: .5em;
+        }
+
+        .flight-details-title{
+            font-family: 'Overpass', sans-serif;
+            color: #f4f5f9;
+            font-size: 3rem!important;
+            font-weight: 700!important;
+        }
+
+        .customer-card {
+            background: #312c2f;
+            margin-right: 20px;
+            color: #d9cb92;
+            padding-block: 1.5em;
+            padding-inline: 2.2em;
+            transition: 0.3s;
+        }
+        .customer-card:hover {
+            transform: scale(1.1);
+        }
+
+        .customer-card div:first-of-type{
+            font-size: 1.7rem !important;
+        }
+
+
+        /*Lucky draw style*/
+        @keyframes shiny {
+            0% {
+                background-color: #fff;
+            }
+            50% {
+                background-color: #fff;
+            }
+            100% {
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        section.lottery {
+            width: 100%;
+            margin: 20px auto;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0px 0px 0px 20px #20bcf5, 23px 23px 30px 1px #333;
+            background: #0974c0;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery {
+                width: 360px;
+                box-shadow: 0px 0px 0px 15px #20eef5, 18px 18px 30px 1px #333;
+            }
+        }
+
+        section.lottery ul {
+            width: 100%;
+            height: 540px;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery ul {
+                height: 360px;
+            }
+        }
+
+        section.lottery ul li {
+            height: 180px;
+            width: 33%;
+            list-style: none;
+            text-align: center;
+            position: absolute;
+            display: block;
+            border: 3px solid #0995c0;
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 19.2px;
+            border-radius: 15px;
+            box-shadow: 0px -5px #b2fcf3 inset;
+        }
+
+        section.lottery ul li.shiny {
+            animation: shiny 1s linear infinite alternate;
+            -webkit-animation: shiny 1s linear infinite alternate;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery ul li {
+                height: 120px;
+                font-size: 16px;
+            }
+        }
+
+        section.lottery ul li.active {
+            font-weight: bold;
+            background-color: #ffe6b5;
+            box-shadow: 0px -5px #FF9A01 inset;
+        }
+
+        section.lottery ul li.item-1 {
+            top: 0.5%;
+            left: 0.5%;
+        }
+
+        section.lottery ul li.item-2 {
+            top: 0.5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        section.lottery ul li.item-3 {
+            top: 0.5%;
+            right: 0.5%;
+        }
+
+        section.lottery ul li.item-4 {
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0.5%;
+        }
+
+        section.lottery ul li.item-5 {
+            bottom: 0.5%;
+            right: 0.5%;
+        }
+
+        section.lottery ul li.item-6 {
+            bottom: 0.5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        section.lottery ul li.item-7 {
+            bottom: 0.5%;
+            left: 0.5%;
+        }
+
+        section.lottery ul li.item-8 {
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0.5%;
+        }
+
+        section.lottery ul li img {
+            width: 85px;
+            margin: 30px 0 10px;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery ul li img {
+                width: 50px;
+                margin: 20px 0 2px;
+            }
+        }
+
+        section.lottery .lottery_btn {
+            position: absolute;
+            width: 33%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        section.lottery .lottery_btn button {
+            font-weight: bold;
+            box-shadow: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            width: 95%;
+            height: 156.52174px;
+            top: -8px;
+            color: #341f00;
+            font-size: 34px;
+            background-color: #FF9A01;
+            border: none;
+            border-radius: 5px;
+            box-shadow: inset 0px 3px 0px #ffe1b3, 0px 8px 0px #cd7b00;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery .lottery_btn button {
+                height: 102.85714px;
+                font-size: 24px;
+                top: -8px;
+                box-shadow: inset 0px 3px 0px #ffe1b3, 0px 6px 0px #cd7b00;
+            }
+        }
+
+        section.lottery .lottery_btn button:disabled {
+            cursor: default;
+            background-color: #ffb84d;
+        }
+
+        section.lottery .lottery_btn button::before {
+            content: "";
+            background-color: #341f00;
+            width: 97%;
+            height: 95%;
+            padding: 0px 6px 10px;
+            position: absolute;
+            bottom: -16px;
+            left: -3px;
+            border-radius: 5px;
+            z-index: -1;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery .lottery_btn button::before {
+                width: 95%;
+                bottom: -14px;
+            }
+        }
+
+        section.lottery .lottery_btn button:active, section.lottery .lottery_btn button:disabled {
+            margin: 13px auto;
+            box-shadow: inset 0px 1px 0px #ffe1b3, 0px 0px 0px #cd7b00;
+            top: 0px;
+        }
+
+        section.lottery .lottery_btn button:active::before, section.lottery .lottery_btn button:disabled::before {
+            bottom: -8px;
+        }
+
+        @media screen and (max-width: 767px) {
+            section.lottery .lottery_btn button:active::before, section.lottery .lottery_btn button:disabled::before {
+                bottom: -6px;
+            }
+        }
+
+        #luckydraw .modal-content {
+            background: transparent;
+            border: none !important;
+        }
     </style>
 </head>
 
@@ -584,7 +858,7 @@
                     <a class="nav-link fs-6" href="./index.html#feature-section">Featured</a>
                 </li>
                 <li class="nav-item nav-history">
-                    <a class="nav-link fs-6" href="#">View Flight</a>
+                    <a class="nav-link fs-6" href="./DeleteTicketPage.html">View Flight</a>
                 </li>
             </ul>
 
@@ -675,7 +949,7 @@
                         </div>
                     </div>
 
-                    <div class="card col-md-3 p-3 pCard rounded-0  rounded-end  shadow-sm my-1 tpItem" id="tpItem05">
+                    <div class="card col-md-3 p-3 pCard rounded-0  rounded-end  shadow-sm my-1 tpItem" id="tpItem05" style="background-color: #c4e9f969">
                         <div class="row ">
                             <div class="col-md-4 pImg">
                                 <img class="w-100 reIcon" src="../images/ReservePageIcon/confirm.png">
@@ -702,7 +976,7 @@
 
                 <div class="row">
 
-                    <div class="col-5 px-5 pt-5">
+                    <div class="col-5 px-5 pt-5 flight-details">
 
                         <div class="the-page my-2">
                             <div class="page__content">
@@ -710,7 +984,7 @@
                                     <div class="page__frame">
                                         <div class="page-tab-header">
                                             <div class="header-set">
-                                                <h2 class="title t--head text-start fw-semibold">Flight Details</h2>
+                                                <h2 class="flight-details-title title t--head text-start fw-semibold mb-4" style="">Flight Details</h2>
                                             </div>
                                             <nav class="navigation" id="js--navid">
                                                 <button class="navigation-toggle t--tab">menu</button>
@@ -873,7 +1147,7 @@
                             <div class="col-5 pt-3 ">
                                 <button type="button" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop"
                                         class="btn btn-secondary btn-lg"
-                                        style="color: #fff">Email Me
+                                        style="color: #fff; background-color: #00aee1">Email Me
                                 </button>
                             </div>
                         </div>
@@ -885,20 +1159,18 @@
 
 
                         <div class="row text-start pt-5">
-                            <div class="card border-0" style="background-color: #e6f7e4; width: auto;">
-                                <span class="fs-3" style="color: #3db54d;">
-                                Thank you. Your order has been received</span>
+                            <div class="card border-0" >
+                                <span class="fs-3 thank-message" >Thank you for your purchase!</span>
                             </div>
                         </div>
 
-                        <div class="row text-start py-4 ">
+                        <div class="row text-start mt-5 py-4" style="background: #f2f2f2;">
 
-                            <div class="card" style="background-color: #f8f8f8;border:10px solid transparent">
-                                <div class="row text-center align-items-center">
-                                    <div class="col-3 fs-8 fw-semibold">Order No: #1234789</div>
-                                    <div class="col-3 fs-8 fw-semibold">Order Date <br>12-10-2022</div>
-                                    <div class="col-3 fs-8 fw-semibold">Total: HK$7840.0</div>
-                                    <div class="col-3 fs-8 fw-semibold">Payment Method: <img
+                            <div class="card" style="border:10px solid transparent; background: transparent">
+                                <div class="row  align-items-center">
+                                    <div class="col-5 fs-8 fw-semibold"><span class="fw-bold fs-5">Order No: #1234789</span><br>12-10-2022</div>
+                                    <div class="col-3 fs-8 ms-auto  text-end fw-semibold">HK$7840.0</div>
+                                    <div class="col-2 fs-8 text-end fw-semibold"><img
                                             src="https://seeklogo.com/images/M/master-card-logo-5806741801-seeklogo.com.png"
                                             width="50px" alt=""></div>
                                 </div>
@@ -908,47 +1180,31 @@
                         </div>
 
 
-                        <div class="row pt-3 fw-bold fs-4">Passenger Information:</div>
+                        <div class="row pt-3 fw-bold fs-4 information-subh">Passenger Information:</div>
                         <div class="row text-start py-2 ">
-                            <div class="card" style="background-color: #f8f8f8;border:10px solid transparent;">
-                                <div class="row text-start align-items-center">
-                                    <div class="col-3 fs-8"
-                                         style="background-color: #c9c9c9;border-radius: 5px; margin: 5px;">
-                                        <div class="fs-4 fw-bold py-1 border-bottom border-secondary pTxt">Tom Chan
+                            <div class="card" style="border:10px solid transparent;">
+                                <div class="row text-start align-items-center g-5">
+                                    <div class="col-5 fs-8 customer-card"
+                                         >
+                                        <div class="fs-4 fw-bold py-1  border-secondary pTxt mb-4">TOM CHAN
                                         </div>
                                         <!--                                            <div class="fw-semibold pTxt">Name:</div>-->
                                         <!--                                            <div class="text-end mb-1 pTxt">Tom Chan</div>-->
-                                        <div class="fw-semibold pTxt">Phone:</div>
-                                        <div class="text-end mb-1 pTxt">62332377</div>
-                                        <div class="fw-semibold pTxt">Email:</div>
-                                        <div class="text-end mb-2 pTxt">Tom@gmail.com</div>
+                                        <div class="fw-semibold pTxt mb-2">Phone: 62332377</div>
+<!--                                        <div class="text-end mb-1 pTxt">62332377</div>-->
+                                        <div class="fw-semibold pTxt mb-4">Email: tom@gmail.com</div>
+<!--                                        <div class="text-end mb-2 pTxt">Tom@gmail.com</div>-->
                                     </div>
-
-                                    <div class="col-3 fs-8"
-                                         style="background-color: #c9c9c9;border-radius: 5px; margin: 5px">
-                                        <div class="fs-4 fw-bold py-1 border-bottom border-secondary pTxt">Mary Chan
+                                    <div class="col-5 fs-8 customer-card"
+                                    >
+                                        <div class="fs-4 fw-bold py-1  border-secondary pTxt mb-4">MARY CHAN
                                         </div>
                                         <!--                                            <div class="fw-semibold pTxt">Name:</div>-->
-                                        <!--                                            <div class="text-end mb-1 pTxt">Mary Chan</div>-->
-                                        <div class="fw-semibold pTxt">Phone:</div>
-                                        <div class="text-end mb-1 pTxt">&nbsp;</div>
-                                        <div class="fw-semibold pTxt">Email:</div>
-                                        <div class="text-end mb-2 pTxt">&nbsp; &nbsp;</div>
-                                    </div>
-
-
-                                    <div class="col-2 fs-8"
-                                         style="background-color: #c9c9c9;border-radius: 5px; margin: 5px;visibility: hidden">
-                                        <!--                                            <span>Name:</span><br><span>Tom</span> <br>-->
-                                        <span>Phone:</span><br><span>62332377</span><br>
-                                        <span>Email:</span><br><span>Tom@gmail.com</span>
-                                    </div>
-
-                                    <div class="col-2 fs-8"
-                                         style="background-color: #c9c9c9;border-radius: 5px; margin: 5px;visibility: hidden">
-                                        <!--                                            <span >Name:</span><br><span>Tom</span> <br>-->
-                                        <span>Phone:</span><br><span>62332377</span><br>
-                                        <span>Email:</span><br><span>Tom@gmail.com</span>
+                                        <!--                                            <div class="text-end mb-1 pTxt">Tom Chan</div>-->
+                                        <div class="fw-semibold pTxt mb-2">Phone: 62238832</div>
+                                        <!--                                        <div class="text-end mb-1 pTxt">62332377</div>-->
+                                        <div class="fw-semibold pTxt mb-4">Email: mary@gmail.com</div>
+                                        <!--                                        <div class="text-end mb-2 pTxt">Tom@gmail.com</div>-->
                                     </div>
 
                                 </div>
@@ -967,7 +1223,7 @@
 
 
                         <div class="row text-start pb-3 Standard Colander">
-                            <div class="row py-3 fw-bold fs-4">Passenger Information:</div>
+                            <div class="row py-3 fw-bold fs-4 information-subh">Payment Detail:</div>
                             <section class="woocommerce-order-details">
                                 <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
                                     <thead>
@@ -1032,10 +1288,11 @@
 
                             </section>
                         </div>
-                        <div class="row d-flex flex-row-reverse bd-highlight my-2" >
+
+                        <div class="row d-flex flex-row-reverse bd-highlight mt-2 mb-4" >
 
                             <div class="col-3" style="width:200px;height: auto">
-                                <div id="breathing-button" onclick="window.location ='DeleteTicketPage.html'">Continues</div>
+                                <div data-coreui-toggle="modal" data-coreui-target="#luckydraw" id="breathing-button" >Lucky Draw</div>
                             </div>
 
                         </div>
@@ -1073,6 +1330,46 @@
         </div>
     </div>
 </div>
+
+<!--    Lucky Draw-->
+
+    <div class="modal fade" id="luckydraw"  data-coreui-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+
+            <div class="modal-content border border-light rounded-2">
+                <div class="modal-body">
+
+                    <div class="container">
+
+                        <div class="row">
+                            <header></header>
+                            <section class="lottery">
+                                <ul>
+                                    <li class="shiny item-1"></li>
+                                    <li class="shiny item-2"></li>
+                                    <li class="shiny item-3"></li>
+                                    <li class="shiny item-4"></li>
+                                    <li class="shiny item-5"></li>
+                                    <li class="shiny item-6"></li>
+                                    <li class="shiny item-7"></li>
+                                    <li class="shiny item-8"></li>
+                                    <div class="lottery_btn"><button>LUCKY<br />DRAW</button></div>
+                                </ul>
+                            </section>
+                            <footer></footer>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 <!--  *****************    -->
@@ -1138,8 +1435,96 @@
 
 </script>
 
+<!--    Lucky Draw-->
 <script type="text/javascript">
+    const $el = $('.lottery'),
+        prize_list = [
+            {
+                "name":"Redraw",
+                "img":"../images/redraw.png"
+            },
+            {
+                "name":"+8credit",
+                "img":"../images/credit.png"
+            },
+            {
+                "name":"+1080credit",
+                "img":"../images/credit.png"
+            },
+            {
+                "name":"",
+                "img":"../images/thank-you.png"
+            },
+            {
+                "name":"iphone14Pro",
+                "img":"https://cdn-icons-png.flaticon.com/512/644/644458.png"
+            },
+            {
+                "name":"+12credit",
+                "img":"../images/credit.png"
+            },
+            {
+                "name":"+508credit",
+                "img":"../images/credit.png"
+            },
+            {
+                "name":"",
+                "img":"../images/thank-you.png"
+            }
+        ];
 
+    $(function(){
+        prize_list.forEach((item,index) =>
+            $el.find('li').eq(index).append("<img src='"+item.img+"'><p>"+item.name+"</p>")
+        );
+    });
+
+    var prizeId = -1;
+
+    function draw(oMain, callback){
+        let timer = null,
+            index = oMain.find(".active").index(),
+            len = oMain.find("li").length,
+            iSpeed = 100,
+            iLast = len;
+        (function run(){
+            index++;
+
+            if(index > 2) iSpeed = 100;
+            if(iLast < 2) iSpeed = 300;
+
+            if(index >= len) index = 0;
+            oMain.find("li").removeClass("active").eq(index).addClass("active");
+
+            timer = setTimeout(run, iSpeed);
+
+            if(prizeId !== -1 && index === prizeId){
+                //console.log(iLast);
+                iLast--;
+                if(iLast === 0){
+                    clearTimeout(timer);
+                    callback();
+                }
+            }
+        })();
+    }
+
+    $el.find('button').on("click", function(){
+        setTimeout(() => {
+            prizeId = Math.floor(Math.random() * 8);
+        });
+
+        $el.find('button').prop("disabled", true);
+        $el.find('li').removeClass("shiny");
+
+        draw($el, function(){
+            setTimeout(() => {
+                $el.find('button').prop("disabled", false);
+                $el.find('li').removeClass("active").addClass("shiny");
+                alert("You have got："+ prize_list[prizeId].name + "!!");
+            });
+        });
+    });
 
 </script>
 
