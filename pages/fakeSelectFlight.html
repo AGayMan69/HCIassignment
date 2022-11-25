@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Airline - search</title>
+
+
+    <!--  *****************    -->
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <!-- jsdelivr date picker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <!-- CoreUI for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+    <!-- Mukta Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&family=Mukta&display=swap" rel="stylesheet">
+    <!-- CoreUI Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/flag.min.css">
+    <!--    remix icon-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!--    password strength checker-->
+    <link rel="stylesheet" href="../js/password.min.css">
+    <link rel="stylesheet" href="../style/nav.css">
+    <!--  *****************    -->
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Mukta', sans-serif;
+            /*font-family: 'Dosis', sans-serif；*/
+        }
+
+        body {
+            background-color: #f3f5f7;
+        }
+
+        .pCard {
+            width: 250px;
+            border-color: #eeeced;
+            cursor: pointer;
+        }
+
+        .pCard:hover {
+            border-bottom-width: 5px;
+            border-bottom-color: #2898b5;
+            background-color: #f9f9fb;
+        }
+
+        .reIcon {
+            width: 55px;
+            height: 55px;
+            display: block;
+            margin-top: 7px;
+            margin-left: 20px;
+
+            -webkit-filter: drop-shadow(2px 2px 0 gray) drop-shadow(-1px -1px 0 white);
+            filter: drop-shadow(2px 2px 0 gray) drop-shadow(-1px -1px 0 white);
+
+        }
+
+        .pState {
+            font-family: "Yu Gothic Medium";
+            font-weight: bold;
+            font-size: 12px;
+            /*font-weight: 400;*/
+            display: inline-block;
+            margin-top: 15px;
+            color: #818485;
+            margin-left: 10px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /*.changeFBtn {*/
+        /*    font-family: 'Overpass', sans-serif;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    font-size: 25px;*/
+        /*    color: #ababab;*/
+        /*    !*border-color: #9a9b97;*!*/
+        /*    padding: 25px;*/
+        /*}*/
+
+        .changeFBtn.cheap {
+            --cheap-bg-color: #17e387;
+            background: linear-gradient(0deg, rgb(24, 203, 161) 0%, var(--cheap-bg-color));
+        }
+
+        .changeFBtn.cheap:before,
+        .changeFBtn.cheap:after {
+            background: var(--cheap-bg-color);
+        }
+
+        .changeFBtn.cheap:hover {
+            color: var(--cheap-bg-color);
+        }
+
+        .changeFBtn.cheap span:before,
+        .changeFBtn.cheap span:after {
+            background: var(--cheap-bg-color);
+        }
+
+        /*.changeFBtn:hover {*/
+        /*    !*border-color: #4b50a7;*!*/
+        /*    color: #4b50a7;*/
+        /*    background-color: red !important;*/
+        /*}*/
+        .changeFBtn {
+            width: 100%;
+            height: 100%;
+            font-size: 25px;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+            outline: none;
+            background: linear-gradient(0deg, rgba(255, 151, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
+            line-height: 82px;
+            padding: 0;
+            border: none;
+        }
+
+        .changeFBtn span {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-family: 'Overpass', sans-serif;
+            font-weight: 600 !important;
+        }
+
+        .changeFBtn:before,
+        .changeFBtn:after {
+            position: absolute;
+            content: "";
+            right: 0;
+            bottom: 0;
+            background: rgba(251, 75, 2, 1);
+            box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, .9),
+            -4px -4px 5px 0px rgba(255, 255, 255, .9),
+            7px 7px 20px 0px rgba(0, 0, 0, .2),
+            4px 4px 5px 0px rgba(0, 0, 0, .3);
+            transition: all 0.3s ease;
+        }
+
+        .changeFBtn:before {
+            height: 0%;
+            width: 2px;
+        }
+
+        .changeFBtn:after {
+            width: 0%;
+            height: 2px;
+        }
+
+        .changeFBtn:hover {
+            color: rgba(251, 75, 2, 1);
+            background: transparent;
+        }
+
+        .changeFBtn:hover:before {
+            height: 100%;
+        }
+
+        .changeFBtn:hover:after {
+            width: 100%;
+        }
+
+        .changeFBtn span:before,
+        .changeFBtn span:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 0;
+            background: rgba(251, 75, 2, 1);
+            box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, .9),
+            -4px -4px 5px 0px rgba(255, 255, 255, .9),
+            7px 7px 20px 0px rgba(0, 0, 0, .2),
+            4px 4px 5px 0px rgba(0, 0, 0, .3);
+            transition: all 0.3s ease;
+        }
+
+        .changeFBtn span:before {
+            width: 2px;
+            height: 0%;
+        }
+
+        .changeFBtn span:after {
+            height: 2px;
+            width: 0%;
+        }
+
+        .changeFBtn span:hover:before {
+            height: 100%;
+        }
+
+        .changeFBtn span:hover:after {
+            width: 100%;
+        }
+
+
+        /*Slider tab*/
+
+
+        /*@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400';*/
+        /* colors */
+        /* tab setting */
+        /* breakpoints */
+        /* selectors relative to radio inputs */
+
+        body h1 {
+            text-align: center;
+            color: #428bff;
+            font-weight: 300;
+            padding: 40px 0 20px 0;
+            margin: 0;
+        }
+
+        .tabs {
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            background: #f9fafe;
+            padding: 50px;
+            padding-bottom: 80px;
+            width: 100%;
+            /*height: 250px;*/
+            height: 100%;
+            /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
+            border-radius: 5px;
+            min-width: 240px;
+        }
+
+        .tabs input[name="tab-control"] {
+            display: none;
+        }
+
+        .tabs .content section h2, .tabs ul li label {
+            font-family: "Montserrat";
+            font-weight: bold;
+            font-size: 18px;
+            color: #428bff;
+        }
+
+        .tabs ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .tabs ul li {
+            box-sizing: border-box;
+            flex: 1;
+            width: 25%;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .tabs ul li label {
+            transition: all 0.3s ease-in-out;
+            color: #929daf;
+            /*padding: 5px auto;*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+            -webkit-touch-callout: none;
+        }
+
+        .tabs ul li label br {
+            display: none;
+        }
+
+        .tabs ul li label svg {
+            fill: #929daf;
+            height: 1.2em;
+            vertical-align: bottom;
+            margin-right: 0.2em;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
+            outline: 0;
+            color: #bec5cf;
+        }
+
+        .tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
+            fill: #bec5cf;
+        }
+
+        .tabs .slider {
+            position: relative;
+            width: 50%;
+            transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+        }
+
+        .tabs .slider .indicator {
+            position: relative;
+            width: 50px;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 4px;
+            background: #428bff;
+            border-radius: 1px;
+        }
+
+        .tabs .content {
+            margin-top: 30px;
+        }
+
+        .tabs .content section {
+            display: none;
+            animation-name: content;
+            animation-direction: normal;
+            animation-duration: 0.3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            line-height: 1.4;
+        }
+
+        .tabs .content section h2 {
+            color: #428bff;
+            display: none;
+        }
+
+        .tabs .content section h2::after {
+            content: "";
+            position: relative;
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: #428bff;
+            margin-top: 5px;
+            left: 1px;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+            cursor: default;
+            color: #428bff;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
+            fill: #428bff;
+        }
+
+
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+            transform: translateX(0%);
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
+            display: block;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(2) > label {
+            cursor: default;
+            color: #428bff;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(2) > label svg {
+            fill: #428bff;
+        }
+
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+            transform: translateX(100%);
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
+            display: block;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+            cursor: default;
+            color: #428bff;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
+            fill: #428bff;
+        }
+
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+            transform: translateX(200%);
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
+            display: block;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+            cursor: default;
+            color: #428bff;
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
+            fill: #428bff;
+        }
+
+        @media (max-width: 600px) {
+            .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+                background: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
+            transform: translateX(102%);
+        }
+
+        .tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) {
+            display: block;
+        }
+
+        @keyframes content {
+            from {
+                opacity: 0;
+                transform: translateY(5%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .tabs ul li label {
+                white-space: initial;
+            }
+
+            .tabs ul li label br {
+                display: initial;
+            }
+
+            .tabs ul li label svg {
+                height: 1.5em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tabs ul li label {
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            .tabs ul li label span {
+                display: none;
+            }
+
+            .tabs .slider {
+                display: none;
+            }
+
+            .tabs .content {
+                margin-top: 20px;
+            }
+
+            .tabs .content section h2 {
+                display: block;
+            }
+        }
+
+
+        /*Price tag*/
+        .price-tag {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            height: 20px;
+            margin-left: 10px;
+            padding: 0 5px 0 10px;
+            color: #fff;
+            border-radius: 0 4px 4px 0;
+            background-color: #ff6347;
+            line-height: 1;
+            justify-content: center;
+        }
+
+        .price-tag::before, .price-tag::after {
+            position: absolute;
+            content: '';
+        }
+
+        .price-tag::before {
+            left: -7px;
+            width: 14px;
+            height: 14px;
+            transform: rotate(45deg);
+            border-radius: 0 0 0 4px;
+            background-color: #ff6347;
+        }
+
+        .price-tag::after {
+            z-index: 1;
+            top: 50%;
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            transform: translate(-50%, -50%) translateX(10px);
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+
+        .confirmBt {
+            background-color: #0dd;
+            border: none;
+            transition: background-color 0.5s linear, color 0.5s linear;
+        }
+
+        .confirmBt:hover {
+            background-color: #00c4c4;
+        }
+
+        .confirmBt:focus {
+            outline: none;
+        }
+
+        .confirmBt {
+            animation: shadowFloat 1.2s linear alternate infinite;
+            border-radius: 15px;
+            color: #fff;
+            /*font-weight:500;*/
+            font-size: 14px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 1px #0aa;
+        }
+
+        @keyframes shadowFloat {
+            0% {
+                box-shadow: 0 20px 40px #c7c7c7;
+                transform: translateY(-3px);
+            }
+            100% {
+                box-shadow: 0 10px 10px #bababa;
+                transform: translateY(3px);
+            }
+        }
+
+
+        /*Solution card*/
+        .section_our_solution .row {
+            align-items: center;
+        }
+
+        .our_solution_category .solution_cards_box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .solution_cards_box .solution_card {
+            flex: 0 50%;
+            background: #fff;
+            box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+            0 5px 15px 0 rgba(37, 44, 97, 0.15);
+            border-radius: 15px;
+            margin: 8px;
+            padding: 10px 15px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            min-height: auto;
+            transition: 0.7s;
+        }
+
+        .solution_cards_box .solution_card:hover {
+            background: #309df0;
+            color: #fff;
+            transform: scale(1.1);
+            z-index: 9;
+        }
+
+        .solution_cards_box .solution_card:hover::before {
+            background: rgb(85 108 214 / 10%);
+        }
+
+        .solution_cards_box .solution_card:hover .solu_title h3,
+        .solution_cards_box .solution_card:hover .solu_description p {
+            color: #fff;
+        }
+
+
+        .solution_cards_box .solution_card:before {
+            content: "";
+            position: absolute;
+            background: rgb(85 108 214 / 5%);
+            width: 170px;
+            height: 400px;
+            z-index: -1;
+            transform: rotate(42deg);
+            right: -56px;
+            top: -23px;
+            border-radius: 35px;
+        }
+
+        .solution_cards_box .solution_card:hover .solu_description button {
+            background: #fff !important;
+            color: #309df0;
+        }
+
+        .solution_card .so_top_icon {
+        }
+
+        .solution_card .solu_title h3 {
+            color: #212121;
+            font-size: 1.3rem;
+            margin-top: 13px;
+            margin-bottom: 13px;
+        }
+
+        .solution_card .solu_description p {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .solution_card .solu_description button {
+            border: 0;
+            border-radius: 15px;
+            background: linear-gradient(
+                    140deg,
+                    #42c3ca 0%,
+                    #42c3ca 50%,
+                    #42c3cac7 75%
+            ) !important;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 5px 16px;
+        }
+
+        .our_solution_content h1 {
+            text-transform: capitalize;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .our_solution_content p {
+        }
+
+        .solution_cards_box .solution_card:hover .hover_color_bubble {
+            top: 0rem;
+        }
+
+        .solution_cards_box .solution_card .so_top_icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solution_cards_box .solution_card .so_top_icon img {
+            width: 40px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .whiteText {
+            color: #fff;
+        }
+
+
+        /*breath button*/
+        div:has(> #breathing-button) {
+            padding-left: 0 !important;
+        }
+
+        #breathing-button {
+            font-family: "Overpass";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            font-weight: bold;
+            font-size: 18px;
+            background: linear-gradient(0deg, rgb(13, 159, 213) 0%, rgb(68, 239, 225));
+            color: #ffffff;
+
+            animation: breathing 2s cubic-bezier(0, 0.48, 0.22, 1.38) infinite normal;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        #breathing-button:hover,
+        #breathing-button:focus {
+            color: #002a2a;
+            box-shadow: inset 16.5em 0 0 0 #00fdfd;
+        }
+
+
+        @-webkit-keyframes breathing {
+            0% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            25% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes breathing {
+            0% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+            25% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+            }
+
+            60% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+
+            100% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+
+        .fakeBreathing-button {
+            --cancel-color: #ff3f3f;
+            font-family: "Overpass", sans-serif;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            /*align-content: center;*/
+            font-weight: bold;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            /*margin: 50px auto;*/
+            border: 2px solid var(--cancel-color);
+            font-size: 18px;
+            color: var(--cancel-color);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transform: scale(0.9);
+        }
+
+        div:has(> .fakeBreathing-button) {
+            padding-left: 0 !important;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .list-group-item {
+            background: #e8f0f9;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- nav bar-->
+<nav class="navbar navbar-expand-lg bg-body shadow">
+    <div class="container-fluid mx-5 my-2">
+        <a class="navbar-brand " href="#">
+            <img class="mb-1" src="../icon/png/logo-no-background.png" alt="" width="280px">
+        </a>
+        <button class="navbar-toggler" type="button" data-coreui-toggle="collapse"
+                data-coreui-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item nav-book">
+                    <a class="nav-link fs-6 link-active" aria-current="page" href="./index.html">Book</a>
+                </li>
+                <li class="nav-item nav-flight">
+                    <a class="nav-link fs-6" href="./index.html#popular-flight">Popular</a>
+                </li>
+                <li class="nav-item nav-feature">
+                    <a class="nav-link fs-6" href="./index.html#feature-section">Featured</a>
+                </li>
+                <li class="nav-item nav-history">
+                    <a class="nav-link fs-6" href="#">View Flight</a>
+                </li>
+            </ul>
+
+            <i class="ri-global-line me-3"></i>
+            <select name="" id="language-select"
+                    class="form-select form-select-sm">
+                <option selected>🇬🇧 English</option>
+                <option>🇨🇳 简体中文</option>
+                <option>🇭🇰 繁體中文</option>
+                <option>🇯🇵 日本語</option>
+            </select>
+            <div class="mx-4 fw-bold">Help & support</div>
+            <a class="ms-2" id="signin_toggle"
+               data-coreui-toggle="modal"
+               data-coreui-target="#login_modal"
+            >
+                <div class="avatar bg-black text-white me-2">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="d-inline fw-bold text-body">Sign In</div>
+            </a>
+        </div>
+    </div>
+</nav>
+<!--                                        nav bar-->
+
+
+<div class="container pt-5" style="height:100vh;">
+
+    <section id="StepBar">
+        <div class="container d-flex justify-content-center">
+            <div class="card-group">
+
+                <div class="row">
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 rounded-start shadow-sm my-1 tpItem"
+                         id="tpItem01" style="background-color: #c4e9f969">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon" src="../images/ReservePageIcon/flights.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block ">
+                                    <span class="card-text text-justify pState">Step 01</span>
+                                    <h5 class="card-title pName">Select Flights</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem02">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon"
+                                     src="../images/ReservePageIcon/Passenger.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState" style="color: #04cc03">Done</span>
+                                    <h5 class="card-title pName">Passenger</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem03">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon"
+                                     src="../images/ReservePageIcon/seats.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState" style="color: #04cc03">Done</span>
+                                    <h5 class="card-title pName">Select Seats</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0 shadow-sm my-1 tpItem" id="tpItem04"
+                         onclick="window.location = 'confirmBeforePayment.html'">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon"
+                                     src="../images/ReservePageIcon/payment.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 04</span>
+                                    <h5 class="card-title pName">Payment</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-3 p-3 pCard rounded-0  rounded-end  shadow-sm my-1 tpItem"
+                         id="tpItem05">
+                        <div class="row ">
+                            <div class="col-md-4 pImg">
+                                <img class="w-100 reIcon"
+                                     src="../images/ReservePageIcon/blackAndWhite/confirm-bw.png">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-block">
+                                    <span class="card-text text-justify pState">Step 05</span>
+                                    <h5 class="card-title pName">Confirm</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="SelectFSection" class="mt-4" style="width:100%; height:100%">
+
+        <div class="row">
+
+            <div class="col-8">
+
+                <div class="card border-0" style="margin-left:23px;width:99%;">
+
+                    <div class="tabs shadow-md">
+
+                        <input type="radio" id="tab1" name="tab-control" checked>
+                        <input type="radio" id="tab2" name="tab-control">
+                        <input type="radio" id="tab3" name="tab-control">
+                        <input type="radio" id="tab4" name="tab-control">
+                        <ul>
+                            <li title="Features"><label for="tab1" role="button">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14,2A8,8 0 0,0 6,10A8,8 0 0,0 14,18A8,8 0 0,0 22,10H20C20,13.32 17.32,16 14,16A6,6 0 0,1 8,10A6,6 0 0,1 14,4C14.43,4 14.86,4.05 15.27,4.14L16.88,2.54C15.96,2.18 15,2 14,2M20.59,3.58L14,10.17L11.62,7.79L10.21,9.21L14,13L22,5M4.93,5.82C3.08,7.34 2,9.61 2,12A8,8 0 0,0 10,20C10.64,20 11.27,19.92 11.88,19.77C10.12,19.38 8.5,18.5 7.17,17.29C5.22,16.25 4,14.21 4,12C4,11.7 4.03,11.41 4.07,11.11C4.03,10.74 4,10.37 4,10C4,8.56 4.32,7.13 4.93,5.82Z"/>
+                                </svg>
+                                <br><span>Departure</span></label></li>
+
+                            <li title="Returns"><label for="tab4" role="button">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>
+                                </svg>
+                                <br><span>Returns</span></label></li>
+                        </ul>
+
+                        <div class="slider">
+                            <div class="indicator"></div>
+                        </div>
+
+                        <div class="content">
+                            <section>
+                                <!--Depart-->
+                                <h2>Features</h2>
+                                <div id="departPart">
+
+                                    <div class="row">
+
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <!--Air icon-->
+                                            <img src="../icon/png/IVElogo-crop.png" style="width:50px;height:50px;">
+                                        </div>
+
+                                        <div class="col-11">
+
+                                            <div class="row">
+
+                                                <div class="col-4 text-center">
+                                                    <div class="row">
+                                                    <span class="col-12 fs-1 fw-bolder"
+                                                          style="color:#3f3f3f;">HKG</span>
+                                                        <span class="fs-4 fw-semibold"
+                                                              style="color:#818181;">Hong Kong, HK</span>
+                                                        <span class="fs-6 fw-medium" style="color:#a3a8aa;">Hong Kong International</span>
+
+                                                        <span class="fs-5 fw-bold"
+                                                              style="color:#5a5d5d;" id="forHKModifyDate">(15 OCT 2022, 17:30 PM)</span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-2 d-flex justify-content-center align-items-center">
+                                                    <img src="../icon/png/frying.png"
+                                                         style="width:80px;height:80px;"
+                                                         alt="">
+                                                </div>
+
+                                                <div class="col-4 text-center">
+                                                    <div class="row">
+                                                    <span class="col-12 fs-1 fw-bolder"
+                                                          style="color:#3f3f3f;">TPE</span>
+                                                        <span class="fs-4 fw-semibold"
+                                                              style="color:#818181;">TaoYuan, TW</span>
+                                                        <span class="fs-6 fw-medium" style="color:#a3a8aa;">Taoyuan International</span>
+                                                        <span class="fs-5 fw-bold"
+                                                              style="color:#5a5d5d;" id="forTWModifyDate">(15 OCT 2022, 19:30 PM)</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-1" id="tagCol">
+                                                <span class="price-tag">
+                                                    <span>Economy</span>
+                                                </span>
+                                                    <span class="price-tag mt-3">
+                                                    <span id="forPriceModify01">$1920.0</span>
+
+                                                </span>
+                                                    <span class="price-tag mt-3">
+
+                                                    <span>Save$900</span>
+
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row border-4 border-bottom text-center"
+                                         style="width:100%;height:45px;">
+                                        &nbsp
+                                    </div>
+                                </div>
+
+                            </section>
+                            <section>
+                                <h2></h2>
+                            </section>
+                            <section>
+                                <h2></h2>
+                            </section>
+                            <section>
+                                <h2>Returns</h2>
+                                <div id="returnPart">
+                                    <div class="row">
+
+                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                            <!--Air icon-->
+                                            <img src="../icon/png/TPAlogo.png" style="width:50px;height:50px;">
+                                        </div>
+
+                                        <div class="col-11">
+
+                                            <div class="row">
+
+                                                <div class="col-4 text-center">
+                                                    <div class="row">
+                                                    <span class="col-12 fs-1 fw-bolder"
+                                                          style="color:#3f3f3f;">TPE</span>
+                                                        <span class="fs-4 fw-semibold"
+                                                              style="color:#818181;">TaoYuan, TW</span>
+                                                        <span class="fs-6 fw-medium" style="color:#a3a8aa;">Taoyuan International</span>
+
+                                                        <span class="fs-5 fw-bold"
+                                                              style="color:#5a5d5d;">(19 OCT 2022, 14:30 PM)</span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-2 d-flex justify-content-center align-items-center">
+                                                    <img src="../icon/png/fryingReverse.png"
+                                                         style="width:80px;height:80px;"
+                                                         alt="">
+                                                </div>
+
+                                                <div class="col-4 text-center">
+                                                    <div class="row">
+                                                    <span class="col-12 fs-1 fw-bolder"
+                                                          style="color:#3f3f3f;">HKG</span>
+                                                        <span class="fs-4 fw-semibold"
+                                                              style="color:#818181;">Hong Kong, HK</span>
+                                                        <span class="fs-6 fw-medium" style="color:#a3a8aa;">Hong Kong International</span>
+                                                        <span class="fs-5 fw-bold"
+                                                              style="color:#5a5d5d;">(19 OCT 2022, 16:30 PM)</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-1">
+                                                <span class="price-tag">
+                                                    <span>Economy</span>
+                                                </span>
+                                                    <span class="price-tag mt-3">
+                                                    <span>$1,820.0</span>
+                                                </span>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row border-4 border-bottom text-center"
+                                         style="width:100%;height:45px;">
+                                        &nbsp
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mt-4 d-flex align-items-center justify-content-center"
+                     style="width:100%; margin-left:20px;">
+                    <div class="col-6">
+                        <!--PREVIOUS FLIGHTS -->
+                        <button type="button" class="btn bg-light fw-semibold changeFBtn cheap"
+                                data-coreui-toggle="modal"
+                                data-coreui-target="#staticBackdrop"><span>CHEAPEST FLIGHTS
+                        </span></button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn bg-light fw-semibold changeFBtn expensive"
+                                data-coreui-toggle="modal"
+                                data-coreui-target="#staticBackdrop2"><span>PREMIUM FLIGHTS
+                        </span></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-4">
+
+                <!--                <div class="row mx-1" style="width: 100%;height:66%;">-->
+                <!--                    <div class="card border-0" style="width:95%; height:100%; background-color: #e8f0f9">-->
+                <!--                        <div>-->
+                <!--                            <h5 class="card-title mt-3">Fare Summary</h5>-->
+                <!--                        </div>-->
+                <!--                        <hr>-->
+                <!--                        <div style="height: 40%">&nbsp</div>-->
+                <!--                        <div>-->
+                <!--                            <h6 class="card-title my-3 mx-4">Taxes</h6>-->
+                <!--                        </div>-->
+
+                <!--                        <div class="card-footer text-muted bg-transparent">-->
+                <!--                            <h6 class="card-title mt-2">Total</h6>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+                <div class="row mx-1" style="width: 100%;height:65%;">
+
+                    <div class="card border-0 shadow-sm" style="width:95%; height:100%; background: #e8f0f9">
+
+                        <div class="card-header py-3 bg-transparent">
+
+                            <h5 class="mb-0 fw-semibold">Fare Summary</h5>
+
+                        </div>
+
+
+                        <div class="card-body pt-3">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Departure Flight (Economy)x1
+                                    <span id="dFlightPrice">$2820.0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pt-3 pb-5">
+                                    Return Flights(Economy)x1
+                                    <span id="rFlightPrice">$1820.0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                    <div class="pt-3">
+                                        <strong>Total amount</strong>
+                                        <strong>
+                                            <p class="mb-0">(including tax)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong id="amountPrice">HK$4640.0</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-1 mt-3" style="width:100%;">
+                    <div class="card border-0" style="width:95%; height:auto; background-color:white">
+                        <div class="mt-3 mx-3 fs-6 fw-semibold" style="color: #68bc7d">Refundable <img id=""
+                                                                                                       src="../icon/png/sale-sign.png"
+                                                                                                       style="width:18px;height:18px;"><span>&nbsp;cancel within 3 days</span>
+                        </div>
+                        <div class="my-2 mx-3 fs-6 fw-semibold">3 Seats <span
+                                style="color: #abb5c0">available</span>
+                        </div>
+
+                        <div class="row d-flex d-flex justify-content-center mt-2 mb-2"
+                             style="height: auto; margin-left: 15px;">
+
+                            <div class="col-4">
+                                <div class="fakeBreathing-button">Cancel</div>
+                            </div>
+
+                            <div class="col-8">
+                                <div id="breathing-button">Next Step</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row d-flex flex-row-reverse bd-highlight" style="margin: 0">
+
+
+        </div>
+
+    </section>
+</div>
+
+
+<!--            Modal-->
+<div>
+
+    <!-- Vertically centered modal -->
+
+    <!-- Modal CHEAPEST FLIGHTS  -->
+
+    <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+
+            <div class="modal-content border border-light rounded-2">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fs-3 fw-semibold radius-10 border-bottom border-0 border-2"
+                        id="staticBackdropLabel">CHEAPEST FLIGHTS</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="section_our_solution">
+                        <div class="row">
+                            <div class="solution_cards_box">
+                                <div class="solution_card">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between text-center px-md-1">
+
+                                            <div class="align-self-center col-1">
+                                                <img src="../icon/png/IVElogo-crop.png"
+                                                     style="width:100%;height:100%;">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder solu_title"
+                                                      style="color:#55585c;">HKG</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 14:30 PM</span>
+                                            </div>
+
+                                            <div class="align-self-center col-2">
+                                                <img src="../icon/png/frying.png" style="width:30px;height:30px;"
+                                                     alt="">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder"
+                                                      style="color:#55585c;">TPE</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 16:30 PM</span>
+                                            </div>
+
+                                            <div class="text-end col-3">
+                                                <h3>$1,920</h3>
+                                                <ul class="list-unstyled list-inline mb-2">
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"> </i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item"><i
+                                                            class="fa fa-star-half-alt fa-xs"></i></li>
+
+                                                    <!--                                                    <li class="list-inline-item"><i-->
+                                                    <!--                                                            class="fa fa-star-o fa-xs"></i></li>-->
+
+                                                </ul>
+                                                <p class="mb-0 fw-semibold" style="color:#ff6347"><img
+                                                        src="../icon/png/economy.png"
+                                                        style="width:20px;height:20px;"
+                                                        alt="">&#160;Economy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--                            cardbox 2-->
+
+                            <div class="solution_cards_box">
+                                <div class="solution_card">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between text-center px-md-1">
+
+                                            <div class="align-self-center col-1">
+                                                <img src="../icon/png/IVElogo-crop.png"
+                                                     style="width:100%;height:100%;">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder solu_title"
+                                                      style="color:#55585c;">HKG</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 15:30 PM</span>
+                                            </div>
+
+                                            <div class="align-self-center col-2">
+                                                <img src="../icon/png/frying.png" style="width:30px;height:30px;"
+                                                     alt="">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder"
+                                                      style="color:#55585c;">TPE</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 17:30 PM</span>
+                                            </div>
+
+                                            <div class="text-end col-3">
+                                                <h3>$2,710</h3>
+                                                <ul class="list-unstyled list-inline mb-2">
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"> </i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item"><i
+                                                            class="fa fa-star-half-alt fa-xs"></i></li>
+
+                                                    <!--                                                    <li class="list-inline-item"><i-->
+                                                    <!--                                                            class="fa fa-star-o fa-xs"></i></li>-->
+
+                                                </ul>
+                                                <p class="mb-0 fw-semibold" style="color:#ff6347"><img
+                                                        src="../icon/png/economy.png"
+                                                        style="width:20px;height:20px;"
+                                                        alt="">&#160;Economy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--                            card box 3-->
+                            <div class="solution_cards_box">
+                                <div class="solution_card">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between text-center px-md-1">
+
+                                            <div class="align-self-center col-1">
+                                                <img src="../icon/png/IVElogo-crop.png"
+                                                     style="width:100%;height:100%;">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder solu_title"
+                                                      style="color:#55585c;">HKG</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 16:30 PM</span>
+                                            </div>
+
+                                            <div class="align-self-center col-2">
+                                                <img src="../icon/png/frying.png" style="width:30px;height:30px;"
+                                                     alt="">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder"
+                                                      style="color:#55585c;">TPE</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 16:30 PM</span>
+                                            </div>
+
+                                            <div class="text-end col-3">
+                                                <h3>$2,710</h3>
+                                                <ul class="list-unstyled list-inline mb-2">
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"> </i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item"><i
+                                                            class="fa fa-star-o fa-xs"></i></li>
+
+                                                    <!--                                                    <li class="list-inline-item"><i-->
+                                                    <!--                                                            class="fa fa-star-o fa-xs"></i></li>-->
+
+                                                </ul>
+                                                <p class="mb-0 fw-semibold" style="color:#ff6347"><img
+                                                        src="../icon/png/economy.png"
+                                                        style="width:20px;height:20px;"
+                                                        alt="">&#160;Economy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer border border-white">
+                    <!--                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>-->
+
+                    <button class="confirmBt fw-semibold bg-secondary" id="modelCancelBt"
+                            data-coreui-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button class="confirmBt fw-semibold" data-coreui-dismiss="modal" id="SelectBt01">Select
+                    </button>
+                    <!--                    <button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal PREMIUM FLIGHTS  -->
+    <!--    <div class="modal fade" id="staticBackdrop2" data-coreui-backdrop="static" data-coreui-keyboard="false"-->
+    <!--         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+    <!--        <div class="modal-dialog modal-dialog-centered">-->
+    <!--            <div class="modal-content">-->
+    <!--                <div class="modal-header">-->
+    <!--                    <h5 class="modal-title" id="staticBackdrop2Label">Modal title</h5>-->
+    <!--                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>-->
+    <!--                </div>-->
+    <!--                <div class="modal-body">-->
+
+
+    <!--                    -->
+
+
+    <!--                </div>-->
+    <!--                <div class="modal-footer">-->
+    <!--                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>-->
+    <!--                    <button type="button" class="btn btn-primary">Understood</button>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+
+    <div class="modal fade" id="staticBackdrop2" data-coreui-backdrop="static" data-coreui-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+
+            <div class="modal-content border border-light rounded-2">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fs-3 fw-semibold radius-10 border-bottom border-0 border-2"
+                        id="staticBackdrop2Label">PREMIUM FLIGHTS</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="section_our_solution">
+                        <div class="row">
+                            <div class="solution_cards_box">
+                                <div class="solution_card">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between text-center px-md-1">
+
+                                            <div class="align-self-center col-1">
+                                                <img src="../icon/png/IVElogo-crop.png"
+                                                     style="width:100%;height:100%;">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder solu_title"
+                                                      style="color:#55585c;">HKG</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 14:30 PM</span>
+                                            </div>
+
+                                            <div class="align-self-center col-2">
+                                                <img src="../icon/png/frying.png" style="width:30px;height:30px;"
+                                                     alt="">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder"
+                                                      style="color:#55585c;">TPE</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 16:30 PM</span>
+                                            </div>
+
+                                            <div class="text-end col-3">
+                                                <h3>$7,920</h3>
+                                                <ul class="list-unstyled list-inline mb-2">
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"> </i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item"><i
+                                                            class="fa fa-star-half-alt fa-xs"></i></li>
+
+                                                    <!--                                                    <li class="list-inline-item"><i-->
+                                                    <!--                                                            class="fa fa-star-o fa-xs"></i></li>-->
+
+                                                </ul>
+                                                <p class="mb-0 fw-semibold" style="color:#ff6347"><img
+                                                        src="../icon/png/business.png"
+                                                        style="width:20px;height:20px;"
+                                                        alt="">&#160;Business</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--                            cardbox 2-->
+
+                            <div class="solution_cards_box">
+                                <div class="solution_card">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between text-center px-md-1">
+
+                                            <div class="align-self-center col-1">
+                                                <img src="../icon/png/IVElogo-crop.png"
+                                                     style="width:100%;height:100%;">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder solu_title"
+                                                      style="color:#55585c;">HKG</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 15:30 PM</span>
+                                            </div>
+
+                                            <div class="align-self-center col-2">
+                                                <img src="../icon/png/frying.png" style="width:30px;height:30px;"
+                                                     alt="">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder"
+                                                      style="color:#55585c;">TPE</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 17:30 PM</span>
+                                            </div>
+
+                                            <div class="text-end col-3">
+                                                <h3>$8,810</h3>
+                                                <ul class="list-unstyled list-inline mb-2">
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"> </i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item"><i
+                                                            class="fa fa-star-half-alt fa-xs"></i></li>
+
+                                                    <!--                                                    <li class="list-inline-item"><i-->
+                                                    <!--                                                            class="fa fa-star-o fa-xs"></i></li>-->
+
+                                                </ul>
+                                                <p class="mb-0 fw-semibold" style="color:#ff6347"><img
+                                                        src="../icon/png/business.png"
+                                                        style="width:20px;height:20px;"
+                                                        alt="">&#160;Business</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--                            card box 3-->
+                            <div class="solution_cards_box">
+                                <div class="solution_card">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between text-center px-md-1">
+
+                                            <div class="align-self-center col-1">
+                                                <img src="../icon/png/IVElogo-crop.png"
+                                                     style="width:100%;height:100%;">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder solu_title"
+                                                      style="color:#55585c;">HKG</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 16:30 PM</span>
+                                            </div>
+
+                                            <div class="align-self-center col-2">
+                                                <img src="../icon/png/frying.png" style="width:30px;height:30px;"
+                                                     alt="">
+                                            </div>
+
+                                            <div class="align-self-center col-3">
+                                                <span class=" fs-3 fw-bolder"
+                                                      style="color:#55585c;">TPE</span><br>
+                                                <span class="fs-8 fw-semibold Ltime locationTime">15 OCT 2022 16:30 PM</span>
+                                            </div>
+
+                                            <div class="text-end col-3">
+                                                <h3>$3,2710</h3>
+                                                <ul class="list-unstyled list-inline mb-2">
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"> </i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item me-0"><i
+                                                            class="fa fa-star fa-xs"></i>
+                                                    </li>
+                                                    <li class="list-inline-item"><i
+                                                            class="fa fa-star fa-xs"></i></li>
+
+                                                    <!--                                                    <li class="list-inline-item"><i-->
+                                                    <!--                                                            class="fa fa-star-o fa-xs"></i></li>-->
+
+                                                </ul>
+                                                <p class="mb-0 fw-semibold" style="color:#ff6347"><img
+                                                        src="../icon/png/star.png" style="width:20px;height:20px;"
+                                                        alt=""> First</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer border border-white">
+                    <!--                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>-->
+
+                    <button class="confirmBt fw-semibold bg-secondary" data-coreui-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button class="confirmBt fw-semibold" data-coreui-dismiss="modal">Select</button>
+                    <!--                    <button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--  *****************    -->
+<!-- jsdelivr date picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        defer></script>
+<!-- CoreUI for Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+        integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+        crossorigin="anonymous" defer></script>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous" defer></script>
+<!--  *****************    -->
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+        // $('.solution_card').hover(function () {
+        //
+        //     // $(".locationTime").css("color", "#fff")
+        //     $('this .Ltime').addClass("locationTime2");
+        // });
+        //
+        // $('.solution_card').mouseleave(function () {
+        //
+        //     $("this .locationTime").css("color", "#a3a8aa");
+        //
+        // });
+        //
+        $('.solution_card').click(function () {
+            $(this).css("background", "#26C6DA")
+            $(this).find(".Ltime").removeClass("locationTime");
+            $(this).find(".Ltime").addClass("whiteText");
+
+            // $(".Ltime").removeClass("locationTime");
+            // $(".Ltime").addClass("locationTime2");
+
+        });
+
+
+        $('#SelectBt01').click(function () {
+
+            $('#forHKModifyDate').text('15 OCT 2022 16:30 PM')
+            $('#forTWModifyDate').text('15 OCT 2022 18:30 PM')
+            $('#forPriceModify01').text('$1920.0');
+            $('#dFlightPrice').text('$1920.0');
+            $('#amountPrice').text('HK$3740.0')
+            $('#tagCol').append(saveMoneyTag);
+
+        });
+
+        $('#breathing-button').click(function () {
+            window.location.href = 'selectPassengerPage.html';
+        });
+    });
+
+    var saveMoneyTag = `                                  <span class="price-tag mt-3">
+
+                                                    <span id="forPriceModify01">Save$900</span>
+
+                                                </span>`;
+
+</script>
+
+</body>
+
+</html>

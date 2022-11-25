@@ -451,6 +451,9 @@
         .ticket-body {
             padding-bottom: 30px;
         }
+        #help{
+            cursor: pointer;
+        }
 
     </style>
 </head>
@@ -492,7 +495,8 @@
                     <option>🇭🇰 繁體中文</option>
                     <option>🇯🇵 日本語</option>
                 </select>
-                <div class="mx-4 fw-bold">Help & support</div>
+                <div class="mx-4 fw-bold"  data-coreui-toggle="modal"
+                     data-coreui-target="#csModal" data-coreui-whatever="@getbootstrap" id="help">Help & support</div>
                 <a class="ms-2" id="signin_toggle"
                    data-coreui-toggle="modal"
                    data-coreui-target="#login_modal"
@@ -907,6 +911,82 @@
     </div>
 
 
+
+
+    <div class="modal fade" id="csModal" tabindex="-1" aria-labelledby="csModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-semibold" id="csModalLabel">Customer Service</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="mb-3">
+                            <label class="col-form-label">Question Type:</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="qaSelect">
+                                <option selected>Please Select Question Type</option>
+                                <option value="1">Consult</option>
+                                <option value="2">Complaint</option>
+                                <option value="3">Update Ticket</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" id="ticketOption">
+                            <label  class="col-form-label">Ticket Number:</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected>HKEEC2-4B</option>
+                                <option value="1">HKEEC2-4C</option>
+                                <option value="2">TWEEC3-4B</option>
+                                <option value="3">TWEEC3-4C</option>
+                            </select>
+
+                            <label for="custEmail" class="col-form-label">Reply-To address:</label>
+                            <input type="text" class="form-control" id="custEmail" value="Tom@gmail.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                            data-coreui-toggle="modal"
+                            data-coreui-target="#msgModal">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="msgModal" tabindex="-1" aria-labelledby="msgModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="msgModalLabel">Dear Customer</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mx-3">
+                            <div class="card-body">We have forwarded your question to the relevant team. Please expect a response from them within <strong>1-3</strong> business days.</p>
+                                Thank you for your patience while we resolve this issue .</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--  *****************    -->
     <!-- jsdelivr date picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -928,6 +1008,15 @@
             $(".activation-code-input").activationCodeInput({
                 number: 6
             });
+
+            $('#ticketOption').hide();
+
+            $('#qaSelect').change(function (){
+                if ($(this).find(':checked').val() == 3){
+                    $('#ticketOption').show();
+                }
+            })
+
         });
 
         function inputFilter(e) {
